@@ -28,7 +28,7 @@ export function getSitemapTags(req, res) {
           result.map(n => {
             items += `
             <url>
-              <loc>https://oopsreview.com/tag/${n.tag.toLowerCase()}</loc>
+              <loc>https://academy.byidmore.com/tag/${n.tag.toLowerCase()}</loc>
               <lastmod>2018-08-09</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>
@@ -68,7 +68,7 @@ export function getSitemapUsers(req, res) {
           result.map(n => {
             items += `
             <url>
-              <loc>https://oopsreview.com/author/${n.username.toLowerCase()}</loc>
+              <loc>https://academy.byidmore.com/author/${n.username.toLowerCase()}</loc>
               <lastmod>${epochToFormat(n.created_on, "Y-M-D")}</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>
@@ -108,7 +108,7 @@ export function getSitemapPosts(req, res) {
           result.map(n => {
             items += `
             <url>
-              <loc>https://oopsreview.com/post/${(n.title.replace(/ /g,'-')).toLowerCase()}-${n._id}</loc>
+              <loc>https://academy.byidmore.com/post/${(n.title.replace(/ /g,'-')).toLowerCase()}-${n._id}</loc>
               <lastmod>${epochToFormat(n.created_on, "Y-M-D")}</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>

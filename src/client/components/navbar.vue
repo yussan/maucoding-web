@@ -24,7 +24,7 @@
 import Vue from 'vue'
 import { router } from '../index'
 
-const popular_tags = ['ReactJS', 'VueJS', 'Tensorflow', 'Bootstrap', 'Tensorflow', 'NodeJS']
+const popular_tags = ['ReactJS', 'VueJS', 'Python', 'Javascript', 'Bootstrap', 'Tensorflow', 'NodeJS', 'Github']
 
 export default Vue.extend({
   name: 'navbar',

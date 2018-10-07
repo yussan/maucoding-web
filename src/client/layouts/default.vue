@@ -13,7 +13,7 @@ import navbar from "../components/navbar.vue"
 import header from "../components/header.vue"
 import footer from "../components/footer.vue"
 import toast from "../components/toast.vue"
-import { objToQuery } from "string-manager" 
+import { objToQuery } from "string-manager"
 
 Vue.component("navbar", navbar)
 Vue.component("top-navbar", header)
@@ -21,7 +21,7 @@ Vue.component("bottom-navbar", footer)
 Vue.component("toast", toast)
 
 interface ToInterface {
-  path: string,
+  path: string
   query: object
 }
 
@@ -29,17 +29,17 @@ export default Vue.extend({
   name: "layout-default",
   watch: {
     $route(to: any) {
-      const {path, query}: ToInterface = to
-      let querystring = ''
-      if(Object.keys(query).length > 0) {
+      const { path, query }: ToInterface = to
+      let querystring = ""
+      if (Object.keys(query).length > 0) {
         querystring += `?${objToQuery(query)}`
       }
       const url = path + querystring
-      const win:any = window
-      if(win.ga) {
-        console.log('send ga')
+      const win: any = window
+      if (win.ga) {
+        console.log("send ga")
         // ref : https://developers.google.com/analytics/devguides/collection/gajs/
-       win.ga('send', 'pageview', url)
+        win.ga("send", "pageview", url)
       }
     }
   }

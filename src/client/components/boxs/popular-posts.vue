@@ -25,9 +25,9 @@
         card-small(:data="data.result[6]")
 
       .popular-end
-          strong Oopsreview 
+          strong Idmore Academy 
           br 
-          | We are software review specialist
+          | More things available
 </template>
 
 <script lang="ts">

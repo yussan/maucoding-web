@@ -67,15 +67,15 @@ export default Vue.extend({
         transition: all .5s ease
         list-style: none
         &.active 
-          background-color: $color-gray-dark
+          background-color: $color-gray-verysoft
         &:hover
-          background-color: $color-gray-dark
+          background-color: $color-gray-verysoft
           cursor: pointer
     color: $color-white-main 
     a
       display: block
       padding: 1em .5em
-      color: $color-white-main 
+      color: $color-gray-medium
     .divider 
       border-top: 1px solid $color-gray-soft
 </style>

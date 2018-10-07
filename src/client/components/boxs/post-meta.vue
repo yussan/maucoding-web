@@ -11,7 +11,7 @@
       span.stats-item
         a(href="javascript:;" @click="viewComments")
           span.icono-commentEmpty 
-          span.disqus-comment-count(:data-disqus-identifier="'https://oopsreview.com' + link" :data-disqus-url="'https://oopsreview.com' + link") 0
+          span.disqus-comment-count(:data-disqus-identifier="'https://academy.byidmore.com' + link" :data-disqus-url="'https://academy.byidmore.com' + link") 0
           | &nbsp;
       span.stats-item
         span.icono-eye 
@@ -60,21 +60,21 @@ export default Vue.extend({
 
   watch: {
     link() {
-      renderDisqus(`https://oopsreview.com${this.link}`)
+      renderDisqus(`https://academy.byidmore.com${this.link}`)
     }
   },
 
   created() {
     if (!(<any>window).DISQUSWIDGETS) {
-      injectScript("//oopsreview.disqus.com/count.js", {
+      injectScript("//idmoreacademy.disqus.com/count.js", {
         id: "dsq-count-scr",
         cb: () => {
           // waiting for DISQUS initialized
-          renderDisqus(`https://oopsreview.com${this.link}`)
+          renderDisqus(`https://academy.byidmore.com${this.link}`)
         }
       })
     } else {
-      renderDisqus(`https://oopsreview.com${this.link}`)
+      renderDisqus(`https://academy.byidmore.com${this.link}`)
     }
   }
 })

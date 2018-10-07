@@ -53,13 +53,13 @@ export function getFeed(req, res) {
                 500,
                 "[READ MORE...]"
               )}</description>
-              <link>https://oopsreview.com/post/${toSlug(n.title)}-${
+              <link>https://academy.byidmore.com/post/${toSlug(n.title)}-${
               n._id
             }</link>
-              <guid>https://oopsreview.com/post/${toSlug(n.title)}-${
+              <guid>https://academy.byidmore.com/post/${toSlug(n.title)}-${
               n._id
             }</guid>
-              <category domain="https://oopsreview.com">${n.tags
+              <category domain="https://academy.byidmore.com">${n.tags
                 .split(",")
                 .join("/")}</category>
               <pubDate>${new Date(n.created_on * 1000).toUTCString()}</pubDate>
@@ -78,24 +78,24 @@ function xmlFeedWrapper(items = "", update_date = 0) {
   return `
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
-      <title>Oopsreview Feed</title>
-      <description>Oopsreview is software review specialist</description>
-      <link>https://oopsreview.com</link>
-      <category domain="https://oopsreview.com">computers/software/internet</category>
+      <title>Idmore Academy Feed</title>
+      <description>More things available</description>
+      <link>https://academy.byidmore.com</link>
+      <category domain="https://academy.byidmore.com">computers/software/internet/development/engineer</category>
       <copyright>Copyright 2017-2018 Id More Team.</copyright>
       <lastBuildDate>${new Date(
         update_date * 1000
       ).toUTCString()}</lastBuildDate>
       <language>en-us</language>
       <image>
-        <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,h_60/v1532272510/oopsreview/2018/oopsreview.png</url>
-        <title>Oopsreview Feed</title>
-        <link>https://oopsreview.com</link>
-        <description>Oopsreview is software review specialist</description>
+        <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538876985/idmore-academy/Patreon_Cover.png</url>
+        <title>Idmore Academy Feed</title>
+        <link>https://academy.byidmore.com</link>
+        <description>More things available</description>
         <width>60</width>
         <height>60</height>
       </image>
-      <atom:link href="https://oopsreview.com/feed" rel="self" type="application/rss+xml" />
+      <atom:link href="https://academy.byidmore.com/feed" rel="self" type="application/rss+xml" />
       ${items}
     </channel>
   </rss>

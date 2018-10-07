@@ -14,7 +14,7 @@ export const generateMetaPost = (req, res, next) => {
         req.meta = {
           title: json.title,
           desc: truncate(stripTags(json.content), 500, "..."),
-          url: `https://oopsreview.com/post/${req.params.title}`,
+          url: `https://academy.byidmore.com/post/${req.params.title}`,
           image: json.image.original
         }
       }
@@ -34,14 +34,14 @@ export const generateMetaUser = (req, res, next) => {
         req.meta = {
           title: username,
           desc: `Post created by ${json.fullname || username}`,
-          url: `https://oopsreview.com/author/${username}`,
+          url: `https://academy.byidmore.com/author/${username}`,
           image: json.avatar.original
         }
       } else {
         req.meta = {
           title: "User Not Found",
           desc: "User Not Found",
-          url: `https://oopsreview.com/author/${username}`
+          url: `https://academy.byidmore.com/author/${username}`
         }
       }
 

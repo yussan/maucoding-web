@@ -4,13 +4,13 @@ const static_data = [
     "created_at": 1530193444, 
     "title": "about",
     "image": "",
-    "html": '<p>Oopsreview is software reviewer for various platforms and powered by <a href="https://byidmore.com" target="_blank" rel="noopener">Id More</a>. Oopsreview founded by <a href="https://yussan.github.io" target="_blank" rel="noopener">Yusuf A.H. aka Yussan</a>, this is 2017. Comes from a hobby to try an app and recommend to friends. Oppsreview helps you get to know more about software that are booming right now, until finally you will decide to use the software or not.</p>'
+    "html": '<p>Idmore academy is a research and development division of Idmore team. We are here discussing the latest technologies, what they are and how to start learning them. We also have several categories of posts that specifically discuss some of the source code on Github, available extensions, what are the advantages and disadvantages, and are they suitable for use. You also visit our <a href="https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA" target="_blank">Youtube channel </a> , to see the video version of several posts here.</p>'
   },
   {"index": "terms-conditions",
     "created_at": 1530193444, 
     "title": "terms and conditions",
     "image": "",
-    "html": '<h4>content</h4><p>content created in Oopsreview is 100% made from Oopsreview authors. Written by experience after the use of the software in a few days. The posted images are the result of screenshots and some digital editing to produce images that interest the reader. If there is content that we collect from sources outside of Oopsreview, we will include links and source references from the content.&nbsp;we will not publish software that smells pornography, SARA or software that is private.</p><p>&nbsp;</p>'
+    "html": '<h4>content</h4><p>content created in Idmore Academy is 100% made from Idmore Academy authors. Written by experience after the use of the software in a few days. The posted images are the result of screenshots and some digital editing to produce images that interest the reader. If there is content that we collect from sources outside of Oopsreview, we will include links and source references from the content.&nbsp;we will not publish software that smells pornography, SARA or software that is private.</p><p>&nbsp;</p>'
   },
   {
     "index": "privacy-policy",
