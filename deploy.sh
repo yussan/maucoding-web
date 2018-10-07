@@ -8,6 +8,6 @@ echo "rebuild app..."
 yarn build:prod
 
 echo "restart pm2..."
-pm2 restart oopsreview
+pm2 restart academy
 
 echo "deploy finished and SITE IS LIVE..."
