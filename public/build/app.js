@@ -2639,16 +2639,16 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("toast", __WEBPACK_IMPORT
     watch: {
         $route(to) {
             const { path, query } = to;
-            let querystring = '';
+            let querystring = "";
             if (Object.keys(query).length > 0) {
                 querystring += `?${Object(__WEBPACK_IMPORTED_MODULE_5_string_manager__["objToQuery"])(query)}`;
             }
             const url = path + querystring;
             const win = window;
             if (win.ga) {
-                console.log('send ga');
+                console.log("send ga");
                 // ref : https://developers.google.com/analytics/devguides/collection/gajs/
-                win.ga('send', 'pageview', url);
+                win.ga("send", "pageview", url);
             }
         }
     }
@@ -6956,7 +6956,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\n.super-sidebar {\n  color: #FFFFFF;\n}\n.super-sidebar ul {\n    margin: 0;\n    padding: 0;\n}\n.super-sidebar ul li {\n      transition: all .5s ease;\n      list-style: none;\n}\n.super-sidebar ul li.active {\n        background-color: #484848;\n}\n.super-sidebar ul li:hover {\n        background-color: #484848;\n        cursor: pointer;\n}\n.super-sidebar a {\n    display: block;\n    padding: 1em .5em;\n    color: #FFFFFF;\n}\n.super-sidebar .divider {\n    border-top: 1px solid #b1b1b1;\n}\n", ""]);
+exports.push([module.i, "\n.super-sidebar {\n  color: #FFFFFF;\n}\n.super-sidebar ul {\n    margin: 0;\n    padding: 0;\n}\n.super-sidebar ul li {\n      transition: all .5s ease;\n      list-style: none;\n}\n.super-sidebar ul li.active {\n        background-color: #f4f4f4;\n}\n.super-sidebar ul li:hover {\n        background-color: #f4f4f4;\n        cursor: pointer;\n}\n.super-sidebar a {\n    display: block;\n    padding: 1em .5em;\n    color: #545454;\n}\n.super-sidebar .divider {\n    border-top: 1px solid #b1b1b1;\n}\n", ""]);
 
 // exports
 

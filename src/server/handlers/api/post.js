@@ -159,7 +159,7 @@ export function create(req, res) {
 
   // upload image
   const filename = file.encName(image)
-  const upload_path = `oopsreview/${new Date().getFullYear()}/${filename}`
+  const upload_path = `idmore-academy/${new Date().getFullYear()}/${filename}`
 
   cloudinary.upload(image.path, upload_path, (err, result) => {
     if (err) {

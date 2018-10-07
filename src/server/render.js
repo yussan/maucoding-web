@@ -16,18 +16,18 @@ const generateHtml = ({ meta = {} }) => {
       ${
         meta.title
           ? `
-        <meta name="twitter:card" content="summary"/>,
+        <meta name="twitter:card" content="summary"/>
         <meta name="twitter:image" content="${meta.image ||
-          "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"}"/>
-        <meta name="twitter:title" content="${meta.title} - Oopsreview"/>
+          "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"}"/>
+        <meta name="twitter:title" content="${meta.title} - Idmore Academy"/>
         <meta name="twitter:description" content="${meta.desc}" />
 
-        <meta property="og:title" content="${meta.title} - Oopsreview" />
+        <meta property="og:title" content="${meta.title} - Idmore Academy" />
         <meta property="og:type" content="${meta.type || "blog"}" />
         <meta property="og:url" content="${meta.url ||
           "https://academy.byidmore.com"}" />
         <meta property="og:image" content="${meta.image ||
-          "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"}" />
+          "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"}" />
         <meta property="og:description" content="${meta.desc}" />
         `
           : ""
@@ -39,7 +39,7 @@ const generateHtml = ({ meta = {} }) => {
           ? "/opensearch/production.xml"
           : "/opensearch/development.xml"
       }" rel="search" title="oopsreview" type="application/opensearchdescription+xml">
-      <link rel="alternate" href="https://academy.byidmore.com" hreflang="en-US"/> 
+      <link rel="alternate" href="https://academy.byidmore.com" lang="en-US"/> 
   </head>
   <body>
       <div id="app"></div>
@@ -69,20 +69,22 @@ function getScript() {
       NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js"
     }"></script>
     
-${
-    NODE_ENV === "production"
-      ? `
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-87936512-1"></script>
+    ${
+      NODE_ENV === "production"
+        ? `
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106471389-3"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
+        
           gtag('config', 'UA-106471389-3');
         </script>
-      `
-      : ""
-  }
-  `
+        `
+        : ""
+    }
+    `
 }
 
 export default (req, res, next) => {
