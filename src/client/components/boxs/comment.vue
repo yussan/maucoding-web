@@ -34,19 +34,19 @@ export default Vue.extend({
 
   watch: {
     link(val) {
-      renderDisqus(`https://oopsreview.com${val}`)
+      renderDisqus(`https://academy.byidmore.com${val}`)
     }
   },
 
   created() {
     if (!(<any>window).DISQUS)
-      injectScript("//oopsreview.disqus.com/embed.js", {
+      injectScript("//academy.byidmore.disqus.com/embed.js", {
         cb: () => {
         // waiting for DISQUS initialized
-        renderDisqus(`https://oopsreview.com${this.link}`)
+        renderDisqus(`https://academy.byidmore.com${this.link}`)
       }
       })
-    else renderDisqus(`https://oopsreview.com${this.link}`)
+    else renderDisqus(`https://academy.byidmore.com${this.link}`)
   }
 })
 </script>

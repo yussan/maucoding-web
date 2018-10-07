@@ -70,7 +70,7 @@ export default Vue.extend({
         id: "dsq-count-scr",
         cb: () => {
           // waiting for DISQUS initialized
-          renderDisqus(`https://oopsreview.com${this.link}`)
+          renderDisqus(`https://academy.byidmore.com${this.link}`)
         }
       })
     } else {

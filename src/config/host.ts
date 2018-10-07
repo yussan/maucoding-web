@@ -1,8 +1,8 @@
 export default {
   development: {
-    front: 'https://oopsreview.local'
+    front: 'https://academy.byidmore.local'
   },
   production: {
-    front: 'https://oopsreview.com'
+    front: 'https://academy.byidmore.com'
   }
 }

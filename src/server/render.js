@@ -25,7 +25,7 @@ const generateHtml = ({ meta = {} }) => {
         <meta property="og:title" content="${meta.title} - Oopsreview" />
         <meta property="og:type" content="${meta.type || "blog"}" />
         <meta property="og:url" content="${meta.url ||
-          "https://oopsreview.com"}" />
+          "https://academy.byidmore.com"}" />
         <meta property="og:image" content="${meta.image ||
           "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"}" />
         <meta property="og:description" content="${meta.desc}" />
@@ -39,7 +39,7 @@ const generateHtml = ({ meta = {} }) => {
           ? "/opensearch/production.xml"
           : "/opensearch/development.xml"
       }" rel="search" title="oopsreview" type="application/opensearchdescription+xml">
-      <link rel="alternate" href="https://oopsreview.com" hreflang="en-US"/> 
+      <link rel="alternate" href="https://academy.byidmore.com" hreflang="en-US"/> 
   </head>
   <body>
       <div id="app"></div>

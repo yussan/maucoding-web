@@ -1427,14 +1427,12 @@ function isStyleLoaded(href) {
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__components_boxs_popular_posts_vue__ = __webpack_require__(68);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_cards_title_vue__ = __webpack_require__(84);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_boxs_post_vue__ = __webpack_require__(10);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_sidebar_vue__ = __webpack_require__(35);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__components_form_button_big_vue__ = __webpack_require__(20);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6__config_metainfo__ = __webpack_require__(104);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7_vuex__ = __webpack_require__(6);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_8__vuex_types__ = __webpack_require__(5);
-
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__components_boxs_post_vue__ = __webpack_require__(10);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__components_sidebar_vue__ = __webpack_require__(35);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__components_form_button_big_vue__ = __webpack_require__(20);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__config_metainfo__ = __webpack_require__(104);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_6_vuex__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_7__vuex_types__ = __webpack_require__(5);
 
 
 
@@ -1445,36 +1443,35 @@ function isStyleLoaded(href) {
 
 // Vue.component("popular-box",  popular)
 __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("popular-box", __WEBPACK_IMPORTED_MODULE_1__components_boxs_popular_posts_vue__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("card-title", __WEBPACK_IMPORTED_MODULE_2__components_cards_title_vue__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("box-post", __WEBPACK_IMPORTED_MODULE_3__components_boxs_post_vue__["a" /* default */]);
-__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("sidebar", __WEBPACK_IMPORTED_MODULE_4__components_sidebar_vue__["default"]);
-__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("buttonBig", __WEBPACK_IMPORTED_MODULE_5__components_form_button_big_vue__["default"]);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("box-post", __WEBPACK_IMPORTED_MODULE_2__components_boxs_post_vue__["a" /* default */]);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("sidebar", __WEBPACK_IMPORTED_MODULE_3__components_sidebar_vue__["default"]);
+__WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("buttonBig", __WEBPACK_IMPORTED_MODULE_4__components_form_button_big_vue__["default"]);
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_vue__["default"].extend({
     name: "home",
     // custom meta info from vue-meta
     // metaInfo: DefaultMeta,
     metaInfo() {
         return {
-            title: __WEBPACK_IMPORTED_MODULE_6__config_metainfo__["a" /* default */].title,
+            title: __WEBPACK_IMPORTED_MODULE_5__config_metainfo__["a" /* default */].title,
             meta: [
                 {
                     vmid: "description",
                     name: "description",
-                    content: __WEBPACK_IMPORTED_MODULE_6__config_metainfo__["a" /* default */].description
+                    content: __WEBPACK_IMPORTED_MODULE_5__config_metainfo__["a" /* default */].description
                 }
             ]
         };
     },
     created() {
-        this.$store.dispatch(__WEBPACK_IMPORTED_MODULE_8__vuex_types__["d" /* GET_POSTS */], { filter: "latest", limit: 8, draft: false });
-        this.$store.dispatch(__WEBPACK_IMPORTED_MODULE_8__vuex_types__["d" /* GET_POSTS */], {
+        this.$store.dispatch(__WEBPACK_IMPORTED_MODULE_7__vuex_types__["d" /* GET_POSTS */], { filter: "latest", limit: 8, draft: false });
+        this.$store.dispatch(__WEBPACK_IMPORTED_MODULE_7__vuex_types__["d" /* GET_POSTS */], {
             filter: "featured",
             featured: true,
             draft: false,
             limit: 8
         });
     },
-    computed: Object.assign({}, Object(__WEBPACK_IMPORTED_MODULE_7_vuex__["mapState"])(["post"]))
+    computed: Object.assign({}, Object(__WEBPACK_IMPORTED_MODULE_6_vuex__["mapState"])(["post"]))
 }));
 
 
@@ -1598,23 +1595,7 @@ if (false) {(function () {
 
 
 /***/ }),
-/* 30 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(0);
-
-/* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_vue__["default"].extend({
-    name: 'title-card',
-    props: {
-        title: {
-            type: String
-        }
-    }
-}));
-
-
-/***/ }),
+/* 30 */,
 /* 31 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -1886,7 +1867,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component('navbar', __WEBPACK_IMPOR
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__index__ = __webpack_require__(19);
 
 
-const popular_tags = ['ReactJS', 'VueJS', 'Tensorflow', 'Bootstrap', 'Tensorflow', 'NodeJS'];
+const popular_tags = ['ReactJS', 'VueJS', 'Python', 'Javascript', 'Bootstrap', 'Tensorflow', 'NodeJS', 'Github'];
 /* harmony default export */ __webpack_exports__["a"] = (__WEBPACK_IMPORTED_MODULE_0_vue__["default"].extend({
     name: 'navbar',
     data() {
@@ -2285,19 +2266,19 @@ function renderDisqus(target) {
     },
     watch: {
         link(val) {
-            renderDisqus(`https://oopsreview.com${val}`);
+            renderDisqus(`https://academy.byidmore.com${val}`);
         }
     },
     created() {
         if (!window.DISQUS)
-            Object(__WEBPACK_IMPORTED_MODULE_1__modules_dom__["b" /* injectScript */])("//oopsreview.disqus.com/embed.js", {
+            Object(__WEBPACK_IMPORTED_MODULE_1__modules_dom__["b" /* injectScript */])("//academy.byidmore.disqus.com/embed.js", {
                 cb: () => {
                     // waiting for DISQUS initialized
-                    renderDisqus(`https://oopsreview.com${this.link}`);
+                    renderDisqus(`https://academy.byidmore.com${this.link}`);
                 }
             });
         else
-            renderDisqus(`https://oopsreview.com${this.link}`);
+            renderDisqus(`https://academy.byidmore.com${this.link}`);
     }
 }));
 
@@ -2343,21 +2324,21 @@ function renderDisqus(target = "") {
     },
     watch: {
         link() {
-            renderDisqus(`https://oopsreview.com${this.link}`);
+            renderDisqus(`https://academy.byidmore.com${this.link}`);
         }
     },
     created() {
         if (!window.DISQUSWIDGETS) {
-            Object(__WEBPACK_IMPORTED_MODULE_1__modules_dom__["b" /* injectScript */])("//oopsreview.disqus.com/count.js", {
+            Object(__WEBPACK_IMPORTED_MODULE_1__modules_dom__["b" /* injectScript */])("//idmoreacademy.disqus.com/count.js", {
                 id: "dsq-count-scr",
                 cb: () => {
                     // waiting for DISQUS initialized
-                    renderDisqus(`https://oopsreview.com${this.link}`);
+                    renderDisqus(`https://academy.byidmore.com${this.link}`);
                 }
             });
         }
         else {
-            renderDisqus(`https://oopsreview.com${this.link}`);
+            renderDisqus(`https://academy.byidmore.com${this.link}`);
         }
     }
 }));
@@ -4954,9 +4935,9 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "popular-end" }, [
-      _c("strong", [_vm._v("Oopsreview ")]),
+      _c("strong", [_vm._v("Idmore Academy ")]),
       _c("br"),
-      _vm._v("We are software review specialist")
+      _vm._v("More things available")
     ])
   }
 ]
@@ -4970,132 +4951,10 @@ if (false) {
 }
 
 /***/ }),
-/* 84 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_title_vue__ = __webpack_require__(30);
-/* unused harmony namespace reexport */
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5a590524_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_title_vue__ = __webpack_require__(87);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__ = __webpack_require__(2);
-var disposed = false
-function injectStyle (context) {
-  if (disposed) return
-  __webpack_require__(85)
-}
-/* script */
-
-
-/* template */
-
-/* template functional */
-var __vue_template_functional__ = false
-/* styles */
-var __vue_styles__ = injectStyle
-/* scopeId */
-var __vue_scopeId__ = "data-v-5a590524"
-/* moduleIdentifier (server only) */
-var __vue_module_identifier__ = null
-
-var Component = Object(__WEBPACK_IMPORTED_MODULE_2__node_modules_vue_loader_lib_runtime_component_normalizer__["a" /* default */])(
-  __WEBPACK_IMPORTED_MODULE_0__ts_loader_node_modules_vue_loader_lib_selector_type_script_index_0_title_vue__["a" /* default */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5a590524_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_title_vue__["a" /* render */],
-  __WEBPACK_IMPORTED_MODULE_1__node_modules_vue_loader_lib_template_compiler_index_id_data_v_5a590524_hasScoped_true_buble_transforms_node_modules_vue_loader_lib_template_compiler_preprocessor_engine_pug_node_modules_vue_loader_lib_selector_type_template_index_0_title_vue__["b" /* staticRenderFns */],
-  __vue_template_functional__,
-  __vue_styles__,
-  __vue_scopeId__,
-  __vue_module_identifier__
-)
-Component.options.__file = "src/client/components/cards/title.vue"
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-5a590524", Component.options)
-  } else {
-    hotAPI.reload("data-v-5a590524", Component.options)
-  }
-  module.hot.dispose(function (data) {
-    disposed = true
-  })
-})()}
-
-/* harmony default export */ __webpack_exports__["a"] = (Component.exports);
-
-
-/***/ }),
-/* 85 */
-/***/ (function(module, exports, __webpack_require__) {
-
-// style-loader: Adds some css to the DOM by adding a <style> tag
-
-// load the styles
-var content = __webpack_require__(86);
-if(typeof content === 'string') content = [[module.i, content, '']];
-if(content.locals) module.exports = content.locals;
-// add the styles to the DOM
-var add = __webpack_require__(3).default
-var update = add("2a23c296", content, false, {});
-// Hot Module Replacement
-if(false) {
- // When the styles change, update the <style> tags
- if(!content.locals) {
-   module.hot.accept("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5a590524\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./title.vue", function() {
-     var newContent = require("!!../../../../node_modules/css-loader/index.js!../../../../node_modules/vue-loader/lib/style-compiler/index.js?{\"vue\":true,\"id\":\"data-v-5a590524\",\"scoped\":true,\"sourceMap\":false}!../../../../node_modules/sass-loader/lib/loader.js?indentedSyntax!../../../../node_modules/vue-loader/lib/selector.js?type=styles&index=0!./title.vue");
-     if(typeof newContent === 'string') newContent = [[module.id, newContent, '']];
-     update(newContent);
-   });
- }
- // When the module is disposed, remove the <style> tags
- module.hot.dispose(function() { update(); });
-}
-
-/***/ }),
-/* 86 */
-/***/ (function(module, exports, __webpack_require__) {
-
-exports = module.exports = __webpack_require__(1)(false);
-// imports
-
-
-// module
-exports.push([module.i, "\n.title h3[data-v-5a590524] {\n  font-size: 2.8em;\n  margin: 0;\n  padding: 1em 0;\n}\n", ""]);
-
-// exports
-
-
-/***/ }),
-/* 87 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "a", function() { return render; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "b", function() { return staticRenderFns; });
-var render = function() {
-  var _vm = this
-  var _h = _vm.$createElement
-  var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "title" }, [
-    _c("div", { staticClass: "grid" }, [
-      _c("div", { staticClass: "col" }, [_c("h3", [_vm._v(_vm._s(_vm.title))])])
-    ])
-  ])
-}
-var staticRenderFns = []
-render._withStripped = true
-
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-    require("vue-hot-reload-api")      .rerender("data-v-5a590524", { render: render, staticRenderFns: staticRenderFns })
-  }
-}
-
-/***/ }),
+/* 84 */,
+/* 85 */,
+/* 86 */,
+/* 87 */,
 /* 88 */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -6517,8 +6376,8 @@ var render = function() {
                   staticClass: "disqus-comment-count",
                   attrs: {
                     "data-disqus-identifier":
-                      "https://oopsreview.com" + _vm.link,
-                    "data-disqus-url": "https://oopsreview.com" + _vm.link
+                      "https://academy.byidmore.com" + _vm.link,
+                    "data-disqus-url": "https://academy.byidmore.com" + _vm.link
                   }
                 },
                 [_vm._v("0")]
@@ -6818,13 +6677,13 @@ const static_data = [
         "created_at": 1530193444,
         "title": "about",
         "image": "",
-        "html": '<p>Oopsreview is software reviewer for various platforms and powered by <a href="https://byidmore.com" target="_blank" rel="noopener">Id More</a>. Oopsreview founded by <a href="https://yussan.github.io" target="_blank" rel="noopener">Yusuf A.H. aka Yussan</a>, this is 2017. Comes from a hobby to try an app and recommend to friends. Oppsreview helps you get to know more about software that are booming right now, until finally you will decide to use the software or not.</p>'
+        "html": '<p>Idmore academy is a research and development division of Idmore team. We are here discussing the latest technologies, what they are and how to start learning them. We also have several categories of posts that specifically discuss some of the source code on Github, available extensions, what are the advantages and disadvantages, and are they suitable for use. You also visit our <a href="https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA" target="_blank">Youtube channel </a> , to see the video version of several posts here.</p>'
     },
     { "index": "terms-conditions",
         "created_at": 1530193444,
         "title": "terms and conditions",
         "image": "",
-        "html": '<h4>content</h4><p>content created in Oopsreview is 100% made from Oopsreview authors. Written by experience after the use of the software in a few days. The posted images are the result of screenshots and some digital editing to produce images that interest the reader. If there is content that we collect from sources outside of Oopsreview, we will include links and source references from the content.&nbsp;we will not publish software that smells pornography, SARA or software that is private.</p><p>&nbsp;</p>'
+        "html": '<h4>content</h4><p>content created in Idmore Academy is 100% made from Idmore Academy authors. Written by experience after the use of the software in a few days. The posted images are the result of screenshots and some digital editing to produce images that interest the reader. If there is content that we collect from sources outside of Oopsreview, we will include links and source references from the content.&nbsp;we will not publish software that smells pornography, SARA or software that is private.</p><p>&nbsp;</p>'
     },
     {
         "index": "privacy-policy",
@@ -6877,7 +6736,7 @@ var render = function() {
                   attrs: {
                     src:
                       _vm.content.image ||
-                      "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_600/v1529931141/oopsreview/2018/default-thumb.png"
+                      "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"
                   }
                 }),
                 _c("article", {
@@ -7207,7 +7066,7 @@ exports = module.exports = __webpack_require__(1)(false);
 
 
 // module
-exports.push([module.i, "\nheader[data-v-76970c3b] {\n  background: #3498DB;\n  padding: 4em 0;\n}\nheader.small[data-v-76970c3b] {\n    padding: 1em 0;\n}\nheader.small img.logo[data-v-76970c3b] {\n      height: 80px;\n}\nheader img.logo[data-v-76970c3b] {\n    max-width: 100%;\n}\n@media screen and (max-width: 600px) {\nheader[data-v-76970c3b] {\n    padding: 1em 0 0;\n}\nheader img.logo[data-v-76970c3b] {\n      height: 50px;\n}\n}\n", ""]);
+exports.push([module.i, "\nheader[data-v-76970c3b] {\n  background: #3498DB;\n  padding: 4em 0;\n}\nheader.small[data-v-76970c3b] {\n    padding: 1em 0;\n}\nheader.small img.logo[data-v-76970c3b] {\n      height: 80px;\n}\nheader img.logo[data-v-76970c3b] {\n    max-width: 100%;\n}\n@media screen and (max-width: 600px) {\nheader[data-v-76970c3b] {\n    padding: 1em;\n}\nheader img.logo[data-v-76970c3b] {\n      height: 50px;\n}\n}\n", ""]);
 
 // exports
 
@@ -7314,7 +7173,7 @@ var render = function() {
             { staticClass: "link-collection" },
             [
               _c("router-link", { attrs: { to: "/static/about" } }, [
-                _vm._v("About Oopsreview ")
+                _vm._v("About Academy ")
               ]),
               _vm._v("| "),
               _c("router-link", { attrs: { to: "/static/terms-conditions" } }, [
@@ -7330,7 +7189,7 @@ var render = function() {
                 {
                   attrs: {
                     href:
-                      "https://docs.google.com/forms/d/e/1FAIpQLSeUxc711pgVvbbz-U3ljhaFe11HL4yCK1vPdCOhtWfKlBozuQ/viewform",
+                      "https://docs.google.com/forms/d/e/1FAIpQLSeByAgx7GNG3YyH3vgAupKymlwfJ6mNNaGCQN0ZkG1KC8636A/viewform",
                     target: "_blank"
                   }
                 },
@@ -7365,8 +7224,8 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("p", [
-      _c("strong", [_vm._v("Oopsreview ")]),
-      _vm._v("Software Review Specialist"),
+      _c("strong", [_vm._v("Idmore Academy ")]),
+      _vm._v("More things available"),
       _c("br"),
       _vm._v("Powered by "),
       _c("a", { attrs: { href: "https://byidmore.com", target: "_blank" } }, [
@@ -7396,7 +7255,12 @@ var staticRenderFns = [
         ),
         _c(
           "a",
-          { attrs: { href: "https://oopsreview.com/feed", target: "_blank" } },
+          {
+            attrs: {
+              href: "https://academy.byidmore.com/feed",
+              target: "_blank"
+            }
+          },
           [_c("span", { staticClass: "icono-rss" })]
         )
       ])
