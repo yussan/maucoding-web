@@ -2270,7 +2270,7 @@ function renderDisqus(target) {
     },
     created() {
         if (!window.DISQUS)
-            Object(__WEBPACK_IMPORTED_MODULE_1__modules_dom__["b" /* injectScript */])("//academy.byidmore.disqus.com/embed.js", {
+            Object(__WEBPACK_IMPORTED_MODULE_1__modules_dom__["b" /* injectScript */])("//idmoreacademy.disqus.com/embed.js", {
                 cb: () => {
                     // waiting for DISQUS initialized
                     renderDisqus(`https://academy.byidmore.com${this.link}`);
