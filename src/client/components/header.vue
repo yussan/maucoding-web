@@ -31,10 +31,11 @@ header
     padding: 1em 0
     img.logo 
       height: 80px
-  background: #3498DB
+  background: #fff
   padding: 4em 0
   img.logo
     max-width: 100%
+    height: 80px
 
 // responsiveness
 @media screen and (max-width: 600px)

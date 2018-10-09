@@ -52,8 +52,12 @@ export default Vue.extend({
   
   body
     color: $color-gray-dark
-    a 
-      color: $color-gray-medium
+  a 
+    color: $color-gray-medium
+  pre 
+    background: $color-gray-verydark
+    color: $color-gray-verysoft
+    padding: 20px
   .align-center 
     text-align: center 
   .text-muted 
