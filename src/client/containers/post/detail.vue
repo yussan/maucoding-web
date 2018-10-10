@@ -89,9 +89,9 @@ export default Vue.extend({
     return {
       link: `/post/${this.$route.params.title}`,
       meta: {
-        title: "Oopsreview - Software Review Specialist",
+        title: "Idmore Academy - More things available",
         description:
-          "Here we will help you to determine what best application is suitable for you to use."
+          "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },
       id: 0
     }

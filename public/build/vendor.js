@@ -147,7 +147,7 @@
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 183);
+/******/ 	return __webpack_require__(__webpack_require__.s = 188);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -11114,11 +11114,11 @@ Vue.compile = compileToFunctions;
 
 /* harmony default export */ __webpack_exports__["default"] = (Vue);
 
-/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9), __webpack_require__(60).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(9), __webpack_require__(61).setImmediate))
 
 /***/ }),
 
-/***/ 115:
+/***/ 120:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11126,7 +11126,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.toCamelCase=toCam
 
 /***/ }),
 
-/***/ 116:
+/***/ 121:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11134,7 +11134,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.objToQuery=objToQ
 
 /***/ }),
 
-/***/ 117:
+/***/ 122:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11142,7 +11142,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.stripTags=stripTa
 
 /***/ }),
 
-/***/ 118:
+/***/ 123:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11150,7 +11150,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.truncate=truncate
 
 /***/ }),
 
-/***/ 119:
+/***/ 124:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11158,7 +11158,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.toSlug=toSlug;var
 
 /***/ }),
 
-/***/ 120:
+/***/ 125:
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -11174,7 +11174,7 @@ Object.defineProperty(exports,'__esModule',{value:!0}),exports.toSingleSpace=toS
 
 /***/ }),
 
-/***/ 183:
+/***/ 188:
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(0);
@@ -14955,7 +14955,7 @@ var index_esm = {
 
 /***/ }),
 
-/***/ 60:
+/***/ 61:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global) {var apply = Function.prototype.apply;
@@ -15008,7 +15008,7 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(63);
+__webpack_require__(64);
 // On some exotic environments, it's not clear which object `setimmeidate` was
 // able to install onto.  Search each possibility in the same order as the
 // `setimmediate` library.
@@ -15023,7 +15023,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 
 /***/ }),
 
-/***/ 63:
+/***/ 64:
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -15221,7 +15221,7 @@ exports.clearImmediate = (typeof self !== "undefined" && self.clearImmediate) ||
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(exports,'__esModule',{value:!0});var _camelcase=__webpack_require__(115);Object.defineProperty(exports,'toCamelCase',{enumerable:!0,get:function get(){return _camelcase.toCamelCase}});var _httpquery=__webpack_require__(116);Object.defineProperty(exports,'objToQuery',{enumerable:!0,get:function get(){return _httpquery.objToQuery}}),Object.defineProperty(exports,'queryToObj',{enumerable:!0,get:function get(){return _httpquery.queryToObj}});var _html=__webpack_require__(117);Object.defineProperty(exports,'stripTags',{enumerable:!0,get:function get(){return _html.stripTags}});var _spaces=__webpack_require__(13);Object.defineProperty(exports,'toSingleSpace',{enumerable:!0,get:function get(){return _spaces.toSingleSpace}});var _truncate=__webpack_require__(118);Object.defineProperty(exports,'truncate',{enumerable:!0,get:function get(){return _truncate.truncate}});var _slug=__webpack_require__(119);Object.defineProperty(exports,'toSlug',{enumerable:!0,get:function get(){return _slug.toSlug}});var _currency=__webpack_require__(120);Object.defineProperty(exports,'currencyFormat',{enumerable:!0,get:function get(){return _currency.currencyFormat}});
+Object.defineProperty(exports,'__esModule',{value:!0});var _camelcase=__webpack_require__(120);Object.defineProperty(exports,'toCamelCase',{enumerable:!0,get:function get(){return _camelcase.toCamelCase}});var _httpquery=__webpack_require__(121);Object.defineProperty(exports,'objToQuery',{enumerable:!0,get:function get(){return _httpquery.objToQuery}}),Object.defineProperty(exports,'queryToObj',{enumerable:!0,get:function get(){return _httpquery.queryToObj}});var _html=__webpack_require__(122);Object.defineProperty(exports,'stripTags',{enumerable:!0,get:function get(){return _html.stripTags}});var _spaces=__webpack_require__(13);Object.defineProperty(exports,'toSingleSpace',{enumerable:!0,get:function get(){return _spaces.toSingleSpace}});var _truncate=__webpack_require__(123);Object.defineProperty(exports,'truncate',{enumerable:!0,get:function get(){return _truncate.truncate}});var _slug=__webpack_require__(124);Object.defineProperty(exports,'toSlug',{enumerable:!0,get:function get(){return _slug.toSlug}});var _currency=__webpack_require__(125);Object.defineProperty(exports,'currencyFormat',{enumerable:!0,get:function get(){return _currency.currencyFormat}});
 
 /***/ }),
 
