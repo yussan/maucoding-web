@@ -5,6 +5,7 @@
       .grid 
         .col-8_sm-12
           div(style='padding-top: .5em')
+          section-title(title="Lattest Post")
           box-post(:data='post.list.latest || {}') 
         .col-4_sm-12
           div(style="padding-top:10px")
@@ -19,6 +20,7 @@ import popular from "../../components/boxs/popular-posts.vue"
 import post from "../../components/boxs/post.vue"
 import sidebar from "../../components/sidebar.vue"
 import buttonBig from "../../components/form/button-big.vue"
+import sectionTitle from "../../components/headers/SectionTitle.vue"
 import DefaultMeta from "../../../config/metainfo"
 import { mapState } from "vuex"
 import * as TYPES from "../../vuex/types"
@@ -28,6 +30,7 @@ Vue.component("popular-box", popular)
 Vue.component("box-post", post)
 Vue.component("sidebar", sidebar)
 Vue.component("buttonBig", buttonBig)
+Vue.component("section-title", sectionTitle)
 
 export default Vue.extend({
   name: "home",

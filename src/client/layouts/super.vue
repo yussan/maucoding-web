@@ -13,7 +13,7 @@ div
 <script lang='ts'>
 import Vue from 'vue'
 import sidebar from '../components/super-sidebar.vue'
-import header from '../components/header.vue'
+import header from '../components/headers/header.vue'
 import footer from '../components/footer.vue'
 import toast from "../components/toast.vue"
 

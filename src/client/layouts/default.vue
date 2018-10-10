@@ -10,7 +10,7 @@
 <script lang='ts'>
 import Vue from "vue"
 import navbar from "../components/navbar.vue"
-import header from "../components/header.vue"
+import header from "../components/headers/header.vue"
 import footer from "../components/footer.vue"
 import toast from "../components/toast.vue"
 import { objToQuery } from "string-manager"

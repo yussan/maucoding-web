@@ -142,7 +142,7 @@ export default Vue.extend({
       let { tag_name, username }: any = this
       let { q } = this.$route.query
 
-      let title = "Posts",
+      let title = "Lattest Posts",
         subtitle = tag_name
           ? `Find all available post posted with tag "${tag_name}"`
           : ""
