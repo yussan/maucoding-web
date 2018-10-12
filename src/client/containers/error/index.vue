@@ -1,15 +1,14 @@
 <template lang="pug">
-  .bg-black
-    .container.error-page 
-      .grid 
-        .col-12.error-page-details
-          h1 404
-          h2 PAGE NOT FOUND
-        .col-12.error-page-footer 
-          | Are you lost ?
-          br
-          | Just click above link or 
-          router-link(to='/') back to home
+  .container.error-page 
+    .grid 
+      .col-12.error-page-details
+        h1 404
+        h2 PAGE NOT FOUND
+      .col-12.error-page-footer 
+        | Are you lost ?
+        br
+        | Just click above link or 
+        router-link(to='/') back to home
 
 </template>
 
@@ -33,7 +32,7 @@ export default Vue.extend({
       font-size: 6em
       margin: 0
     .error-page-footer 
-      color: $color-gray-soft
+      color: $color-gray-dark
       a 
-        color: $color-gray-soft
+        color: $color-gray-dark
 </style>

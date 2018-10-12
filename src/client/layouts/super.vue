@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   top-navbar
-  .grid 
+  .grid(style="border-top: 7px solid #F4F4F4") 
     .col-2_sm-12
       super-sidebar
     .col-10_sm-12.bg-white
