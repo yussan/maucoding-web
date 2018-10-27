@@ -1,4 +1,4 @@
-export function injectCss(href: string, cb: Function | null) {
+export function injectCss(href: string, cb ?: Function | null) {
   if(!isStyleLoaded(href)) {
     const l: HTMLElement | null = document.createElement('link')
     l.setAttribute('rel', 'stylesheet')
@@ -9,13 +9,15 @@ export function injectCss(href: string, cb: Function | null) {
   }
 }
 
-export function injectScript(src: string, args: any) {
+export function injectScript(src: string, args: any = null) {
   if(!isScriptLoaded(src)) {
     const s: HTMLElement | null = document.createElement('script')
     s.setAttribute('src', src)
-    if(args.id) s.setAttribute('id', args.id)
-    if(args.cb)
-      s.onload = args.cb()
+    if(args) {
+      if(args.id) s.setAttribute('id', args.id)
+      if(args.cb)
+        s.onload = args.cb()
+    }
     document.body.appendChild(s)
   }
 }
