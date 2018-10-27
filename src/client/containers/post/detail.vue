@@ -51,6 +51,7 @@
 import Vue from "vue"
 import host from "../../../config/host"
 import * as TYPES from "../../vuex/types"
+import { injectCss, injectScript } from "../../modules/dom"
 import { mapState } from "vuex"
 import { toCamelCase, truncate, stripTags } from "string-manager"
 import { epochToRelative } from "../../modules/datetime"
@@ -59,20 +60,14 @@ import { epochToRelative } from "../../modules/datetime"
 import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
 import post from "../../components/boxs/post.vue"
-// import appCard from "../../components/cards/post-app.vue"
 import Preloader from "../../components/cards/global-loader.vue"
 import ErrorBox from "../../containers/error/index.vue"
 import Loading from "../../components/cards/global-loader.vue"
 
-// Vue.component("comment", () => ({
-//   component: import("../../components/boxs/comment.vue"),
-//   loading: Loading
-// }))
 Vue.component("app-card", resolve =>
   import("../../components/cards/post-app.vue")
 )
 
-// Vue.component("app-card", appCard)
 Vue.component("comment", comment)
 Vue.component("box-post", post)
 Vue.component("box-meta", meta)
@@ -133,6 +128,10 @@ export default Vue.extend({
   },
 
   created() {
+    // inject primsjs
+    // this.injectCss('/prismjs/prismjs.css')
+    // this.injectScript('/prismjs/prismjs.js')
+
     const title_arr = this.$route.params.title.split("-")
     const id = title_arr[title_arr.length - 1]
     this.fetchPostDetail(id)
@@ -141,12 +140,10 @@ export default Vue.extend({
   },
 
   methods: {
-    toCamelCase(str) {
-      return toCamelCase(str)
-    },
-    epochToRelative(epoch) {
-      return epochToRelative(epoch)
-    },
+    injectCss, 
+    injectScript,
+    toCamelCase,
+    epochToRelative,
     fetchPostDetail(id) {
       this.id = id
       this.$store.dispatch(TYPES.GET_POST, id)
