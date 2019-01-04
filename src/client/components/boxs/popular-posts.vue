@@ -61,6 +61,8 @@ export default Vue.extend({
       &:hover
         background: $color-blue-main
         color: $color-white-main
+        box-shadow: 5px 5px 10px #175580;
+        z-index: 2;
         a 
           color: $color-white-main
       a 
