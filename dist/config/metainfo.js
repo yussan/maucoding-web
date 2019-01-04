@@ -1,9 +1,9 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
 exports.default = {
-  title: 'Oopsreview - Specialist Software Review',
-  description: 'Oopsreview review some of the various platform applications available on the market, to help you decide whether to use the app or not.'
+  title: "Idmore Academy - More things available",
+  description: "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
 };

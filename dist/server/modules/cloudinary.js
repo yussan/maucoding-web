@@ -26,7 +26,7 @@ _cloudinary2.default.config({
  * @see  https://cloudinary.com/cookbook/resize_an_image
  */
 function generateCustomUrl(url, arg) {
-  return url.replace(/upload.*oopsreview/, "upload/" + arg + "/oopsreview");
+  return url.replace(/upload.*idmore-academy/, "upload/" + arg + "/idmore-academy");
 }
 
 /**

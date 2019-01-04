@@ -22,7 +22,7 @@
               //- end of iframe
 
               //- main image
-              img(:src="post.detail[id].image.original")
+              img(v-if="!post.detail[id].video" :src="post.detail[id].image.original")
               //- end of main image
 
             .col-8_md-12(data-push-left="off-2_md-0")
@@ -51,6 +51,7 @@
 import Vue from "vue"
 import host from "../../../config/host"
 import * as TYPES from "../../vuex/types"
+import { injectCss, injectScript } from "../../modules/dom"
 import { mapState } from "vuex"
 import { toCamelCase, truncate, stripTags } from "string-manager"
 import { epochToRelative } from "../../modules/datetime"
@@ -59,20 +60,14 @@ import { epochToRelative } from "../../modules/datetime"
 import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
 import post from "../../components/boxs/post.vue"
-// import appCard from "../../components/cards/post-app.vue"
 import Preloader from "../../components/cards/global-loader.vue"
 import ErrorBox from "../../containers/error/index.vue"
 import Loading from "../../components/cards/global-loader.vue"
 
-// Vue.component("comment", () => ({
-//   component: import("../../components/boxs/comment.vue"),
-//   loading: Loading
-// }))
 Vue.component("app-card", resolve =>
   import("../../components/cards/post-app.vue")
 )
 
-// Vue.component("app-card", appCard)
 Vue.component("comment", comment)
 Vue.component("box-post", post)
 Vue.component("box-meta", meta)
@@ -89,9 +84,9 @@ export default Vue.extend({
     return {
       link: `/post/${this.$route.params.title}`,
       meta: {
-        title: "Oopsreview - Software Review Specialist",
+        title: "Idmore Academy - More things available",
         description:
-          "Here we will help you to determine what best application is suitable for you to use."
+          "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },
       id: 0
     }
@@ -133,28 +128,37 @@ export default Vue.extend({
   },
 
   created() {
+    // inject primsjs
+    // this.injectCss('/prismjs/prismjs.css')
+    // this.injectScript('/prismjs/prismjs.js')
+
     const title_arr = this.$route.params.title.split("-")
-    this.$store.dispatch(TYPES.GET_POSTS, { filter: "latest_detail", limit: 3 })
-    this.fetchPostDetail(title_arr[title_arr.length - 1])
+    const id = title_arr[title_arr.length - 1]
+    this.fetchPostDetail(id)
+    this.fetchPostRelated(id)
+    
   },
 
   methods: {
-    toCamelCase(str) {
-      return toCamelCase(str)
-    },
-    epochToRelative(epoch) {
-      return epochToRelative(epoch)
-    },
+    injectCss, 
+    injectScript,
+    toCamelCase,
+    epochToRelative,
     fetchPostDetail(id) {
       this.id = id
       this.$store.dispatch(TYPES.GET_POST, id)
+    },
+    fetchPostRelated(id) {
+      this.$store.dispatch(TYPES.GET_POSTS, { filter: "latest_detail", limit: 6, draft: false, notid: id })
     }
   },
 
   beforeRouteUpdate(to, from, next) {
     // request post detail
     const title_arr = to.params.title.split("-")
-    this.fetchPostDetail(title_arr[title_arr.length - 1])
+    const id = title_arr[title_arr.length - 1]
+    this.fetchPostDetail(id)
+    this.fetchPostRelated(id)
     this.link = `/post/${to.params.title}`
 
     next()
@@ -189,7 +193,10 @@ export default Vue.extend({
       width: -webkit-fill-available
       width: -moz-available
   article.post-detail-content 
-
+    a 
+      color: $color-gray-soft 
+      text-decoration: underline
+      word-wrap: break-word;
     h2
       margin-top: 50px
       border-top: 1px solid gray

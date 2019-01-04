@@ -1,7 +1,7 @@
 <template lang='pug'>
 div
   top-navbar
-  .grid 
+  .grid(style="border-top: 7px solid #F4F4F4") 
     .col-2_sm-12
       super-sidebar
     .col-10_sm-12.bg-white
@@ -13,7 +13,7 @@ div
 <script lang='ts'>
 import Vue from 'vue'
 import sidebar from '../components/super-sidebar.vue'
-import header from '../components/header.vue'
+import header from '../components/headers/header.vue'
 import footer from '../components/footer.vue'
 import toast from "../components/toast.vue"
 

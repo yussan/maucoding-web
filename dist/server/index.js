@@ -73,10 +73,16 @@ if (NODE_ENV == "development") {
 // render vuejs
 server.get(/\/super\/*/, _authMiddleware2.default, _render2.default);
 
+server.get("/posts", frontMiddleware.generateMetaPostList, _render2.default);
+server.get("/tag/:tag", frontMiddleware.generateMetaPostList, _render2.default);
 server.get("/post/:title", frontMiddleware.generateMetaPost, _render2.default);
 server.get("/author/:username", frontMiddleware.generateMetaUser, _render2.default);
 
 // serve static file from public directory
+server.get(/\/build\/*/, _restify2.default.plugins.serveStatic({
+  directory: __dirname + "/../../public",
+  maxAge: 0
+}));
 server.get(/\/?.*\//, _restify2.default.plugins.serveStatic({
   directory: __dirname + "/../../public",
   maxAge: 0

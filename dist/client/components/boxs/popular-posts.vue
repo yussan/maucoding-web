@@ -48,26 +48,24 @@ export default Vue.extend({
 <style lang="sass">
   @import '../../../design/sass/color'
   .popular-post 
-    background-color: #000
+    background-color: #FFF
     padding-top: 2em
     .container
       border: 3px solid $color-blue-main
   .card-post-popular 
       padding: 0
-      color: $color-white-main
+      color: $color-gray-medium
       text-transform: uppercase
       font-weight: 800
       transition: all .5s ease
       &:hover
-        background: $color-white-main 
-        color: $color-black-main
-        a 
-          color: $color-black-main
-      a 
+        background: $color-blue-main
         color: $color-white-main
+        a 
+          color: $color-white-main
+      a 
+        color: $color-gray-medium
         font-size: 1.5em
-        &:hover 
-          color: $color-gray-dark
       .thumb
         padding: 0
         .thumb-image 

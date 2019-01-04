@@ -4,13 +4,13 @@
       .grid
         .col-6_sm-12
           .link-collection 
-            router-link(to='/static/about') About Idmore Academy 
+            router-link(to='/static/about') About Academy 
             | |&nbsp;
             router-link(to='/static/terms-conditions') Terms and Conditions 
             | |&nbsp;
             router-link(to='/static/privacy-policy') Privacy Policy 
             | |&nbsp;
-            a(href='https://docs.google.com/forms/d/e/1FAIpQLSeUxc711pgVvbbz-U3ljhaFe11HL4yCK1vPdCOhtWfKlBozuQ/viewform' target="_blank") Contact Us
+            a(href='https://docs.google.com/forms/d/e/1FAIpQLSeByAgx7GNG3YyH3vgAupKymlwfJ6mNNaGCQN0ZkG1KC8636A/viewform' target="_blank") Contact Us
           p
             strong Idmore Academy 
             | More things available
@@ -19,11 +19,11 @@
             a(href='https://byidmore.com' target='_blank') IdMore
         .col-6_sm-12
           .link-social
-            a(href="https://www.facebook.com/byidmore" target="_blank")
+            a(href="https://facebook.com/oopsreview" target="_blank")
               span.icono-facebook
-            a(href="https://twitter.com/byidmore/" target="_blank")
+            a(href="https://twitter.com/oopsreview" target="_blank")
               span.icono-twitter 
-            a(href="https://academy.idmore.com/feed" target="_blank")
+            a(href="https://academy.byidmore.com/feed" target="_blank")
               span.icono-rss 
 
     // go to top button

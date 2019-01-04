@@ -8,7 +8,7 @@
       .grid-center
         .col-6_md-12
           article
-            img(:src=" content.image || 'https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_600/v1529931141/oopsreview/2018/default-thumb.png' ")
+            img(:src=" content.image || 'https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png' ")
             article(v-html="content.html")
 
   error-box(v-else error_code="400" error_message="Content Not Found")

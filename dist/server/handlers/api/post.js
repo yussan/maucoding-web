@@ -78,6 +78,7 @@ function list(req, res) {
       username = _ref.username,
       featured = _ref.featured,
       lastid = _ref.lastid,
+      notid = _ref.notid,
       lastcreatedon = _ref.lastcreatedon,
       tag = _ref.tag,
       keyword = _ref.keyword,
@@ -91,6 +92,14 @@ function list(req, res) {
       as: "author"
     }
   }];
+
+  // don't get post by id
+  // ref: https://stackoverflow.com/a/26118110/2780875
+  if (notid) {
+    aggregate.push({
+      $match: { _id: { $nin: [(0, _mongodb.ObjectId)(notid)] } }
+    });
+  }
 
   // filter post by author username
   if (username) {
@@ -195,7 +204,7 @@ function create(req, res) {
 
   // upload image
   var filename = file.encName(image);
-  var upload_path = "oopsreview/" + new Date().getFullYear() + "/" + filename;
+  var upload_path = "idmore-academy/" + new Date().getFullYear() + "/" + filename;
 
   cloudinary.upload(image.path, upload_path, function (err, result) {
     if (err) {

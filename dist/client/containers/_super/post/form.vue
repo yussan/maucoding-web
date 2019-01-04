@@ -247,11 +247,25 @@ export default Vue.extend({
       this.loading = false
     }
 
+    // add event handle before unload to prevent data gone on closing tab
+    window.onbeforeunload = function(e) {
+      e = e || window.event;
+
+      // For IE and Firefox prior to version 4
+      if (e) {
+          e.returnValue = 'Sure?';
+      }
+
+      // For Safari
+      return 'Sure?';
+    }
+
     loadQuillJS()
   },
 
   // unmount event
   beforeDestroy() {
+    window.onbeforeunload = function(){}
     this.resetForm()
   },
 
@@ -272,6 +286,7 @@ export default Vue.extend({
           if (response.status === 201) {
             // success to create / update post
             toast("Post submited", "success")
+            window.onbeforeunload = function(){}
             setTimeout(() => {
               location.href = "/super/posts"
             }, 1500)

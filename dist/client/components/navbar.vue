@@ -24,7 +24,7 @@
 import Vue from 'vue'
 import { router } from '../index'
 
-const popular_tags = ['Android', 'iOS', 'Web', 'Windows', 'MacOS', 'Linux', 'Games', 'Developer']
+const popular_tags = ['ReactJS', 'VueJS', 'Python', 'Javascript', 'Firebase', 'Tensorflow', 'NodeJS', 'Github']
 
 export default Vue.extend({
   name: 'navbar',
@@ -134,7 +134,7 @@ export default Vue.extend({
           font-size: 1em
           letter-spacing: 1.5px
           &:hover 
-            color: $color-gray-dark
+            color: $color-gray-soft
     .left
       overflow-x: auto
       display: inline-flex
@@ -149,6 +149,8 @@ export default Vue.extend({
       input[type='text']
         &:focus
           outline: none
+        &::placeholder 
+          color: #FFF
         width: 100%
         background: transparent
         border: none

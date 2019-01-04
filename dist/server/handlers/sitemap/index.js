@@ -38,7 +38,7 @@ function getSitemapTags(req, res) {
       } else {
         // generate xml
         result.map(function (n) {
-          items += "\n            <url>\n              <loc>https://oopsreview.com/tag/" + n.tag.toLowerCase() + "</loc>\n              <lastmod>2018-08-09</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
+          items += "\n            <url>\n              <loc>https://academy.byidmore.com/tag/" + n.tag.toLowerCase() + "</loc>\n              <lastmod>2018-08-09</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
         });
         res.end(xmlSitemapWrapper(items, 0));
       }
@@ -69,7 +69,7 @@ function getSitemapUsers(req, res) {
       } else {
         // generate xml
         result.map(function (n) {
-          items += "\n            <url>\n              <loc>https://oopsreview.com/author/" + n.username.toLowerCase() + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
+          items += "\n            <url>\n              <loc>https://academy.byidmore.com/author/" + n.username.toLowerCase() + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
         });
         res.end(xmlSitemapWrapper(items, 0));
       }
@@ -100,7 +100,7 @@ function getSitemapPosts(req, res) {
       } else {
         // generate xml
         result.map(function (n) {
-          items += "\n            <url>\n              <loc>https://oopsreview.com/post/" + n.title.replace(/ /g, '-').toLowerCase() + "-" + n._id + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
+          items += "\n            <url>\n              <loc>https://academy.byidmore.com/post/" + n.title.replace(/ /g, '-').toLowerCase() + "-" + n._id + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
         });
         res.end(xmlSitemapWrapper(items, 0));
       }

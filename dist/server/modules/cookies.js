@@ -13,7 +13,7 @@ var NODE_ENV = process.env.NODE_ENV;
 function set(req, res, key, val) {
   var options = {
     path: "/",
-    domain: NODE_ENV === "development" ? "oopsreview.local" : "oopsreview.com",
+    domain: NODE_ENV === "development" ? "academy.byidmore.local" : "academy.byidmore.com",
     secure: false,
     httpOnly: true
   };

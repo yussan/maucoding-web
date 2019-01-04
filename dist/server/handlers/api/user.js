@@ -1,4 +1,4 @@
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
   value: true
@@ -6,19 +6,17 @@ Object.defineProperty(exports, "__esModule", {
 exports.getUsers = getUsers;
 exports.getUser = getUser;
 
-var _mongodb = require('mongodb');
+var _user = require("../../modules/user");
 
-var _mongo = require('../../modules/mongo');
+var user = _interopRequireWildcard(_user);
 
-var _mongo2 = _interopRequireDefault(_mongo);
-
-var _response = require('../../modules/response');
+var _response = require("../../modules/response");
 
 var _response2 = _interopRequireDefault(_response);
 
-var _const = require('../../const');
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
 
 // get list users
 /**
@@ -30,4 +28,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function getUsers(req, res) {}
 
 // get detail user by id
-function getUser(req, res) {}
+function getUser(req, res) {
+  user.profileUser(req, res, {
+    username: req.params.username,
+    callback: function callback(json) {
+      return res.send(200, (0, _response2.default)(200, "success get user profile", json));
+    }
+  });
+}

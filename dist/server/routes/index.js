@@ -36,4 +36,5 @@ exports.default = function (route) {
   (0, _auth2.default)(route);
   (0, _tag2.default)(route);
   (0, _sitemap2.default)(route);
+  (0, _users2.default)(route);
 };
