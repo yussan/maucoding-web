@@ -13,7 +13,14 @@ export const generateMetaPostList = (req, res, next) => {
     desc: `${title} on IdMore Academy`,
     url: `https://oopsreview.com/${req.originalUrl}`,
     image: "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
-  }   
+  } 
+  
+  req.html = `
+    <div class="post-list">
+      <h1>${title}</h1>
+      <h2>${title} on IdMore Academy</h2>
+    </div>
+  `
 
   return next()
 }
@@ -32,6 +39,18 @@ export const generateMetaPost = (req, res, next) => {
           url: `https://academy.byidmore.com/post/${req.params.title}`,
           image: json.image.original
         }
+
+        req.html = `
+          <div class="post-detail">
+            <h1>${json.title}</h1>
+            <figure>
+              <img src="${json.image.original}" alt="${json.title}" />
+            </figure>
+            <article>
+              ${json.content}
+            </article>
+          </div>        
+        `
       }
 
       return next()
@@ -52,6 +71,14 @@ export const generateMetaUser = (req, res, next) => {
           url: `https://academy.byidmore.com/author/${username}`,
           image: json.avatar.original
         }
+
+        req.html = `
+        <div class="author">
+          <h1>${json.username}</h1>
+          <h2>${json.fullname}</h2>
+          <img src="${json.avatar.original}" alt="${json.username}" />
+        </div>
+      `
       } else {
         req.meta = {
           title: "User Not Found",

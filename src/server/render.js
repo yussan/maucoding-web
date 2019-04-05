@@ -2,7 +2,7 @@ import MetaInfo from "../config/metainfo.js"
 
 const { NODE_ENV } = process.env
 
-const generateHtml = ({ meta = {} }) => {
+const generateHtml = ({ meta = {}, initialHTML }) => {
   return `<!DOCTYPE html>   
 <html lang="en">
   <head>
@@ -42,7 +42,7 @@ const generateHtml = ({ meta = {} }) => {
       <link rel="alternate" href="https://academy.byidmore.com" lang="en-US"/> 
   </head>
   <body>
-      <div id="app"></div>
+      <div id="app">${initialHTML || ""}</div>
       <script>
         //global inline script
         document.addEventListener('click', function(e){
@@ -92,7 +92,8 @@ export default (req, res, next) => {
     "Content-Type": "text/html"
   })
   const html = generateHtml({
-    meta: req.meta
+    meta: req.meta,
+    initialHTML: req.html
   })
   res.write(html)
   res.end()
