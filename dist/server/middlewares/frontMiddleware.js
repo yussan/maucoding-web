@@ -31,6 +31,8 @@ var generateMetaPostList = exports.generateMetaPostList = function generateMetaP
     image: "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
   };
 
+  req.html = "\n    <div class=\"post-list\">\n      <h1>" + title + "</h1>\n      <h2>" + title + " on IdMore Academy</h2>\n    </div>\n  ";
+
   return next();
 };
 
@@ -48,6 +50,8 @@ var generateMetaPost = exports.generateMetaPost = function generateMetaPost(req,
           url: "https://academy.byidmore.com/post/" + req.params.title,
           image: json.image.original
         };
+
+        req.html = "\n          <div class=\"post-detail\">\n            <h1>" + json.title + "</h1>\n            <figure>\n              <img src=\"" + json.image.original + "\" alt=\"" + json.title + "\" />\n            </figure>\n            <article>\n              " + json.content + "\n            </article>\n          </div>        \n        ";
       }
 
       return next();
@@ -69,6 +73,8 @@ var generateMetaUser = exports.generateMetaUser = function generateMetaUser(req,
           url: "https://academy.byidmore.com/author/" + username,
           image: json.avatar.original
         };
+
+        req.html = "\n        <div class=\"author\">\n          <h1>" + json.username + "</h1>\n          <h2>" + json.fullname + "</h2>\n          <img src=\"" + json.avatar.original + "\" alt=\"" + json.username + "\" />\n        </div>\n      ";
       } else {
         req.meta = {
           title: "User Not Found",
