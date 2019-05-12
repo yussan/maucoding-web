@@ -9,21 +9,21 @@ import postTransformer from "../transformers/post"
  *
  */
 export const updatePost = (req, res) => {
-  const { title, content, tags, draft = false, image, video = '' } = req.body
+  const { title, content, tags, draft = false, image, video = "" } = req.body
   const currentTime = Math.round(new Date().getTime() / 1000)
   const _id = ObjectId(req.params.id)
   const postdata = {
     title,
     content,
     tags,
-    draft: Boolean(draft == 'true' || draft == true),
+    draft: Boolean(draft == "true" || draft == true),
     updated_on: currentTime,
     video
   }
 
-  if(image) postdata.image = image
+  if (image) postdata.image = image
 
-  mongo().then(db => {
+  mongo().then(({db, client}) => {
     // is post available
     db.collection("posts")
       .aggregate([
@@ -42,13 +42,18 @@ export const updatePost = (req, res) => {
           console.log(err)
           return res.send(500, response(500, "something wrong with mongo"))
         }
+        
 
         if (result.length > 0) {
           // update data on mongo
           db.collection("posts").update({ _id }, { $set: postdata })
 
+          client.close()
+
           res.send(201, response(201, "Post Updated"))
         } else {
+          client.close()
+
           // post not available
           res.send(204, response(204, "Post not found"))
         }
@@ -56,13 +61,13 @@ export const updatePost = (req, res) => {
   })
 }
 
-export const detailPost = (req, res, {id, callback}) => {
+export const detailPost = (req, res, { id, callback }) => {
   if (id.length != 24) {
-    if(req.no_count) return callback()
+    if (req.no_count) return callback()
     return res.send(200, response(204, "post not found"))
   }
 
-  mongo().then(db => {
+  mongo().then(({db, client}) => {
     db.collection("posts")
       .aggregate([
         {
@@ -93,7 +98,7 @@ export const detailPost = (req, res, {id, callback}) => {
         }
 
         if (result.length < 1) {
-          if(req.no_count) return callback()
+          if (req.no_count) return callback()
           return res.send(200, response(204, "post not found"))
         }
 
@@ -103,11 +108,17 @@ export const detailPost = (req, res, {id, callback}) => {
         result.author = author
 
         // update: increment views
-        if(!req.no_count)
+        if (!req.no_count) {
           db.collection("posts").update(
             { _id: ObjectId(result._id) },
             { $set: { views: result.views + 1 } }
           )
+  
+          client.close()
+        } else {
+          client.close()
+        }
+
         return callback(result)
       })
   })
