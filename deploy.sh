@@ -1,3 +1,5 @@
+cd /home/webdev/Web/academy.byidmore.com
+
 echo "update code from gitlab branch master..."
 git pull origin master
 
