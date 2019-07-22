@@ -153,7 +153,7 @@ export function create(req, res) {
   const { title, content, tags = "", draft = false, video = "" } = req.body
   const { image } = req.files || {}
   const currentTime = Math.round(new Date().getTime() / 1000)
-  const user_id = cookies.get(req, res, "oopsreview_session")._id
+  const user_id = cookies.get(req, res, "idmoreacademy_session")._id
 
   // not upload main image
   if (!image)

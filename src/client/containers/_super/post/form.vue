@@ -39,21 +39,12 @@
           :onchange='changeTextHandler'
         )
 
-        //- tab to toggel editor and html view
-        a.editor-tab(:class="editorTab == 'editor' ? 'active' : ''" href="javascript:;" @click="() => toggleEditorTab('editor')") Editor View 
-        a.editor-tab(:class="editorTab == 'html' ? 'active' : ''" href="javascript:;" @click="() => toggleEditorTab('html')") HTML View 
-
-        //- input post content
-        div(v-if="editorTab == 'editor'")
-          quill-editor#post-form(
-            :content="editorHtml || ''"
-            :options="editorOptions"
-            @change="changeQuillHandler($event)"
-          )
-          input(id="quill-upload-image" type="file" accept="image/*" style="display:none" @change="changelQuillImageHandler")
-
-        div.form-input(v-if="editorTab == 'html'")
-          textarea#html-form(:value="editorHtml || ''" @change="(e) => this.editorHtml = e.target.value")
+        //- tinymce editor
+        tinymce-editor(
+          name='content'
+          :data='formdata' 
+          :onchange='changeTextHandler')
+        br
 
         //- input post tags
         input-text(
@@ -89,7 +80,7 @@
 
 <script lang="ts">
 import Vue from "vue"
-import { quillEditor, Quill } from "vue-quill-editor"
+import tinyMceEditor from "../../../components/form/tinymce-editor.vue"
 import header from "../../../components/cards/header-tag.vue"
 import inputText from "../../../components/form/input-text.vue"
 import inputFile from "../../../components/form/input-file.vue"
@@ -101,20 +92,11 @@ import * as TYPES from "../../../vuex/types"
 import { mapState } from "vuex"
 import { router } from "../../../index"
 
-import "quill/dist/quill.core.css"
-import "quill/dist/quill.snow.css"
-import "quill/dist/quill.bubble.css"
-
 Vue.component("header-tag", header)
 Vue.component("input-text", inputText)
 Vue.component("input-file", inputFile)
 Vue.component("oops-button", button)
-Vue.component("quill-editor", quillEditor)
-
-function loadQuillJS() {
-  injectCss("/quilljs/quill.core.css", null)
-  injectCss("/quilljs/quill.snow.css", null)
-}
+Vue.component("tinymce-editor", tinyMceEditor)
 
 const rules = {
   title: "required",
@@ -126,37 +108,37 @@ export default Vue.extend({
 
   data() {
     const { id, imageHandler }: any = this
-    const editorOptions = {
-      modules: {
-        clipboard: {
-          matchVisual: false
-        },
-        // ref : https://stackoverflow.com/a/44152344/2780875
-        toolbar: {
-          handlers: {
-            image() {
-              const ImageUpload: any = document.getElementById(
-                "quill-upload-image"
-              )
-              ImageUpload.click()
-            }
-          },
-          container: [
-            [{ header: [2, 3, 4] }],
-            ["bold", "italic", "underline"],
-            [{ list: "ordered" }, { list: "bullet" }],
-            ["link", "image", "video"],
-            ["clean"],
-            ["showHtml"]
-          ]
-        }
-      },
-      placeholder: "Write content here...",
-      theme: "snow"
-    }
+    // const editorOptions = {
+    //   modules: {
+    //     clipboard: {
+    //       matchVisual: false
+    //     },
+    //     // ref : https://stackoverflow.com/a/44152344/2780875
+    //     toolbar: {
+    //       handlers: {
+    //         image() {
+    //           const ImageUpload: any = document.getElementById(
+    //             "quill-upload-image"
+    //           )
+    //           ImageUpload.click()
+    //         }
+    //       },
+    //       container: [
+    //         [{ header: [2, 3, 4] }],
+    //         ["bold", "italic", "underline"],
+    //         [{ list: "ordered" }, { list: "bullet" }],
+    //         ["link", "image", "video"],
+    //         ["clean"],
+    //         ["showHtml"]
+    //       ]
+    //     }
+    //   },
+    //   placeholder: "Write content here...",
+    //   theme: "snow"
+    // }
 
     return {
-      editorOptions,
+      // editorOptions,
       loading: true,
       editorHtml: "",
       editorTab: "editor",
@@ -170,7 +152,7 @@ export default Vue.extend({
   methods: {
     resetForm() {
       this.loading = false
-      this.editorHtml = ""
+      // this.editorHtml = ""
       this.title = this.id ? "Update Post" : "New Post"
       this.formdata = {}
       this.formvalidate = {}
@@ -199,19 +181,6 @@ export default Vue.extend({
       this.formvalidate = validate
     },
 
-    changeQuillHandler({ quill, html, text }) {
-      this.editorHtml = html
-    },
-
-    changelQuillImageHandler(e: any) {
-      const file = e.target.files[0]
-      if (file) {
-        const imageUrl = window.URL.createObjectURL(file)
-        console.log("image", imageUrl)
-        //push text to current cursor
-      }
-    },
-
     submitHandler(draft = false) {
       this.formvalidate = this.validation.validate(this.formdata)
 
@@ -219,7 +188,7 @@ export default Vue.extend({
         console.log("publishing post...")
         let params: any = {
           title: this.formdata.title,
-          content: this.editorHtml,
+          content: this.formdata.content,
           tags: this.formdata.tags,
           draft
         }
@@ -260,7 +229,7 @@ export default Vue.extend({
       return 'Sure?';
     }
 
-    loadQuillJS()
+    // loadQuillJS()
   },
 
   // unmount event
@@ -308,7 +277,7 @@ export default Vue.extend({
             content: post.content,
             video: post.video
           }
-          this.editorHtml = post.content
+          // this.editorHtml = post.content
           this.loading = false
         }
       }

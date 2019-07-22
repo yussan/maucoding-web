@@ -202,7 +202,7 @@ function create(req, res) {
       image = _ref3.image;
 
   var currentTime = Math.round(new Date().getTime() / 1000);
-  var user_id = cookies.get(req, res, "oopsreview_session")._id;
+  var user_id = cookies.get(req, res, "idmoreacademy_session")._id;
 
   // not upload main image
   if (!image) return res.send(200, (0, _response2.default)(400, "Failed to post, image is required"));

@@ -52,7 +52,7 @@ function login(req, res) {
         // login success and save userdata to session
         console.log("logged in success, save userdata to session");
         var encCookies = (0, _password.encString)(JSON.stringify(result[0]));
-        cookies.set(req, res, "oopsreview_session", encCookies);
+        cookies.set(req, res, "idmoreacademy_session", encCookies);
         return res.send(201, (0, _response2.default)(201, "login success", result[0]));
       }
     });
@@ -60,7 +60,7 @@ function login(req, res) {
 }
 
 function logout(req, res) {
-  cookies.set(req, res, "oopsreview_session", "");
+  cookies.set(req, res, "idmoreacademy_session", "");
   return res.send(200, { message: "logout success" });
 }
 
@@ -68,7 +68,7 @@ function logout(req, res) {
  * function to to check is user logged in
  */
 function checkLogin(req, res, next) {
-  var cookies = req.cookies.oopsreview_session;
+  var cookies = req.cookies.idmoreacademy_session;
   var sessiondata = {};
   if (cookies) {
     sessiondata = (0, _password.decString)(cookies);
