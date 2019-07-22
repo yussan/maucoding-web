@@ -16,8 +16,14 @@ var _response2 = _interopRequireDefault(_response);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function detail(req, res) {
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref) {
+    var db = _ref.db,
+        client = _ref.client;
+
     db.collection('tags').find({ tag: req.params.name }).toArray(function (err, result) {
+
+      client.close();
+
       if (result.length > 0) {
         return res.send(200, (0, _response2.default)(200, 'OK', result[0]));
       } else {

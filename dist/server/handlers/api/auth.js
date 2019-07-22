@@ -33,13 +33,19 @@ function login(req, res) {
       password = _req$body.password;
 
   var passHash = (0, _password.hashPassword)(password);
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref) {
+    var db = _ref.db,
+        client = _ref.client;
+
     db.collection("users").find({ email: email, password: passHash }).toArray(function (err, result) {
       // error from database
       if (err) {
         console.log(err);
         return res.send(500, (0, _response2.default)(500, "something wrong with mongo"));
       }
+
+      client.close();
+
       if (result.length < 1) {
         return res.send(204, "email dan password tidak valid");
       } else {

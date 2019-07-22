@@ -44,12 +44,18 @@ function getFeed(req, res) {
     $match: { draft: false }
   });
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref) {
+    var db = _ref.db,
+        client = _ref.client;
+
     // ref guid : https://www.w3schools.com/xml/rss_tag_guid.asp
     db.collection("posts").aggregate(aggregate).skip(0).limit(10).toArray(function (err, result) {
       if (err) {
         res.end("error get feed");
       } else {
+
+        client.close();
+
         result.map(function (n) {
           // ref: remove &nbsp; from string https://stackoverflow.com/a/6452789/2780875
           n.content = n.content.replace(/&nbsp;/gi, "");

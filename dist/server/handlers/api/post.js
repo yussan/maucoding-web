@@ -155,13 +155,18 @@ function list(req, res) {
     });
   }
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref2) {
+    var db = _ref2.db,
+        client = _ref2.client;
+
     db.collection("posts").aggregate(aggregate).skip(parseInt(page) || 0).limit(parseInt(limit) || _const.DB_DEFAULT_LIMIT).toArray(function (err, result) {
       // error from database
       if (err) {
         console.log(err);
         return res.send(500, (0, _response2.default)(500, "something wrong with mongo"));
       }
+
+      client.close();
 
       if (result.length > 0) {
         // transform data
@@ -193,8 +198,8 @@ function create(req, res) {
       _req$body$video = _req$body.video,
       video = _req$body$video === undefined ? "" : _req$body$video;
 
-  var _ref2 = req.files || {},
-      image = _ref2.image;
+  var _ref3 = req.files || {},
+      image = _ref3.image;
 
   var currentTime = Math.round(new Date().getTime() / 1000);
   var user_id = cookies.get(req, res, "oopsreview_session")._id;
@@ -227,7 +232,10 @@ function create(req, res) {
         video: video
       };
 
-      (0, _mongo2.default)().then(function (db) {
+      (0, _mongo2.default)().then(function (_ref4) {
+        var db = _ref4.db,
+            client = _ref4.client;
+
         // check is same title available
         db.collection("posts").aggregate([{
           $match: { title: title }
@@ -244,10 +252,12 @@ function create(req, res) {
 
           if (results.length > 0) {
             // post available
+            client.close();
             res.send(400, (0, _response2.default)(400, "Failed to post, duplicated title"));
           } else {
             // insert to mongodb
             db.collection("posts").insert(postdata);
+            client.close();
             res.send(201, (0, _response2.default)(201, "Post Created"));
           }
         });
@@ -262,8 +272,8 @@ function create(req, res) {
  * @param {object} req.files
  */
 function update(req, res) {
-  var _ref3 = req.files || {},
-      image = _ref3.image;
+  var _ref5 = req.files || {},
+      image = _ref5.image;
 
   if (image) {
     // upload image
@@ -293,8 +303,14 @@ function deletePost(req, res) {
 
   // mongodb query execution
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref6) {
+    var db = _ref6.db,
+        client = _ref6.client;
+
     db.collection("post").remove({ _id: id });
+
+    client.close();
+
     // api response
     res.send(200, (0, _response2.default)(200, "Post deleted"));
   });
