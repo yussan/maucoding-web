@@ -5,9 +5,9 @@
     editor(
       v-model="data[name]"
       api-key="234ds00dovxowmnuwjhba9m9pwkif7eksnvesgyqqedhp9un" 
-      toolbar="image link bullist | formatselect fontselect fontsizeselect" 
+      toolbar="image link bullist | codesample formatselect fontselect fontsizeselect | code" 
       :menubar="false" 
-      :init="{height : 480, plugins: 'wordcount image autolink link lists', selector: 'textarea'}")
+      :init="{height : 480, plugins: 'wordcount image autolink link lists codesample code', selector: 'textarea'}")
 </template>
 
 
