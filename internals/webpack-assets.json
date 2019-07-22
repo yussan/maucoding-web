@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"app":{"js":"/build/app.ca602c053893ce5742b2.js"},"vendor":{"js":"/build/vendor.ca602c053893ce5742b2.js"}}
-=======
 {"app":{"js":"/build/app.js"},"vendor":{"js":"/build/vendor.js"},"":{"js":["/build/0.js","/build/1.js","/build/2.js","/build/3.js"]}}
->>>>>>> 5b3f908ee52d809609ebe4713bfae5d60c1be86a

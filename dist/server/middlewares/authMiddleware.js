@@ -8,7 +8,7 @@ var _password = require("../modules/password");
 
 exports.default = function (req, res, next) {
   if (req.path() !== '/super') {
-    var cookies = req.cookies.oopsreview_session;
+    var cookies = req.cookies.idmoreacademy_session;
     if (cookies) {
       var sessiondata = (0, _password.decString)(cookies);
       sessiondata = JSON.parse(sessiondata);

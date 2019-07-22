@@ -25,7 +25,7 @@ export function login(req, res) {
           // login success and save userdata to session
           console.log("logged in success, save userdata to session")
           const encCookies = encString(JSON.stringify(result[0]))
-          cookies.set(req, res, "oopsreview_session", encCookies)
+          cookies.set(req, res, "idmoreacademy_session", encCookies)
           return res.send(201, response(201, "login success", result[0]))
         }
       })
@@ -33,7 +33,7 @@ export function login(req, res) {
 }
 
 export function logout(req, res) {
-  cookies.set(req, res, "oopsreview_session", "")
+  cookies.set(req, res, "idmoreacademy_session", "")
   return res.send(200, { message: "logout success" })
 }
 
@@ -41,7 +41,7 @@ export function logout(req, res) {
  * function to to check is user logged in
  */
 export function checkLogin(req, res, next) {
-  const cookies = req.cookies.oopsreview_session
+  const cookies = req.cookies.idmoreacademy_session
   let sessiondata = {}
   if (cookies) {
     sessiondata = decString(cookies)
