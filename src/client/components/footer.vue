@@ -12,11 +12,11 @@
             | |&nbsp;
             a(href='https://docs.google.com/forms/d/e/1FAIpQLSeByAgx7GNG3YyH3vgAupKymlwfJ6mNNaGCQN0ZkG1KC8636A/viewform' target="_blank") Contact Us
           p
-            strong Idmore Academy 
+            strong Id More Academy 
             | More things available
             br 
             | Powered by 
-            a(href='https://byidmore.com' target='_blank') IdMore
+            a(href='https://byidmore.com' target='_blank') Id More
         .col-6_sm-12
           .link-social
             a(href="https://facebook.com/oopsreview" target="_blank")

@@ -1,4 +1,4 @@
 export default {
-  title: 'Idmore Academy - More Things Available',
-  description: 'Let\'s make technology accessible, affordable and easy for everyone to learn with Idmore Academy'
+  title: 'Id More Academy - More Things Available',
+  description: 'Let\'s make technology accessible, affordable and easy for everyone to learn with Id More Academy'
 }

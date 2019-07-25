@@ -25,7 +25,7 @@
         card-small(:data="data.result[6]")
 
       .popular-end
-          strong Idmore Academy 
+          strong Id More Academy 
           br 
           | More things available
 </template>

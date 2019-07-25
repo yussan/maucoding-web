@@ -10,10 +10,11 @@
         //- select language
         input-select(
           name='lang'
-          label='Language'
+          label="Language"
           :data='formdata'
           :validation='formvalidate'
           :onchange='changeTextHandler'
+          :options='[{value:"id", name:"ID"}, {value:"en", name:"EN"}]'
         )
 
         //- input post title
@@ -112,7 +113,8 @@ Vue.component("tinymce-editor", tinyMceEditor)
 
 const rules = {
   title: "required",
-  tags: "required"
+  tags: "required",
+  lang: "required"
 }
 
 export default Vue.extend({
@@ -120,34 +122,6 @@ export default Vue.extend({
 
   data() {
     const { id, imageHandler }: any = this
-    // const editorOptions = {
-    //   modules: {
-    //     clipboard: {
-    //       matchVisual: false
-    //     },
-    //     // ref : https://stackoverflow.com/a/44152344/2780875
-    //     toolbar: {
-    //       handlers: {
-    //         image() {
-    //           const ImageUpload: any = document.getElementById(
-    //             "quill-upload-image"
-    //           )
-    //           ImageUpload.click()
-    //         }
-    //       },
-    //       container: [
-    //         [{ header: [2, 3, 4] }],
-    //         ["bold", "italic", "underline"],
-    //         [{ list: "ordered" }, { list: "bullet" }],
-    //         ["link", "image", "video"],
-    //         ["clean"],
-    //         ["showHtml"]
-    //       ]
-    //     }
-    //   },
-    //   placeholder: "Write content here...",
-    //   theme: "snow"
-    // }
 
     return {
       // editorOptions,
@@ -155,7 +129,7 @@ export default Vue.extend({
       editorHtml: "",
       editorTab: "editor",
       title: id ? "Update Post" : "New Post",
-      formdata: <any>{},
+      formdata: <any>{lang: "en"},
       formvalidate: <any>{},
       validation: new validation(rules)
     }
@@ -164,7 +138,6 @@ export default Vue.extend({
   methods: {
     resetForm() {
       this.loading = false
-      // this.editorHtml = ""
       this.title = this.id ? "Update Post" : "New Post"
       this.formdata = {}
       this.formvalidate = {}
@@ -202,6 +175,7 @@ export default Vue.extend({
           title: this.formdata.title,
           content: this.formdata.content,
           tags: this.formdata.tags,
+          lang: this.formdata.lang,
           draft
         }
         if (this.id) params.id = this.id
@@ -230,23 +204,21 @@ export default Vue.extend({
 
     // add event handle before unload to prevent data gone on closing tab
     window.onbeforeunload = function(e) {
-      e = e || window.event;
+      e = e || window.event
 
       // For IE and Firefox prior to version 4
       if (e) {
-          e.returnValue = 'Sure?';
+        e.returnValue = "Sure?"
       }
 
       // For Safari
-      return 'Sure?';
+      return "Sure?"
     }
-
-    // loadQuillJS()
   },
 
   // unmount event
   beforeDestroy() {
-    window.onbeforeunload = function(){}
+    window.onbeforeunload = function() {}
     this.resetForm()
   },
 
@@ -267,7 +239,7 @@ export default Vue.extend({
           if (response.status === 201) {
             // success to create / update post
             toast("Post submited", "success")
-            window.onbeforeunload = function(){}
+            window.onbeforeunload = function() {}
             setTimeout(() => {
               location.href = "/super/posts"
             }, 1500)
@@ -287,9 +259,9 @@ export default Vue.extend({
             title: post.title,
             tags: post.tags,
             content: post.content,
-            video: post.video
+            video: post.video,
+            lang: post.lang || "en"
           }
-          // this.editorHtml = post.content
           this.loading = false
         }
       }
@@ -309,10 +281,6 @@ export default Vue.extend({
   font-size: 1em
   color: $color-gray-medium
   margin-bottom: 1em
-
-  // quill direct styling
-  .ql-editor
-    max-height: 500px !important
 
 #html-form 
   font-size: .75em

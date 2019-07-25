@@ -9,7 +9,7 @@ import postTransformer from "../transformers/post"
  *
  */
 export const updatePost = (req, res) => {
-  const { title, content, tags, draft = false, image, video = "" } = req.body
+  const { title, content, tags, draft = false, image, video = "", lang = "en" } = req.body
   const currentTime = Math.round(new Date().getTime() / 1000)
   const _id = ObjectId(req.params.id)
   const postdata = {
@@ -18,7 +18,8 @@ export const updatePost = (req, res) => {
     tags,
     draft: Boolean(draft == "true" || draft == true),
     updated_on: currentTime,
-    video
+    video,
+    lang
   }
 
   if (image) postdata.image = image

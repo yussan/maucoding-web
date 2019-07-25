@@ -84,7 +84,7 @@ export default Vue.extend({
     return {
       link: `/post/${this.$route.params.title}`,
       meta: {
-        title: "Idmore Academy - More things available",
+        title: "Id More Academy - More things available",
         description:
           "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },

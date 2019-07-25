@@ -1,16 +1,21 @@
 <template lang="pug">
   .form-input(:class="validation.result && validation.result[name] != undefined && !validation.result[name].is_valid ? 'error' : ''")
-    select
-      option option 1
-      option option 2
+    select(
+      :id='name' 
+      :name='name'
+      :value="data[name] || options[0].value" 
+      v-on:change='onchange')
+      option(v-for="(n, key) in options" :key="key" :value="n.value") {{ n.name }}
 
     .message(v-if='validation.result && validation.result[name] != undefined && !validation.result[name].is_valid') 
       small {{ validation.result[name].message }}
 </template>
 <script>
+import Vue from "vue"
+
 const props = {
   name: {
-    type: "string"
+    type: String
   },
   options: {
     type: Array,
@@ -19,13 +24,13 @@ const props = {
     }
   },
   label: {
-    type: "string"
+    type: String
   },
   data: {
     type: Object,
     default() {
       return {}
-    } 
+    }
   },
   validation: {
     type: Object,
@@ -41,10 +46,10 @@ const props = {
   }
 }
 
-export default {
-  name: "form-select",
+export default Vue.extend({
+  name: "input-select",
   props
-}
+})
 </script>
 
 <style lang="sass" scoped>
