@@ -6,6 +6,16 @@
         subtitle='Just remember to Oopsreview vision and mission'
       )
       form(method='post' target='javascript:;' style='padding:1em 0')
+
+        //- select language
+        input-select(
+          name='lang'
+          label='Language'
+          :data='formdata'
+          :validation='formvalidate'
+          :onchange='changeTextHandler'
+        )
+
         //- input post title
         input-text(
           name='title'
@@ -84,6 +94,7 @@ import tinyMceEditor from "../../../components/form/tinymce-editor.vue"
 import header from "../../../components/cards/header-tag.vue"
 import inputText from "../../../components/form/input-text.vue"
 import inputFile from "../../../components/form/input-file.vue"
+import select from "../../../components/form/select.vue"
 import button from "../../../components/form/button.vue"
 import toast from "../../../modules/toast"
 import { injectCss } from "../../../modules/dom"
@@ -96,6 +107,7 @@ Vue.component("header-tag", header)
 Vue.component("input-text", inputText)
 Vue.component("input-file", inputFile)
 Vue.component("oops-button", button)
+Vue.component("input-select", select)
 Vue.component("tinymce-editor", tinyMceEditor)
 
 const rules = {

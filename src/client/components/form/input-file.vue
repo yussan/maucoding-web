@@ -83,9 +83,6 @@ export default Vue.extend({
 @import '../../../design/sass/color'
 
 .form-input
-  &.error 
-    input 
-      border: 1px solid $color-red-main
   img.preview 
     max-width: 100%
     max-height: 500px
@@ -94,6 +91,4 @@ export default Vue.extend({
     width: -webkit-fill-available
     margin-bottom: .3em
     border: 1px solid $color-gray-soft
-  .form-input-description 
-    color: $color-gray-soft
 </style>
