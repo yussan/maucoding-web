@@ -26,12 +26,12 @@ var generateMetaPostList = exports.generateMetaPostList = function generateMetaP
 
   req.meta = {
     title: title,
-    desc: title + " on IdMore Academy",
+    desc: title + " on Id More Academy",
     url: "https://oopsreview.com/" + req.originalUrl,
     image: "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
   };
 
-  req.html = "\n    <div class=\"post-list\">\n      <h1>" + title + "</h1>\n      <h2>" + title + " on IdMore Academy</h2>\n    </div>\n  ";
+  req.html = "\n    <div class=\"post-list\">\n      <h1>" + title + "</h1>\n      <h2>" + title + " on Id More Academy</h2>\n    </div>\n  ";
 
   return next();
 };

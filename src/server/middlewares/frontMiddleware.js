@@ -10,7 +10,7 @@ export const generateMetaPostList = (req, res, next) => {
 
   req.meta = {
     title,
-    desc: `${title} on IdMore Academy`,
+    desc: `${title} on Id More Academy`,
     url: `https://oopsreview.com/${req.originalUrl}`,
     image: "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
   } 
@@ -18,7 +18,7 @@ export const generateMetaPostList = (req, res, next) => {
   req.html = `
     <div class="post-list">
       <h1>${title}</h1>
-      <h2>${title} on IdMore Academy</h2>
+      <h2>${title} on Id More Academy</h2>
     </div>
   `
 

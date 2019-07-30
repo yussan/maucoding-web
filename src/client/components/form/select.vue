@@ -1,72 +1,43 @@
 <template lang="pug">
   .form-input(:class="validation.result && validation.result[name] != undefined && !validation.result[name].is_valid ? 'error' : ''")
-    label(:for='name') {{ label }}
-    input(
-      :type='type' 
+    select(
       :id='name' 
       :name='name'
-      :value='data[name] || ""'
-      v-on:change='onchange'
-      :placeholder='placeholder'
-      ) 
-    .form-input-description(v-if="description !== ''") {{ description  }}
+      :value="data[name] || options[0].value" 
+      v-on:change='onchange')
+      option(v-for="(n, key) in options" :key="key" :value="n.value") {{ n.name }}
 
-    //- show message if input not valid
     .message(v-if='validation.result && validation.result[name] != undefined && !validation.result[name].is_valid') 
       small {{ validation.result[name].message }}
 </template>
-
-<script lang="ts">
+<script>
 import Vue from "vue"
 
 const props = {
-  // name of input
   name: {
     type: String
   },
-  // saved form description
-  description: {
-    type: String,
-    default: ""
+  options: {
+    type: Array,
+    default() {
+      return []
+    }
   },
   label: {
     type: String
   },
-  type: {
-    type: String,
-    default: "text"
-  },
-  placeholder: {
-    type: String,
-    default: ""
-  },
-  // value of input
-  value: {
-    type: String
-  },
-  // maximal value of input
-  maxVal: {
-    type: Number
-  },
-  // minimal value of input
-  minVal: {
-    type: Number
-  },
-  // validation object result
-  validation: {
-    type: Object,
-    default() {
-      return {}
-    }
-  },
-  // data of form
   data: {
     type: Object,
     default() {
       return {}
     }
   },
-  // handle change value
+  validation: {
+    type: Object,
+    default() {
+      return {}
+    }
+  },
   onchange: {
     type: Function,
     default() {
@@ -76,21 +47,22 @@ const props = {
 }
 
 export default Vue.extend({
-  name: "input-text",
+  name: "input-select",
   props
 })
 </script>
-
 
 <style lang="sass" scoped>
 @import '../../../design/sass/form'
 @import '../../../design/sass/color'
 
 .form-input
-  input
+  select
+    background-color: $color-white-main
     padding: .5em
     font-size: 1.5em
     width: -webkit-fill-available
     margin-bottom: .3em
     border: 1px solid $color-gray-soft
 </style>
+

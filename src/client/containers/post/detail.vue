@@ -84,7 +84,7 @@ export default Vue.extend({
     return {
       link: `/post/${this.$route.params.title}`,
       meta: {
-        title: "Idmore Academy - More things available",
+        title: "Id More Academy - More things available",
         description:
           "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },
@@ -129,18 +129,17 @@ export default Vue.extend({
 
   created() {
     // inject primsjs
-    // this.injectCss('/prismjs/prismjs.css')
-    // this.injectScript('/prismjs/prismjs.js')
+    this.injectCss('/prismjs/prismjs.css')
+    this.injectScript('/prismjs/prismjs.js')
 
     const title_arr = this.$route.params.title.split("-")
     const id = title_arr[title_arr.length - 1]
     this.fetchPostDetail(id)
     this.fetchPostRelated(id)
-    
   },
 
   methods: {
-    injectCss, 
+    injectCss,
     injectScript,
     toCamelCase,
     epochToRelative,
@@ -149,7 +148,12 @@ export default Vue.extend({
       this.$store.dispatch(TYPES.GET_POST, id)
     },
     fetchPostRelated(id) {
-      this.$store.dispatch(TYPES.GET_POSTS, { filter: "latest_detail", limit: 6, draft: false, notid: id })
+      this.$store.dispatch(TYPES.GET_POSTS, {
+        filter: "latest_detail",
+        limit: 6,
+        draft: false,
+        notid: id
+      })
     }
   },
 

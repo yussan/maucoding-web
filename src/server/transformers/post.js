@@ -25,6 +25,7 @@ export default (n) => {
       app: n.app && n.app.length > 0 ? n.app[0] : {},
       draft: n.draft == 'true' || n.draft == true,
       video: n.video || '',
+      lang: n.lang,
       image: {
         original: n.image || DEFAULT_THUMB,
         600: n.image ? generateCustomUrl(n.image, 'w_600,c_scale') : generateCustomUrl(DEFAULT_THUMB, 'w_600,c_scale'),

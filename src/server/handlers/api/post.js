@@ -150,7 +150,7 @@ export function list(req, res) {
 export function create(req, res) {
   // get all post data
 
-  const { title, content, tags = "", draft = false, video = "" } = req.body
+  const { title, content, tags = "", draft = false, video = "", lang="en" } = req.body
   const { image } = req.files || {}
   const currentTime = Math.round(new Date().getTime() / 1000)
   const user_id = cookies.get(req, res, "idmoreacademy_session")._id
@@ -184,7 +184,8 @@ export function create(req, res) {
         updated_on: currentTime,
         draft: Boolean(draft == "true" || draft == true),
         user_id: ObjectId(user_id),
-        video
+        video,
+        lang
       }
 
       mongo().then(({db, client}) => {
