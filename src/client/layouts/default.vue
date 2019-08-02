@@ -3,6 +3,7 @@
     top-navbar
     navbar(:keyword='$route.query.q || \'\'')
     router-view
+    thanks-to
     bottom-navbar
     toast
 </template>
@@ -13,6 +14,7 @@ import navbar from "../components/navbar.vue"
 import header from "../components/headers/header.vue"
 import footer from "../components/footer.vue"
 import toast from "../components/toast.vue"
+import thanksTo from "../components/boxs/thanks-to.vue"
 import { router } from "../index"
 import { objToQuery } from "string-manager"
 
@@ -20,6 +22,7 @@ Vue.component("navbar", navbar)
 Vue.component("top-navbar", header)
 Vue.component("bottom-navbar", footer)
 Vue.component("toast", toast)
+Vue.component("thanks-to", thanksTo)
 
 interface ToInterface {
   path: string
