@@ -45,12 +45,11 @@ if (NODE_ENV == "development") {
 // render vuejs
 server.get(/\/super\/*/, authMiddleware, render)
 
-server.get("/posts", frontMiddleware.generateMetaPostList, render)
-server.get("/tag/:tag", frontMiddleware.generateMetaPostList, render)
-server.get("/post/:title", frontMiddleware.generateMetaPost, render)
-server.get("/author/:username", frontMiddleware.generateMetaUser, render)
+server.get("/:lang/posts", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPostList, render)
+server.get("/:lang/tag/:tag", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPostList, render)
+server.get("/:lang/post/:title", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPost, render)
+server.get("/:lang/author/:username", frontMiddleware.checkLanguage, frontMiddleware.generateMetaUser, render)
 
-// serve static file from public directory
 server.get(
   /\/build\/*/,
   restify.plugins.serveStatic({
@@ -58,6 +57,32 @@ server.get(
     maxAge: 0
   })
 )
+
+server.get(
+  "/manifest.json",
+  restify.plugins.serveStatic({
+    directory: `${__dirname}/../../public`,
+    maxAge: 0
+  })
+)
+server.get(
+  "/favicon.ico",
+  restify.plugins.serveStatic({
+    directory: `${__dirname}/../../public`,
+    maxAge: 0
+  })
+)
+server.get(
+  "/robots.txt",
+  restify.plugins.serveStatic({
+    directory: `${__dirname}/../../public`,
+    maxAge: 0
+  })
+)
+
+server.get("/:lang", frontMiddleware.checkLanguage, render)
+server.get(/\/:lang\/*/, frontMiddleware.checkLanguage, render)
+
 server.get(
   /\/?.*\//,
   restify.plugins.serveStatic({
@@ -66,9 +91,8 @@ server.get(
   })
 )
 
-// render vuejs
-
-server.on("NotFound", render)
+// server.get("/:lang/*", render)
+// server.on("NotFound", render)
 // server.on("NotFound", (req, res) => {
 //   renderVue({ url: req.url }).then(app => {
 //     //context to use as data source

@@ -2,7 +2,8 @@ import MetaInfo from "../config/metainfo.js"
 
 const { NODE_ENV } = process.env
 
-const generateHtml = ({ meta = {}, initialHTML }) => {
+const generateHtml = ({ lang, meta = {}, initialHTML }) => {
+
   return `<!DOCTYPE html>   
 <html lang="en">
   <head>
@@ -40,6 +41,9 @@ const generateHtml = ({ meta = {}, initialHTML }) => {
           : "/opensearch/development.xml"
       }" rel="search" title="oopsreview" type="application/opensearchdescription+xml">
       <link rel="alternate" href="https://academy.byidmore.com" lang="en-US"/> 
+      <script>
+        window.SELECTED_LANG = "${lang || "id"}"    
+      </script>    
   </head>
   <body>
       <div id="app">${initialHTML || ""}</div>
@@ -91,10 +95,12 @@ export default (req, res, next) => {
   res.writeHead(200, {
     "Content-Type": "text/html"
   })
+
   const html = generateHtml({
+    lang: req.params.lang,
     meta: req.meta,
     initialHTML: req.html
   })
   res.write(html)
-  res.end()
+  return res.end()
 }

@@ -17,7 +17,14 @@
             br 
             | Powered by 
             a(href='https://byidmore.com' target='_blank') Id More
+        
         .col-6_sm-12
+          .change-language 
+            span Change language : 
+            strong 
+              a(href="/id" v-bind:class="{active: this.selected_lang == 'id'}") ID
+            strong 
+              a(href="/en" v-bind:class="{active: this.selected_lang == 'en'}") EN
           .link-social
             a(href="https://facebook.com/oopsreview" target="_blank")
               span.icono-facebook
@@ -34,15 +41,25 @@
 
 <script lang="ts">
 import Vue from 'vue'
+
+const defaultProps = ['route']
+
+// add SELECTED_LANG property on window
+declare global {
+  interface Window { SELECTED_LANG: string; }
+}
+
 export default Vue.extend({
 
   data() {
     return {
-      show_btngototop: false
+      show_btngototop: false,
+      selected_lang: ""
     }
   },
 
   mounted() {
+    this.selected_lang = window.SELECTED_LANG || "id"
     document.addEventListener('scroll', (e) => {
       const position = window.scrollY
       if(position > 218) {
@@ -62,7 +79,9 @@ export default Vue.extend({
         behavior: 'smooth' 
       });
     }
-  }
+  },
+  
+  props: defaultProps
 })
 </script>
 
@@ -80,6 +99,15 @@ export default Vue.extend({
       color: $color-gray-soft
       &:hover
         color: $color-white-main
+
+    .change-language 
+      margin-bottom: 20px
+      a 
+        margin-left: 10px
+      a.active 
+        border-bottom: 2px solid $color-gray-soft 
+      text-align: right
+
     .link-social 
       float: right
 
