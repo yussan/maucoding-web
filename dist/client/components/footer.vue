@@ -2,6 +2,7 @@
   footer 
     .container-medium 
       .grid
+        //- left footer
         .col-6_sm-12
           .link-collection 
             router-link(to='/static/about') About Academy 
@@ -17,7 +18,16 @@
             br 
             | Powered by 
             a(href='https://byidmore.com' target='_blank') Id More
+        
+        //- right footer
         .col-6_sm-12
+
+          h1 its me
+
+          .change-language
+            a(href="/en") EN
+            a(href="/id") ID 
+
           .link-social
             a(href="https://facebook.com/oopsreview" target="_blank")
               span.icono-facebook
@@ -33,9 +43,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue"
 export default Vue.extend({
-
   data() {
     return {
       show_btngototop: false
@@ -43,12 +52,12 @@ export default Vue.extend({
   },
 
   mounted() {
-    document.addEventListener('scroll', (e) => {
+    document.addEventListener("scroll", e => {
       const position = window.scrollY
-      if(position > 218) {
+      if (position > 218) {
         // show navbar
         this.show_btngototop = true
-      }else {
+      } else {
         // hide navbar
         this.show_btngototop = false
       }
@@ -58,9 +67,9 @@ export default Vue.extend({
   methods: {
     goToTop() {
       const target: any = document.getElementById("logo")
-      target.scrollIntoView({ 
-        behavior: 'smooth' 
-      });
+      target.scrollIntoView({
+        behavior: "smooth"
+      })
     }
   }
 })
@@ -80,8 +89,14 @@ export default Vue.extend({
       color: $color-gray-soft
       &:hover
         color: $color-white-main
+    
     .link-social 
       float: right
+
+    .change-language
+      text-align: left
+      a 
+        font-size: 30px
 
     // button go to top
     .button-gototop

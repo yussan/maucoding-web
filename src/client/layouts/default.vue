@@ -4,7 +4,7 @@
     navbar(:keyword='$route.query.q || \'\'')
     router-view
     thanks-to
-    bottom-navbar
+    bottom-navbar(:route='$route')
     toast
 </template>
 
@@ -45,7 +45,7 @@ export default Vue.extend({
     const { fullPath, params} = this.$route
     const { lang } = params
     if (!lang && !NOT_REDIRECT_LANG.includes(this.$route.name || "")) {
-      location.href = `/id${fullPath}`
+      location.href = `/${window.SELECTED_LANG || "id"}${fullPath}`
     }
     const win: any = window
     if (win.ga) {
@@ -59,7 +59,7 @@ export default Vue.extend({
       const { fullPath, params, name: string = "" } = to
       const { lang } = params
       if (!lang && !NOT_REDIRECT_LANG.includes(name)) {
-        router.push({ path: `/id${fullPath}` })
+        router.push({ path: `/${window.SELECTED_LANG || "id"}${fullPath}` })
       }
       const win: any = window
       if (win.ga) {

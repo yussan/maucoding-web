@@ -10,7 +10,7 @@
         .col-4_sm-12
           div(style="padding-top:10px")
             sidebar
-        .col-12(style='padding-bottom: 40px')
+        .col-12
           buttonBig(v-if="post.list.latest && post.list.latest.status === 200" style="width:calc(100% - 1em)" button_type='blue' to='/posts' text='More Posts')
 </template>
 
@@ -51,7 +51,11 @@ export default Vue.extend({
   },
 
   created() {
-    this.$store.dispatch(TYPES.GET_POSTS, { filter: "latest", limit: 8, draft: false })
+    this.$store.dispatch(TYPES.GET_POSTS, {
+      filter: "latest",
+      limit: 8,
+      draft: false
+    })
     this.$store.dispatch(TYPES.GET_POSTS, {
       filter: "featured",
       featured: true,

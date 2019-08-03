@@ -91,3 +91,13 @@ export const generateMetaUser = (req, res, next) => {
     }
   })
 }
+
+
+export const checkLanguage = (req, res, next) => {
+  const LANG = req.params.lang || "id"
+  if(!["en", "id"].includes(LANG)) {
+    return res.redirect(`/id${req.path().replace(`/${LANG}`,"")}`, next)
+  }
+
+  return next()
+}
