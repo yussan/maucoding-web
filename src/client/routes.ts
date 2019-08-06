@@ -71,15 +71,8 @@ export default [
       { path: "/:lang/static/:title", component: StaticDetail },
       { path: "/:lang/author/:username", props: true, component: Post },
       { path: "/:lang/post/:title", component: PostDetail },
-      { path: "/:lang/static/:title", component: StaticDetail }
+      { path: "/:lang/static/:title", component: StaticDetail },
+      { path: "*", component: Error }
     ]
-  },
-
-
-  // default page
-  {
-    path: "/:lang/*",
-    component: ErrorLayout,
-    children: [{ path: "*", component: Error }]
   }
 ]
