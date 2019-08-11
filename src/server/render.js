@@ -14,7 +14,7 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
       <meta data-vmid="description" data-vue-meta="true" name="description" content="${meta.desc ||
         MetaInfo.description}" />
       <meta data-vmid="keywords" data-vue-meta="true" name="keywords" content="${meta.keywords ||
-          "oopsreview,software review"}" />
+          "id more academy,software engineer,tutorial"}" />
       ${
         meta.title
           ? `
