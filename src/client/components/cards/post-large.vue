@@ -8,15 +8,17 @@
       .title.col-6
         router-link(:to="'/post/' + data.nospace_title + '-' + data._id")
           h2 {{ data.title }}
-        small by 
-          router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }}.
+        small
+          router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }}
+          | &nbsp;| 
+          router-link(:to="data.lang == 'id' ? '/id' : '/en' ") {{ data.lang == 'id' ? "Bahasa Indonesia" : "English" }}
 </template>
 
 <script lang="ts">
 import Vue from "vue"
 import BtnPlay from "../buttons/BtnVideoPlay.vue"
 
-Vue.component('BtnPlay', BtnPlay)
+Vue.component("BtnPlay", BtnPlay)
 
 export default Vue.extend({
   name: "card-post-large",
