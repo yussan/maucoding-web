@@ -49,15 +49,15 @@ export const generateMetaPost = (req, res, next) => {
             headline: json.title,
             alternativeHeadline: json.title,
             image: json.image.original,
-            genre: "software review,oopsreview,id more",
+            genre: "id more academy,software engineer,tutorial,development",
             keywords,
             wordcount: json.content.length,
             publisher: {
               "@type": "Organization",
-              name: "Oopsreview",
+              name: "Id More Academy",
               logo: {
                 "@type": "ImageObject",
-                url: "https://oopsreview.com/images/logo-wide-2.png",
+                url: "https://academy.byidmore.com/images/logo-wide-2.png",
                 height: "500",
                 width: "500"
               }
