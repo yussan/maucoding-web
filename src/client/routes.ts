@@ -6,7 +6,7 @@ import StaticDetail from "./containers/static/index.vue"
 
 import SuperLayout from "./layouts/super.vue"
 import DefaultLayout from "./layouts/default.vue"
-import ErrorLayout from "./layouts/error.vue"
+// import ErrorLayout from "./layouts/error.vue"
 
 export default [
   // public page

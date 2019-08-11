@@ -33,11 +33,44 @@ export const generateMetaPost = (req, res, next) => {
     id,
     callback: json => {
       if (json && json._id) {
+        const description = truncate(stripTags(json.content), 500, "...")
+        const keywords =  json.tags.toString()
+
         req.meta = {
           title: json.title,
-          desc: truncate(stripTags(json.content), 500, "..."),
+          desc: description,
           url: `https://academy.byidmore.com/post/${req.params.title}`,
-          image: json.image.original
+          image: json.image.original,
+          keywords,
+          jsonld : {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            description,
+            headline: json.title,
+            alternativeHeadline: json.title,
+            image: json.image.original,
+            genre: "software review,oopsreview,id more",
+            keywords,
+            wordcount: json.content.length,
+            publisher: {
+              "@type": "Organization",
+              name: "Oopsreview",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://oopsreview.com/images/logo-wide-2.png",
+                height: "500",
+                width: "500"
+              }
+            },
+            url: `https://academy.byidmore.com/post/${req.params.title}`,
+            datePublished: new Date(json.created_on * 1000).toISOString(),
+            dateCreated: new Date(json.created_on * 1000).toISOString(),
+            dateModified: new Date(json.updated_on * 1000).toISOString(),
+            author: {
+              "@type": "Person",
+              name: json.author.fullname || json.author.username
+            }
+          }
         }
 
         req.html = `
