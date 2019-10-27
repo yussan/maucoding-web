@@ -38,7 +38,9 @@ var updatePost = exports.updatePost = function updatePost(req, res) {
       draft = _req$body$draft === undefined ? false : _req$body$draft,
       image = _req$body.image,
       _req$body$video = _req$body.video,
-      video = _req$body$video === undefined ? '' : _req$body$video;
+      video = _req$body$video === undefined ? "" : _req$body$video,
+      _req$body$lang = _req$body.lang,
+      lang = _req$body$lang === undefined ? "en" : _req$body$lang;
 
   var currentTime = Math.round(new Date().getTime() / 1000);
   var _id = (0, _mongodb.ObjectId)(req.params.id);
@@ -46,14 +48,18 @@ var updatePost = exports.updatePost = function updatePost(req, res) {
     title: title,
     content: content,
     tags: tags,
-    draft: Boolean(draft == 'true' || draft == true),
+    draft: Boolean(draft == "true" || draft == true),
     updated_on: currentTime,
-    video: video
+    video: video,
+    lang: lang
   };
 
   if (image) postdata.image = image;
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref) {
+    var db = _ref.db,
+        client = _ref.client;
+
     // is post available
     db.collection("posts").aggregate([{
       $match: { _id: _id }
@@ -72,8 +78,12 @@ var updatePost = exports.updatePost = function updatePost(req, res) {
         // update data on mongo
         db.collection("posts").update({ _id: _id }, { $set: postdata });
 
+        client.close();
+
         res.send(201, (0, _response2.default)(201, "Post Updated"));
       } else {
+        client.close();
+
         // post not available
         res.send(204, (0, _response2.default)(204, "Post not found"));
       }
@@ -81,16 +91,19 @@ var updatePost = exports.updatePost = function updatePost(req, res) {
   });
 };
 
-var detailPost = exports.detailPost = function detailPost(req, res, _ref) {
-  var id = _ref.id,
-      callback = _ref.callback;
+var detailPost = exports.detailPost = function detailPost(req, res, _ref2) {
+  var id = _ref2.id,
+      callback = _ref2.callback;
 
   if (id.length != 24) {
     if (req.no_count) return callback();
     return res.send(200, (0, _response2.default)(204, "post not found"));
   }
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref3) {
+    var db = _ref3.db,
+        client = _ref3.client;
+
     db.collection("posts").aggregate([{
       $match: { _id: (0, _mongodb.ObjectId)(id) }
     }, {
@@ -125,7 +138,14 @@ var detailPost = exports.detailPost = function detailPost(req, res, _ref) {
       result.author = author;
 
       // update: increment views
-      if (!req.no_count) db.collection("posts").update({ _id: (0, _mongodb.ObjectId)(result._id) }, { $set: { views: result.views + 1 } });
+      if (!req.no_count) {
+        db.collection("posts").update({ _id: (0, _mongodb.ObjectId)(result._id) }, { $set: { views: result.views + 1 } });
+
+        client.close();
+      } else {
+        client.close();
+      }
+
       return callback(result);
     });
   });

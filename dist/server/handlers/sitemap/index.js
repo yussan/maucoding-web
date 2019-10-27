@@ -31,11 +31,17 @@ function getSitemapTags(req, res) {
     }
   });
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref) {
+    var db = _ref.db,
+        client = _ref.client;
+
     db.collection("tags").aggregate(aggregate).toArray(function (err, result) {
       if (err) {
         res.end("error get sitemap");
       } else {
+
+        client.close();
+
         // generate xml
         result.map(function (n) {
           items += "\n            <url>\n              <loc>https://academy.byidmore.com/tag/" + n.tag.toLowerCase() + "</loc>\n              <lastmod>2018-08-09</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
@@ -62,11 +68,17 @@ function getSitemapUsers(req, res) {
     }
   });
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref2) {
+    var db = _ref2.db,
+        client = _ref2.client;
+
     db.collection("users").aggregate(aggregate).toArray(function (err, result) {
       if (err) {
         res.end("error get sitemap");
       } else {
+
+        client.close();
+
         // generate xml
         result.map(function (n) {
           items += "\n            <url>\n              <loc>https://academy.byidmore.com/author/" + n.username.toLowerCase() + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
@@ -93,11 +105,17 @@ function getSitemapPosts(req, res) {
     }
   });
 
-  (0, _mongo2.default)().then(function (db) {
+  (0, _mongo2.default)().then(function (_ref3) {
+    var db = _ref3.db,
+        client = _ref3.client;
+
     db.collection("posts").aggregate(aggregate).toArray(function (err, result) {
       if (err) {
         res.end("error get sitemap");
       } else {
+
+        client.close();
+
         // generate xml
         result.map(function (n) {
           items += "\n            <url>\n              <loc>https://academy.byidmore.com/post/" + n.title.replace(/ /g, '-').toLowerCase() + "-" + n._id + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";

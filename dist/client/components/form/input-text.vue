@@ -87,17 +87,10 @@ export default Vue.extend({
 @import '../../../design/sass/color'
 
 .form-input
-  &.error 
-    input 
-      border: 1px solid $color-red-main
-  label 
-    cursor: pointer
   input
     padding: .5em
     font-size: 1.5em
     width: -webkit-fill-available
     margin-bottom: .3em
     border: 1px solid $color-gray-soft
-  .form-input-description 
-    color: $color-gray-soft
 </style>

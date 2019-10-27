@@ -73,23 +73,43 @@ if (NODE_ENV == "development") {
 // render vuejs
 server.get(/\/super\/*/, _authMiddleware2.default, _render2.default);
 
-server.get("/posts", frontMiddleware.generateMetaPostList, _render2.default);
-server.get("/tag/:tag", frontMiddleware.generateMetaPostList, _render2.default);
-server.get("/post/:title", frontMiddleware.generateMetaPost, _render2.default);
-server.get("/author/:username", frontMiddleware.generateMetaUser, _render2.default);
+server.get("/posts", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPostList, _render2.default);
+server.get("/tag/:tag", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPostList, _render2.default);
+server.get("/post/:title", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPost, _render2.default);
+server.get("/author/:username", frontMiddleware.checkLanguage, frontMiddleware.generateMetaUser, _render2.default);
 
-// serve static file from public directory
+server.get("/:lang/posts", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPostList, _render2.default);
+server.get("/:lang/tag/:tag", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPostList, _render2.default);
+server.get("/:lang/post/:title", frontMiddleware.checkLanguage, frontMiddleware.generateMetaPost, _render2.default);
+server.get("/:lang/author/:username", frontMiddleware.checkLanguage, frontMiddleware.generateMetaUser, _render2.default);
+
 server.get(/\/build\/*/, _restify2.default.plugins.serveStatic({
   directory: __dirname + "/../../public",
   maxAge: 0
 }));
+
+server.get("/manifest.json", _restify2.default.plugins.serveStatic({
+  directory: __dirname + "/../../public",
+  maxAge: 0
+}));
+server.get("/favicon.ico", _restify2.default.plugins.serveStatic({
+  directory: __dirname + "/../../public",
+  maxAge: 0
+}));
+server.get("/robots.txt", _restify2.default.plugins.serveStatic({
+  directory: __dirname + "/../../public",
+  maxAge: 0
+}));
+
+server.get("/:lang", frontMiddleware.checkLanguage, _render2.default);
+server.get(/\/:lang\/*/, frontMiddleware.checkLanguage, _render2.default);
+
 server.get(/\/?.*\//, _restify2.default.plugins.serveStatic({
   directory: __dirname + "/../../public",
   maxAge: 0
 }));
 
-// render vuejs
-
+// server.get("/:lang/*", render)
 server.on("NotFound", _render2.default);
 // server.on("NotFound", (req, res) => {
 //   renderVue({ url: req.url }).then(app => {

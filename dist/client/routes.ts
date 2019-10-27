@@ -6,7 +6,7 @@ import StaticDetail from "./containers/static/index.vue"
 
 import SuperLayout from "./layouts/super.vue"
 import DefaultLayout from "./layouts/default.vue"
-import ErrorLayout from "./layouts/error.vue"
+// import ErrorLayout from "./layouts/error.vue"
 
 export default [
   // public page
@@ -16,28 +16,33 @@ export default [
     children: [
       { path: "/", component: Home },
       { path: "/posts", component: Post },
-      { path: "/search", name: "search", component: Post },
+      { path: "/search", component: Post },
       { path: "/tag/:tag_name", props: true, component: Post },
       { path: "/author/:username", props: true, component: Post },
-      { path: "/post/:title", name: "post_detail", component: PostDetail },
-      { path: "/static/:title", name: "static_detail", component: StaticDetail }
+      { path: "/post/:title", component: PostDetail },
+      { path: "/static/:title", component: StaticDetail },
+      { path: "/super", name: "super_login", component: () => import("./containers/auth/index.vue") }
     ]
   },
+
+  // super routes
   // super page auth
+  // {
+  //   path: "/",
+  //   component: DefaultLayout,
+  //   children: [
+  //     { path: "/super", name: "super_post", component: () => import("./containers/auth/index.vue") }
+  //   ]
+  // },
+
+  // super
   {
-    path: "/super",
-    component: DefaultLayout,
-    children: [
-      { path: "/", component: () => import("./containers/auth/index.vue") }
-    ]
-  },
-  {
-    path: "/super",
+    path: "/super/*",
     component: SuperLayout,
     children: [
       {
         path: "/super/posts/new",
-        name: "new_post",
+        name: "super_new_post",
         component: () => import("./containers/_super/post/form.vue")
       },
       {
@@ -47,16 +52,27 @@ export default [
       },
       {
         path: "/super/post/:id",
-        props: true,
         name: "super_post_detail",
+        props: true,
         component: () => import("./containers/_super/post/form.vue")
       }
     ]
   },
-  // default page
+
+  // lang routes
   {
-    path: "*",
-    component: ErrorLayout,
-    children: [{ path: "*", component: Error }]
+    path: "/:lang",
+    component: DefaultLayout,
+    children: [
+      { path: "/:lang", component: Home },
+      { path: "/:lang/posts", component: Post },
+      { path: "/:lang/search", component: Post },
+      { path: "/:lang/tag/:tag_name", props: true, component: Post },
+      { path: "/:lang/static/:title", component: StaticDetail },
+      { path: "/:lang/author/:username", props: true, component: Post },
+      { path: "/:lang/post/:title", component: PostDetail },
+      { path: "/:lang/static/:title", component: StaticDetail },
+      { path: "*", component: Error }
+    ]
   }
 ]

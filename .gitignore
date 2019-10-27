@@ -61,3 +61,5 @@ typings/
 .next
 public/build
 package-lock.json
+
+dist

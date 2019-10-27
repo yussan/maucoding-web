@@ -3,7 +3,8 @@
     top-navbar
     navbar(:keyword='$route.query.q || \'\'')
     router-view
-    bottom-navbar
+    thanks-to
+    bottom-navbar(:route='$route')
     toast
 </template>
 
@@ -13,33 +14,57 @@ import navbar from "../components/navbar.vue"
 import header from "../components/headers/header.vue"
 import footer from "../components/footer.vue"
 import toast from "../components/toast.vue"
+import thanksTo from "../components/boxs/thanks-to.vue"
+import { router } from "../index"
 import { objToQuery } from "string-manager"
 
 Vue.component("navbar", navbar)
 Vue.component("top-navbar", header)
 Vue.component("bottom-navbar", footer)
 Vue.component("toast", toast)
+Vue.component("thanks-to", thanksTo)
 
 interface ToInterface {
   path: string
+  fullpath: string
   query: object
 }
 
+let NOT_REDIRECT_LANG: Array<String>
+NOT_REDIRECT_LANG = [
+  "super_login",
+  "super_new_post",
+  "super_post",
+  "super_post_detail"
+]
+
 export default Vue.extend({
   name: "layout-default",
+
+  mounted() {
+    const { fullPath, params} = this.$route
+    const { lang } = params
+    if (!lang && !NOT_REDIRECT_LANG.includes(this.$route.name || "")) {
+      location.href = `/${window.SELECTED_LANG || "id"}${fullPath}`
+    }
+    const win: any = window
+    if (win.ga) {
+      // ref : https://developers.google.com/analytics/devguides/collection/gajs/
+      win.ga("send", "pageview", fullPath)
+    }
+  },
+
   watch: {
     $route(to: any) {
-      const { path, query }: ToInterface = to
-      let querystring = ""
-      if (Object.keys(query).length > 0) {
-        querystring += `?${objToQuery(query)}`
+      const { fullPath, params, name: string = "" } = to
+      const { lang } = params
+      if (!lang && !NOT_REDIRECT_LANG.includes(name)) {
+        router.push({ path: `/${window.SELECTED_LANG || "id"}${fullPath}` })
       }
-      const url = path + querystring
       const win: any = window
       if (win.ga) {
-        console.log("send ga")
         // ref : https://developers.google.com/analytics/devguides/collection/gajs/
-        win.ga("send", "pageview", url)
+        win.ga("send", "pageview", to.fullPath)
       }
     }
   }
