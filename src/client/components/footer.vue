@@ -26,11 +26,13 @@
             strong 
               a(href="/en" v-bind:class="{active: this.selected_lang == 'en'}") EN
           .link-social
-            a(href="https://facebook.com/oopsreview" target="_blank")
+            a(href="https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA" target="_blank" rel="noopener noreferrer")
+              span.icono-youtube
+            a(href="https://facebook.com/oopsreview" target="_blank" rel="noopener noreferrer")
               span.icono-facebook
-            a(href="https://twitter.com/oopsreview" target="_blank")
+            a(href="https://twitter.com/oopsreview" target="_blank" rel="noopener noreferrer")
               span.icono-twitter 
-            a(href="https://academy.byidmore.com/feed" target="_blank")
+            a(href="https://academy.byidmore.com/feed" target="_blank" rel="noopener noreferrer")
               span.icono-rss 
 
     // go to top button
