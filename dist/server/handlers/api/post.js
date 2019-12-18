@@ -196,7 +196,9 @@ function create(req, res) {
       _req$body$draft = _req$body.draft,
       draft = _req$body$draft === undefined ? false : _req$body$draft,
       _req$body$video = _req$body.video,
-      video = _req$body$video === undefined ? "" : _req$body$video;
+      video = _req$body$video === undefined ? "" : _req$body$video,
+      _req$body$lang = _req$body.lang,
+      lang = _req$body$lang === undefined ? "en" : _req$body$lang;
 
   var _ref3 = req.files || {},
       image = _ref3.image;
@@ -229,7 +231,8 @@ function create(req, res) {
         updated_on: currentTime,
         draft: Boolean(draft == "true" || draft == true),
         user_id: (0, _mongodb.ObjectId)(user_id),
-        video: video
+        video: video,
+        lang: lang
       };
 
       (0, _mongo2.default)().then(function (_ref4) {

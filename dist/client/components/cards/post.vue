@@ -8,6 +8,9 @@
       router-link(:to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
       .meta 
+        .lang
+          | Posted in  
+          router-link(:to="data.lang == 'id' ? '/id' : '/en'") {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
         | By  
         router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
         | | 
@@ -23,7 +26,7 @@ import Vue from "vue"
 import BtnPlay from "../buttons/BtnVideoPlay.vue"
 import { epochToRelative } from "../../modules/datetime"
 
-Vue.component('BtnPlay', BtnPlay)
+Vue.component("BtnPlay", BtnPlay)
 
 export default Vue.extend({
   props: ["data"],

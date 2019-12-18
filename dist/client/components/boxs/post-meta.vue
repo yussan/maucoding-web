@@ -19,8 +19,12 @@
       span.stats-item(v-if="typeof data.tags === 'object' && data.tags.length > 0")
         span.icono-tag 
         span(v-for="item, key in data.tags" :key="key") 
-          router-link(:to="'/tag/' + item" ) {{ item }}
+          router-link(to="'/tag/' + item" ) {{ item }}
           | {{ key < data.tags.length -1 ? ', ' : ''  }}
+      span.stats-item
+        router-link(:to="data.lang == 'id' ? '/id' : '/en'")
+          span.icono-flag 
+          | {{ data.lang == 'id' ? 'Bahasa Indonesia' : 'English' }}
 
 </template>
 

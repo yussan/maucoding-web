@@ -38,7 +38,9 @@ var updatePost = exports.updatePost = function updatePost(req, res) {
       draft = _req$body$draft === undefined ? false : _req$body$draft,
       image = _req$body.image,
       _req$body$video = _req$body.video,
-      video = _req$body$video === undefined ? "" : _req$body$video;
+      video = _req$body$video === undefined ? "" : _req$body$video,
+      _req$body$lang = _req$body.lang,
+      lang = _req$body$lang === undefined ? "en" : _req$body$lang;
 
   var currentTime = Math.round(new Date().getTime() / 1000);
   var _id = (0, _mongodb.ObjectId)(req.params.id);
@@ -48,7 +50,8 @@ var updatePost = exports.updatePost = function updatePost(req, res) {
     tags: tags,
     draft: Boolean(draft == "true" || draft == true),
     updated_on: currentTime,
-    video: video
+    video: video,
+    lang: lang
   };
 
   if (image) postdata.image = image;

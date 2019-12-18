@@ -3,7 +3,7 @@
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-exports.generateMetaUser = exports.generateMetaPost = exports.generateMetaPostList = undefined;
+exports.checkLanguage = exports.generateMetaUser = exports.generateMetaPost = exports.generateMetaPostList = undefined;
 
 var _post = require("../modules/post");
 
@@ -44,11 +44,44 @@ var generateMetaPost = exports.generateMetaPost = function generateMetaPost(req,
     id: id,
     callback: function callback(json) {
       if (json && json._id) {
+        var description = (0, _truncate.truncate)((0, _html.stripTags)(json.content), 500, "...");
+        var keywords = json.tags.toString();
+
         req.meta = {
           title: json.title,
-          desc: (0, _truncate.truncate)((0, _html.stripTags)(json.content), 500, "..."),
+          desc: description,
           url: "https://academy.byidmore.com/post/" + req.params.title,
-          image: json.image.original
+          image: json.image.original,
+          keywords: keywords,
+          jsonld: {
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            description: description,
+            headline: json.title,
+            alternativeHeadline: json.title,
+            image: json.image.original,
+            genre: "id more academy,software engineer,tutorial,development",
+            keywords: keywords,
+            wordcount: json.content.length,
+            publisher: {
+              "@type": "Organization",
+              name: "Id More Academy",
+              logo: {
+                "@type": "ImageObject",
+                url: "https://academy.byidmore.com/images/logo-wide-2.png",
+                height: "500",
+                width: "500"
+              }
+            },
+            url: "https://academy.byidmore.com/post/" + req.params.title,
+            datePublished: new Date(json.created_on * 1000).toISOString(),
+            dateCreated: new Date(json.created_on * 1000).toISOString(),
+            dateModified: new Date(json.updated_on * 1000).toISOString(),
+            author: {
+              "@type": "Person",
+              name: json.author.fullname || json.author.username
+            }
+          }
         };
 
         req.html = "\n          <div class=\"post-detail\">\n            <h1>" + json.title + "</h1>\n            <figure>\n              <img src=\"" + json.image.original + "\" alt=\"" + json.title + "\" />\n            </figure>\n            <article>\n              " + json.content + "\n            </article>\n          </div>        \n        ";
@@ -86,4 +119,13 @@ var generateMetaUser = exports.generateMetaUser = function generateMetaUser(req,
       return next();
     }
   });
+};
+
+var checkLanguage = exports.checkLanguage = function checkLanguage(req, res, next) {
+  var LANG = req.params.lang;
+  if (!["en", "id"].includes(LANG)) {
+    return res.redirect("/id" + req.path().replace("/" + LANG, ""), next);
+  }
+
+  return next();
 };
