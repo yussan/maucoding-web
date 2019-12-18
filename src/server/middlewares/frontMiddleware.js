@@ -2,19 +2,24 @@ import * as postModule from "../modules/post"
 import * as userModule from "../modules/user"
 import { stripTags } from "string-manager/dist/modules/html"
 import { truncate } from "string-manager/dist/modules/truncate"
+import { encString, decString } from "../modules/password"
+import * as cookies from "../modules/cookies"
+
+const AVAILABLE_LANG = ["id", "en"]
 
 export const generateMetaPostList = (req, res, next) => {
   let title = "Post"
 
-  if(req.params.tag) title = `${title} by tag ${req.params.tag}`
+  if (req.params.tag) title = `${title} by tag ${req.params.tag}`
 
   req.meta = {
     title,
     desc: `${title} on Id More Academy`,
     url: `https://oopsreview.com/${req.originalUrl}`,
-    image: "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
-  } 
-  
+    image:
+      "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
+  }
+
   req.html = `
     <div class="post-list">
       <h1>${title}</h1>
@@ -34,7 +39,7 @@ export const generateMetaPost = (req, res, next) => {
     callback: json => {
       if (json && json._id) {
         const description = truncate(stripTags(json.content), 500, "...")
-        const keywords =  json.tags.toString()
+        const keywords = json.tags.toString()
 
         req.meta = {
           title: json.title,
@@ -42,7 +47,7 @@ export const generateMetaPost = (req, res, next) => {
           url: `https://academy.byidmore.com/post/${req.params.title}`,
           image: json.image.original,
           keywords,
-          jsonld : {
+          jsonld: {
             "@context": "https://schema.org",
             "@type": "BlogPosting",
             description,
@@ -125,12 +130,27 @@ export const generateMetaUser = (req, res, next) => {
   })
 }
 
-
 export const checkLanguage = (req, res, next) => {
-  const LANG = req.params.lang
-  if(!["en", "id"].includes(LANG)) {
-    return res.redirect(`/id${req.path().replace(`/${LANG}`,"")}`, next)
-  }
+  // get lang from url
+  const params_lang = req.params.lang
+  // get lang from session
+  const session_lang = req.cookies.idmoreacademy_lang_session
 
-  return next()
+  if (!AVAILABLE_LANG.includes(params_lang)) {
+    const new_lang = session_lang || "id"
+
+    // set new cookies of lang
+    cookies.set(req, res, "idmoreacademy_lang_session", new_lang)
+
+    // redirect to select lang
+    return res.redirect(
+      `/${new_lang}${req.path()}`.replace(`/${params_lang}`, ""),
+      next
+    )
+  } else {
+    // set new cookies of lang
+    cookies.set(req, res, "idmoreacademy_lang_session", params_lang)
+    return next()
+  }
+  
 }
