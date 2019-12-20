@@ -1,11 +1,11 @@
 <template lang="pug">
-  .col-8_sm-12.card-post-popular(v-if="typeof data !== 'undefined'")
+  .col-8_sm-12.card-post-popular.card-post-popular--large(v-if="typeof data !== 'undefined'")
     .grid
-      .thumb.col-6
+      .thumb.col-6_sm-12
         router-link.link-thumb(:to="'/post/' + data.nospace_title + '-' + data._id")
           .thumb-image(:style="`background-image:url(${data.image[600]})`")
             BtnPlay(size="big" v-if="data.video")
-      .title.col-6
+      .title.col-6_sm-12
         router-link(:to="'/post/' + data.nospace_title + '-' + data._id")
           h2 {{ data.title }}
         small

@@ -5,10 +5,10 @@
         BtnPlay(v-if="data.video")
         img(:src="data.image.small" :alt="data.title")
     .title
-      router-link(:to="'/post/' + data.nospace_title + '-' + data._id")
+      router-link.p-b-10(style="display:block" :to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
       .meta 
-        .lang
+        .lang.p-b-10
           | Posted in  
           router-link(:to="data.lang == 'id' ? '/id' : '/en'") {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
         | By  
@@ -55,6 +55,7 @@ export default Vue.extend({
       img 
         width: 200px
     .title 
+      line-height: 1.5
       padding: .9em 0 0 .9em
       text-transform: uppercase
       text-decoration: none
@@ -68,4 +69,13 @@ export default Vue.extend({
           font-size: 1em
           color: $color-gray-medium
         color: $color-gray-medium
+
+
+  // responsiveness
+  @media screen and (max-width: 600px)
+    .card-post 
+      display: block
+      .thumb
+        img 
+          width: 100%
 </style>

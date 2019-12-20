@@ -58,16 +58,9 @@
         br
 
         //- input post tags
-        input-text(
-          name='tags'
-          type='text'
-          label="Tags"
-          description="Tags are used for group posts based on content"
-          placeholder= ""
-          :data='formdata'
-          :validation='formvalidate'
-          :onchange='changeTextHandler'
-        )
+        div(style="margin-bottom:50px")
+          label(style="margin-bottom: 10px;display: block") Post Tags
+          input-tags(name="tags" v-model="formdata.tags")
 
         //- buttons to submit
         div(style='padding:1em 0')
@@ -103,6 +96,7 @@ import { validation } from "../../../modules/form"
 import * as TYPES from "../../../vuex/types"
 import { mapState } from "vuex"
 import { router } from "../../../index"
+import inputTags from "vue-input-tag"
 
 Vue.component("header-tag", header)
 Vue.component("input-text", inputText)
@@ -110,6 +104,7 @@ Vue.component("input-file", inputFile)
 Vue.component("oops-button", button)
 Vue.component("input-select", select)
 Vue.component("tinymce-editor", tinyMceEditor)
+Vue.component("input-tags", inputTags)
 
 const rules = {
   title: "required",
@@ -306,4 +301,22 @@ a.editor-tab
     background: $color-blue-main
   &:hover 
     background: $color-blue-dark
+
+.vue-input-tag-wrapper
+  padding: 0 .5em .5em !important
+  margin-bottom: .3em !important
+  border: 1px solid $color-gray-soft !important
+  span.input-tag
+    font-size: 1.5em !important
+    border: 1px solid $color-gray-verysoft !important
+    background-color: $color-gray-verysoft !important
+    padding: .2em .5em !important
+    color: $color-gray-dark !important
+    margin: .4em .5rem 0 0 !important
+    a.remove
+      color: $color-gray-soft !important
+  .new-tag
+    font-size: 1.5rem !important
+    padding: .2em .5em !important
+    margin: .4em .5rem 0 0 !important
 </style>
