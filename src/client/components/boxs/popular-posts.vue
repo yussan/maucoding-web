@@ -106,5 +106,8 @@ export default Vue.extend({
       &.col-8_sm-12 
         h2
           font-size: .7em
+      &.card-post-popular--large
+        .thumb-image
+          height: 220px
 
 </style>
