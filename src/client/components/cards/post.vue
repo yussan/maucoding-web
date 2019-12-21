@@ -3,7 +3,7 @@
     .thumb
       router-link.link-thumb(:to="'/post/' + data.nospace_title + '-' + data._id")
         BtnPlay(v-if="data.video")
-        img(:src="data.image.600" :alt="data.title")
+        img(:src="data.image['600']" :alt="data.title")
     .title
       router-link.p-b-10(style="display:block" :to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
