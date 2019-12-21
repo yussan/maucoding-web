@@ -3,7 +3,7 @@
     .thumb
       router-link.link-thumb(:to="'/post/' + data.nospace_title + '-' + data._id")
         BtnPlay(v-if="data.video")
-        img(:src="data.image.small" :alt="data.title")
+        img(:src="data.image.600" :alt="data.title")
     .title
       router-link.p-b-10(style="display:block" :to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
@@ -53,18 +53,18 @@ export default Vue.extend({
       position: relative
     .thumb
       img 
-        width: 200px
+        width: 300px
     .title 
       line-height: 1.5
-      padding: .9em 0 0 .9em
+      padding: 1em
       text-transform: uppercase
       text-decoration: none
       a
-        font-size: 1.1em
+        font-size: 1.5em
         font-weight: bold
         color: $color-black-medium
       .meta 
-        font-size: .8em
+        font-size: 1em
         a 
           font-size: 1em
           color: $color-gray-medium

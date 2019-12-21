@@ -13,7 +13,7 @@
             a(href='https://docs.google.com/forms/d/e/1FAIpQLSeByAgx7GNG3YyH3vgAupKymlwfJ6mNNaGCQN0ZkG1KC8636A/viewform' target="_blank") Contact Us
           p
             strong Id More Academy 
-            | More things available
+            | Tech from Engineer Perspective by Id More Team
             br 
             | Powered by 
             a(href='https://byidmore.com' target='_blank') Id More
@@ -97,6 +97,8 @@ export default Vue.extend({
     background-color: $color-black-main
     color: $color-gray-soft
     font-weight: 300
+    line-height: 1.3
+
     a 
       color: $color-gray-soft
       &:hover

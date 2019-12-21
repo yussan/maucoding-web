@@ -10,6 +10,7 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
       <title>${
         meta.title ? `${meta.title} - Id More Academy` : MetaInfo.title
       }</title>
+      <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
       <meta data-vmid="description" data-vue-meta="true" name="description" content="${meta.desc ||
         MetaInfo.description}" />
