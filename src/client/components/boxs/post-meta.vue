@@ -103,7 +103,7 @@ export default Vue.extend({
   .avatar-text 
     padding: 5px 0
   .stats 
-    padding: 10px 0
+    padding: 15px 0 10px
     .stats-item 
       margin-right: 5px
 </style>

@@ -12,5 +12,8 @@ export default Vue.extend({
 
 
 <style lang="sass" scoped>
-
+.section-title
+  text-transform: uppercase
+  font-size: 2.5em
+  letter-spacing: 1.5px
 </style>

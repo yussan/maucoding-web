@@ -5,8 +5,15 @@
       .grid 
         .col-8_sm-12
           div(style='padding-top: .5em')
+
+          //- latest videos
+          //- section-title(title="Lattest Videos")
+          //- end of latest videos
+
+          //- latest post
           section-title(title="Lattest Post")
           box-post(:data='post.list.latest || {}') 
+          //- end of latest post
         .col-4_sm-12
           div(style="padding-top:10px")
             sidebar

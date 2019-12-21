@@ -53,18 +53,18 @@ export default Vue.extend({
       position: relative
     .thumb
       img 
-        width: 200px
+        width: 300px
     .title 
       line-height: 1.5
-      padding: .9em 0 0 .9em
+      padding: 1em
       text-transform: uppercase
       text-decoration: none
       a
-        font-size: 1.1em
+        font-size: 1.5em
         font-weight: bold
         color: $color-black-medium
       .meta 
-        font-size: .8em
+        font-size: 1em
         a 
           font-size: 1em
           color: $color-gray-medium

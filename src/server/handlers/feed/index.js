@@ -82,7 +82,7 @@ function xmlFeedWrapper(items = "", update_date = 0) {
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>Id More Academy Feed</title>
-      <description>More things available</description>
+      <description>Tech from Engineer Perspective by Id More Team</description>
       <link>https://academy.byidmore.com</link>
       <category domain="https://academy.byidmore.com">computers/software/internet/development/engineer</category>
       <copyright>Copyright 2017-2018 Id More Team.</copyright>
@@ -94,7 +94,7 @@ function xmlFeedWrapper(items = "", update_date = 0) {
         <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538876985/idmore-academy/Patreon_Cover.png</url>
         <title>Id More Academy Feed</title>
         <link>https://academy.byidmore.com</link>
-        <description>More things available</description>
+        <description>Tech from Engineer Perspective by Id More Team</description>
         <width>60</width>
         <height>60</height>
       </image>
