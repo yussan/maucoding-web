@@ -2,6 +2,7 @@
   div 
     popular-box(:data='post.list.featured || {}')
     .container.bg-white 
+      .m-b-50
       .grid 
         .col-8_sm-12
           div(style='padding-top: .5em')
@@ -11,7 +12,7 @@
           //- end of latest videos
 
           //- latest post
-          section-title(title="Lattest Post")
+          section-title(title="Lattest Post" :style="'margin-top: 0 !important'")
           box-post(:data='post.list.latest || {}') 
           //- end of latest post
         .col-4_sm-12

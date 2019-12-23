@@ -1,12 +1,12 @@
 <template lang="pug">
-  h2.section-title {{ title }}
+  h2.section-title(:style="style") {{ title }}
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
 export default Vue.extend({
   name: "section-title",
-  props:["title"]
+  props:["title", "style"]
 })
 </script>
 

@@ -8,9 +8,6 @@
       router-link.p-b-10(style="display:block" :to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
       .meta 
-        .lang.p-b-10
-          | Posted in  
-          router-link(:to="data.lang == 'id' ? '/id' : '/en'") {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
         | By  
         router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
         | | 
@@ -19,6 +16,8 @@
         | {{ data.views || 0 }} Views
         | | 
         | {{ data.comments || 0 }} Comments
+        | | 
+        | {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
 </template>
 
 <script lang="ts">
