@@ -156,15 +156,31 @@ export default Vue.extend({
     }
   },
 
-  beforeRouteUpdate(to, from, next) {
-    // request post detail
-    const title_arr = to.params.title.split("-")
-    const id = title_arr[title_arr.length - 1]
-    this.fetchPostDetail(id)
-    this.fetchPostRelated(id)
-    this.link = `/post/${to.params.title}`
+  // beforeRouteUpdate(to, from, next) {
+  //   // request post detail
+  //   const title_arr = to.params.title.split("-")
+  //   const id = title_arr[title_arr.length - 1]
+  //   this.fetchPostDetail(id)
+  //   this.fetchPostRelated(id)
+  //   this.link = `/post/${to.params.title}`
 
-    next()
+  //   next()
+  // },
+
+  watch: {
+    $route() {
+      const { title } = this.$route.params
+      if (title != this.title) {
+        this.title = title
+        this.link = `/post/${title}`
+
+        // request data
+        const title_arr = this.$route.params.title.split("-")
+        const id = title_arr[title_arr.length - 1]
+        this.fetchPostDetail(id)
+        this.fetchPostRelated(id)
+      }
+    }
   },
 
   computed: {
