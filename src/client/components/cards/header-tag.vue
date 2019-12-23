@@ -28,7 +28,7 @@ export default Vue.extend({
 @import '../../../design/sass/color'
 
 .header-tag 
-  padding: 2em 1em
+  padding: 2em 0
   background-size: cover
   h1 
     font-size: 3em 

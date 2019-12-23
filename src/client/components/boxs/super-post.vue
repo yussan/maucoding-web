@@ -13,7 +13,7 @@
 import Vue from 'vue'
 import rowSuperPost from '../rows/super-post.vue'
 import textinfo from '../cards/text-info.vue'
-import loading from '../cards/loading.vue'
+import loading from '../loaders/index.vue'
 
 Vue.component('row-super-post', rowSuperPost)
 Vue.component('loading', loading)
