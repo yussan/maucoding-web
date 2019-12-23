@@ -8,7 +8,7 @@
       router-link(:to="'/post/' + data.nospace_title + '-' + data._id")
         h2 {{ data.title }}
       small 
-        router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }}
+        router-link(:to="'/author/' + data.author.username") {{ data.author.username }}
         | &nbsp;|  
         router-link(:to="data.lang == 'id' ? '/id' : '/en' ") {{ data.lang == 'id' ? "Bahasa Indonesia" : "English" }}
 </template>

@@ -2,7 +2,7 @@
 div
   top-navbar
   .grid(style="border-top: 7px solid #F4F4F4") 
-    .col-2_sm-12
+    .col-2_sm-12(style="padding-top:60px")
       super-sidebar
     .col-10_sm-12.bg-white
       router-view

@@ -8,9 +8,7 @@
       router-link.p-b-10(style="display:block" :to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
       .meta 
-        | By  
-        router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
-        | | 
+        //- router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
         | {{ epochToRelative(data.created_on || 0) }}
         | | 
         | {{ data.views || 0 }} Views
@@ -18,6 +16,10 @@
         | {{ data.comments || 0 }} Comments
         | | 
         | {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
+      .avatar
+        router-link(:to="'/author/' + data.author.username") 
+          img(:src="data.author.avatar.small") 
+          span.text {{ data.author.username }}
 </template>
 
 <script lang="ts">
@@ -56,7 +58,7 @@ export default Vue.extend({
     .title 
       line-height: 1.5
       padding: 1em
-      text-transform: uppercase
+      text-transform: capitalize
       text-decoration: none
       a
         font-size: 1.5em
@@ -68,7 +70,20 @@ export default Vue.extend({
           font-size: 1em
           color: $color-gray-medium
         color: $color-gray-medium
-
+      .avatar
+        margin-top: 20px
+        img
+          width: 20px
+          height: 20px
+          border-radius: 100%
+          float: left
+        span.text
+          font-size: 14px
+          font-weight: initial
+          color: gray
+          margin-left: 8px
+          margin-top: 0
+          float: left
 
   // responsiveness
   @media screen and (max-width: 600px)

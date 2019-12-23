@@ -70,8 +70,7 @@ export default Vue.extend({
 @import '../../../design/sass/color'
 .row-post
   position: relative
-  padding-left: 1.5em
-  padding-bottom: 1em
+  padding-bottom: 2em
   border-bottom: 1px solid $color-gray-verysoft
   &:last-child 
     border-bottom: none
