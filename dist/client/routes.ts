@@ -31,7 +31,7 @@ export default [
   //   path: "/",
   //   component: DefaultLayout,
   //   children: [
-  //     { path: "/super", name: "super_post", component: () => import("./containers/auth/index.vue") }
+  //     { path: "/super", name: "super_post", component: () => import("./pages/auth/index.vue") }
   //   ]
   // },
 

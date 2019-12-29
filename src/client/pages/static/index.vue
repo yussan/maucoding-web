@@ -21,7 +21,7 @@ import { epochToRelative } from "../../modules/datetime"
 import { truncate, toCamelCase, stripTags } from "string-manager"
 
 // components
-import ErrorContainer from "../../containers/error/index.vue"
+import ErrorContainer from "../error/index.vue"
 
 Vue.component("error-box", ErrorContainer)
 

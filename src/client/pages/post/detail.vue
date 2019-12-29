@@ -60,7 +60,7 @@ import { epochToRelative } from "../../modules/datetime"
 import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
 import post from "../../components/boxs/post.vue"
-import ErrorBox from "../../containers/error/index.vue"
+import ErrorBox from "../error/index.vue"
 import Loader from "../../components/loaders/index.vue"
 
 Vue.component("app-card", resolve =>
