@@ -35,9 +35,8 @@ export function list(req, res) {
     limit,
     username,
     featured,
-    lastid,
     notid,
-    lastcreatedon,
+    lastupdatedon,
     tag,
     keyword,
     draft
@@ -94,16 +93,16 @@ export function list(req, res) {
   } else {
     sort = {
       $sort: {
-        created_on: -1
+        updated_on: -1
       }
     }
   }
   aggregate.push(sort)
 
   // get loadmore data
-  if (lastcreatedon) {
+  if (lastupdatedon) {
     aggregate.push({
-      $match: { created_on: { $lt: parseInt(lastcreatedon) } }
+      $match: { updated_on: { $lt: parseInt(lastupdatedon) } }
     })
   }
 
@@ -116,7 +115,7 @@ export function list(req, res) {
     })
   }
 
-  mongo().then(({db, client}) => {
+  mongo().then(({ db, client }) => {
     db.collection("posts")
       .aggregate(aggregate)
       .skip(parseInt(page) || 0)
@@ -141,7 +140,7 @@ export function list(req, res) {
           // success
           return res.send(200, response(200, "success", { result }))
         } else {
-          return res.send(204, response(204, "no post available"))
+          return res.send(200, response(204, "No post available"))
         }
       })
   })
@@ -150,7 +149,14 @@ export function list(req, res) {
 export function create(req, res) {
   // get all post data
 
-  const { title, content, tags = "", draft = false, video = "", lang="en" } = req.body
+  const {
+    title,
+    content,
+    tags = "",
+    draft = false,
+    video = "",
+    lang = "en"
+  } = req.body
   const { image } = req.files || {}
   const currentTime = Math.round(new Date().getTime() / 1000)
   const user_id = cookies.get(req, res, "idmoreacademy_session")._id
@@ -188,7 +194,7 @@ export function create(req, res) {
         lang
       }
 
-      mongo().then(({db, client}) => {
+      mongo().then(({ db, client }) => {
         // check is same title available
         db.collection("posts")
           .aggregate([
@@ -261,7 +267,7 @@ export function deletePost(req, res) {
   const { id } = req.params
 
   // mongodb query execution
-  mongo().then(({db, client}) => {
+  mongo().then(({ db, client }) => {
     db.collection("post").remove({ _id: id })
 
     client.close()

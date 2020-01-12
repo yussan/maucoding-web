@@ -6,8 +6,9 @@
       :id='name' 
       :name='name'
       :value='data[name] || ""'
-      v-on:change='onchange'
       :placeholder='placeholder'
+      @change='onchange'
+      @keydown='onkeydown'
       ) 
     .form-input-description(v-if="description !== ''") {{ description  }}
 
@@ -69,9 +70,12 @@ const props = {
   // handle change value
   onchange: {
     type: Function,
-    default() {
-      console.log("changed")
-    }
+    default() {}
+  },
+  // handle keydown
+  onkeydown: {
+    type: Function,
+    default() {}
   }
 }
 

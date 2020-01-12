@@ -177,7 +177,7 @@ export default Vue.extend({
     morePosts() {
       const post = this.$store.state.post.list[this.filter].result
       let params = this.generateParams()
-      params.lastcreatedon = post[post.length - 1].created_on
+      params.lastupdatedon = post[post.length - 1].updated_on
 
       const { $store }: any = this
 
