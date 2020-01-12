@@ -4,7 +4,12 @@
       title='All Posts'
     )
     //- searh post by title
-    input-text(name='search' placeholder='search post')
+    input-text(
+      name='keyword' 
+      placeholder='search post' 
+      :data="formdata" 
+      :onchange='changeTextHandler'
+      :onkeydown='keyDownTextHandler')
     //- post list
     super-box-post(:data='post.list[filter] || {}') 
     br
@@ -18,12 +23,13 @@
 
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import Vue from "vue"
 import { mapState } from "vuex"
 import * as TYPES from "../../../vuex/types"
 
 // components
+import { router } from "../../../index"
 import header from "../../../components/cards/header-tag.vue"
 import superboxpost from "../../../components/boxs/super-post.vue"
 import inputtext from "../../../components/form/input-text.vue"
@@ -39,11 +45,44 @@ export default Vue.extend({
 
   data() {
     return {
-      filter: "post_all"
+      filter: "post_all",
+      formdata: {
+        keyword: this.$route.query.q || ""
+      }
     }
   },
 
   methods: {
+    changeTextHandler(e: any) {
+      const { name, value } = e.target
+
+      let nextformdata: any = this.formdata
+      nextformdata[name] = value
+
+      this.formdata = Object.assign({}, nextformdata)
+    },
+
+    keyDownTextHandler(e: any) {
+      // console.log("code", e.keyCode, this.formdata.keyword)
+      this.changeTextHandler(e)
+      if (e.keyCode === 13) {
+        // redirect
+        if (this.formdata.keyword) {
+          return router.push({
+            path: `/super/posts?q=${this.formdata.keyword}`
+          })
+        } else {
+          return router.push({ path: `/super/posts` })
+        }
+      }
+    },
+
+    fetchPosts(force = false) {
+      let params = this.generateParams()
+      const posts = this.post[this.filter] || {}
+      if (!posts.status || force) this.$store.dispatch(TYPES.GET_POSTS, params)
+    },
+
     morePosts() {
       console.log("show more post...")
       const post = this.$store.state.post.list[this.filter].result
@@ -66,15 +105,17 @@ export default Vue.extend({
   },
 
   watch: {
-    ["post.list"]() {
-      console.log(this.post.list)
+    // ["post.list"]() {
+    //   console.log(this.post.list)
+    // }
+    ["$route.query.q"]() {
+      console.log("q", this.$route.query.q)
+      return this.fetchPosts()
     }
   },
 
   mounted() {
-    let params = this.generateParams()
-    const posts = this.post[this.filter] || {}
-    if (!posts.status) this.$store.dispatch(TYPES.GET_POSTS, params)
+    return this.fetchPosts()
   },
 
   computed: {
