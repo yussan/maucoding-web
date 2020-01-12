@@ -1,5 +1,5 @@
-import post from "../containers/post/store"
-import auth from "../containers/auth/store"
+import post from "../pages/post/store"
+import auth from "../pages/auth/store"
 
 export default {
   post,

@@ -17,7 +17,15 @@ var _html = require("string-manager/dist/modules/html");
 
 var _truncate = require("string-manager/dist/modules/truncate");
 
+var _password = require("../modules/password");
+
+var _cookies = require("../modules/cookies");
+
+var cookies = _interopRequireWildcard(_cookies);
+
 function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key]; } } newObj.default = obj; return newObj; } }
+
+var AVAILABLE_LANG = ["id", "en"];
 
 var generateMetaPostList = exports.generateMetaPostList = function generateMetaPostList(req, res, next) {
   var title = "Post";
@@ -122,10 +130,22 @@ var generateMetaUser = exports.generateMetaUser = function generateMetaUser(req,
 };
 
 var checkLanguage = exports.checkLanguage = function checkLanguage(req, res, next) {
-  var LANG = req.params.lang;
-  if (!["en", "id"].includes(LANG)) {
-    return res.redirect("/id" + req.path().replace("/" + LANG, ""), next);
-  }
+  // get lang from url
+  var params_lang = req.params.lang;
+  // get lang from session
+  var session_lang = req.cookies.idmoreacademy_lang_session;
 
-  return next();
+  if (!AVAILABLE_LANG.includes(params_lang)) {
+    var new_lang = session_lang || "id";
+
+    // set new cookies of lang
+    cookies.set(req, res, "idmoreacademy_lang_session", new_lang);
+
+    // redirect to select lang
+    return res.redirect(("/" + new_lang + req.path()).replace("/" + params_lang, ""), next);
+  } else {
+    // set new cookies of lang
+    cookies.set(req, res, "idmoreacademy_lang_session", params_lang);
+    return next();
+  }
 };

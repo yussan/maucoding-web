@@ -19,10 +19,10 @@ export default Vue.extend({
 
 <style lang="sass" scoped>
   .title 
-      h3 
-          font-size: 2.8em
-          margin: 0
-          padding: 1em 0
+    h3 
+      font-size: 2.8em
+      margin: 0
+      padding: 1em 0
 </style>
 
 

@@ -1,7 +1,7 @@
 <template lang='pug'>
   .row-post(:class="data.is_deleted ? 'disabled' : ''")
     router-link(:to='"/super/post/" + data._id') 
-      h2 [{{data.lang}}] {{ data.title }} 
+      h2 [{{data.lang || "en"}}] {{ data.title }} 
         label-component(v-if="data.draft" text="draft" custom_style="font-size: 15px;margin-top: 5px;position: absolute;margin-left: 5px;")
     p {{ data.content ? (stripTags(data.content)).substring(0, 300) : 'no content...' }}
     small 
@@ -70,8 +70,7 @@ export default Vue.extend({
 @import '../../../design/sass/color'
 .row-post
   position: relative
-  padding-left: 1.5em
-  padding-bottom: 1em
+  padding-bottom: 2em
   border-bottom: 1px solid $color-gray-verysoft
   &:last-child 
     border-bottom: none

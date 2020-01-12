@@ -5,21 +5,21 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue"
 
 const props = {
   title: {
     type: String,
-    default: ''
+    default: ""
   },
   subtitle: {
     type: String,
-    default: ''
+    default: ""
   }
 }
 
 export default Vue.extend({
-  name: 'header-tag',
+  name: "header-tag",
   props
 })
 </script>
@@ -28,7 +28,7 @@ export default Vue.extend({
 @import '../../../design/sass/color'
 
 .header-tag 
-  padding: 2em 0
+  padding: 4em 0
   background-size: cover
   h1 
     font-size: 3em 

@@ -7,8 +7,6 @@ exports.login = login;
 exports.logout = logout;
 exports.checkLogin = checkLogin;
 
-var _mongodb = require("mongodb");
-
 var _mongo = require("../../modules/mongo");
 
 var _mongo2 = _interopRequireDefault(_mongo);

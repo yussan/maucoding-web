@@ -15,7 +15,7 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
       <meta data-vmid="description" data-vue-meta="true" name="description" content="${meta.desc ||
         MetaInfo.description}" />
       <meta data-vmid="keywords" data-vue-meta="true" name="keywords" content="${meta.keywords ||
-          "id more academy,software engineer,tutorial"}" />
+        "id more academy,software engineer,tutorial"}" />
       ${
         meta.title
           ? `
@@ -36,9 +36,13 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
           : ""
       }
       ${
-        meta.jsonld ? `
-          <script type="application/ld+json">${JSON.stringify(meta.jsonld)}</script>
-        ` : ""
+        meta.jsonld
+          ? `
+          <script type="application/ld+json">${JSON.stringify(
+            meta.jsonld
+          )}</script>
+        `
+          : ""
       }
       <link rel="manifest" href="/manifest.json" />
       <link rel="icon" href="/images/icons/icon-72x72.png" />
@@ -56,13 +60,13 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
       <div id="app">${initialHTML || ""}</div>
       <script>
         //global inline script
-        document.addEventListener('click', function(e){
-          // if(e.target.className === 'icono-caretDown') {}
-          const dropdownEl = document.getElementsByClassName('dropdown');
-          for(let n=0;n<dropdownEl.length;n++){
-            dropdownEl[n].classList.remove('show')
-          }
-        })
+        // document.addEventListener('click', function(e){
+        //   // if(e.target.className === 'icono-caretDown') {}
+        //   const dropdownEl = document.getElementsByClassName('dropdown');
+        //   for(let n=0;n<dropdownEl.length;n++){
+        //     dropdownEl[n].classList.remove('show')
+        //   }
+        // })
       </script>
       ${getScript()}
   </body>

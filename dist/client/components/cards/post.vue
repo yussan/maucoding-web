@@ -3,22 +3,23 @@
     .thumb
       router-link.link-thumb(:to="'/post/' + data.nospace_title + '-' + data._id")
         BtnPlay(v-if="data.video")
-        img(:src="data.image.small" :alt="data.title")
+        img(:src="data.image['600']" :alt="data.title")
     .title
-      router-link(:to="'/post/' + data.nospace_title + '-' + data._id")
+      router-link.p-b-10(style="display:block" :to="'/post/' + data.nospace_title + '-' + data._id")
         | {{ data.title }}
       .meta 
-        .lang
-          | Posted in  
-          router-link(:to="data.lang == 'id' ? '/id' : '/en'") {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
-        | By  
-        router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
-        | | 
+        //- router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
         | {{ epochToRelative(data.created_on || 0) }}
         | | 
         | {{ data.views || 0 }} Views
         | | 
         | {{ data.comments || 0 }} Comments
+        | | 
+        | {{ data.lang == "id" ? "Bahasa Indonesia" : "English" }}
+      .avatar
+        router-link(:to="'/author/' + data.author.username") 
+          img(:src="data.author.avatar.small") 
+          span.text {{ data.author.username }}
 </template>
 
 <script lang="ts">
@@ -53,19 +54,42 @@ export default Vue.extend({
       position: relative
     .thumb
       img 
-        width: 200px
+        width: 300px
     .title 
-      padding: .9em 0 0 .9em
-      text-transform: uppercase
+      line-height: 1.5
+      padding: 1em
+      text-transform: capitalize
       text-decoration: none
       a
-        font-size: 1.1em
+        font-size: 1.5em
         font-weight: bold
         color: $color-black-medium
       .meta 
-        font-size: .8em
+        font-size: 1em
         a 
           font-size: 1em
           color: $color-gray-medium
         color: $color-gray-medium
+      .avatar
+        margin-top: 20px
+        img
+          width: 20px
+          height: 20px
+          border-radius: 100%
+          float: left
+        span.text
+          font-size: 14px
+          font-weight: initial
+          color: gray
+          margin-left: 8px
+          margin-top: 0
+          float: left
+
+  // responsiveness
+  @media screen and (max-width: 600px)
+    .card-post 
+      display: block
+      .thumb
+        img 
+          width: 100%
 </style>

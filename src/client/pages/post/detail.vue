@@ -42,7 +42,7 @@
       error-box
 
   div(v-else)
-    preloader
+    loader
 
 
 </template>
@@ -60,9 +60,8 @@ import { epochToRelative } from "../../modules/datetime"
 import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
 import post from "../../components/boxs/post.vue"
-import Preloader from "../../components/cards/global-loader.vue"
-import ErrorBox from "../../containers/error/index.vue"
-import Loading from "../../components/cards/global-loader.vue"
+import ErrorBox from "../error/index.vue"
+import Loader from "../../components/loaders/index.vue"
 
 Vue.component("app-card", resolve =>
   import("../../components/cards/post-app.vue")
@@ -72,7 +71,7 @@ Vue.component("comment", comment)
 Vue.component("box-post", post)
 Vue.component("box-meta", meta)
 Vue.component("error-box", ErrorBox)
-Vue.component("preloader", Preloader)
+Vue.component("Loader", Loader)
 
 export default Vue.extend({
   name: "post-detail",
@@ -84,7 +83,7 @@ export default Vue.extend({
     return {
       link: `/post/${this.$route.params.title}`,
       meta: {
-        title: "Id More Academy - More things available",
+        title: "Id More Academy - Tech from Engineer Perspective by Id More Team",
         description:
           "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },
@@ -157,15 +156,31 @@ export default Vue.extend({
     }
   },
 
-  beforeRouteUpdate(to, from, next) {
-    // request post detail
-    const title_arr = to.params.title.split("-")
-    const id = title_arr[title_arr.length - 1]
-    this.fetchPostDetail(id)
-    this.fetchPostRelated(id)
-    this.link = `/post/${to.params.title}`
+  // beforeRouteUpdate(to, from, next) {
+  //   // request post detail
+  //   const title_arr = to.params.title.split("-")
+  //   const id = title_arr[title_arr.length - 1]
+  //   this.fetchPostDetail(id)
+  //   this.fetchPostRelated(id)
+  //   this.link = `/post/${to.params.title}`
 
-    next()
+  //   next()
+  // },
+
+  watch: {
+    $route() {
+      const { title } = this.$route.params
+      if (title != this.title) {
+        this.title = title
+        this.link = `/post/${title}`
+
+        // request data
+        const title_arr = this.$route.params.title.split("-")
+        const id = title_arr[title_arr.length - 1]
+        this.fetchPostDetail(id)
+        this.fetchPostRelated(id)
+      }
+    }
   },
 
   computed: {

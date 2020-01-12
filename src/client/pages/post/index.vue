@@ -3,7 +3,7 @@
     .container
       .grid-center
         .col-8_md-12.align-center
-          header-tag(
+          tag-header(
             :title='title' 
             :subtitle=" post.tags[tag_name] && post.tags[tag_name].status === 200 ? post.tags[tag_name].description : subtitle")  
       .grid 
@@ -28,15 +28,17 @@ import * as TYPES from "../../vuex/types"
 import { mapState } from "vuex"
 
 // components
-import headerTag from "../../components/cards/header-tag.vue"
+import tagHeader from "../../components/cards/header-tag.vue"
 import post from "../../components/boxs/post.vue"
 
-Vue.component("header-tag", headerTag)
+Vue.component("tag-header", tagHeader)
 
 // async components
 // ref: https://vuejs.org/v2/guide/components-dynamic-async.html
 Vue.component("sidebar", () => import("../../components/sidebar.vue"))
-Vue.component("button-big", () => import("../../components/form/button-big.vue"))
+Vue.component("button-big", () =>
+  import("../../components/form/button-big.vue")
+)
 Vue.component("box-post", post)
 
 export default Vue.extend({
@@ -133,7 +135,8 @@ export default Vue.extend({
 
     // first fetch data of post list
 
-    if(!this.post.list[this.filter]) this.$store.dispatch(TYPES.GET_POSTS, params)
+    if (!this.post.list[this.filter])
+      this.$store.dispatch(TYPES.GET_POSTS, params)
     if (this.tag_name) this.$store.dispatch(TYPES.GET_TAG, this.tag_name)
   },
 

@@ -1,8 +1,8 @@
-import Home from "./containers/home/index.vue"
-import Error from "./containers/error/index.vue"
-import Post from "./containers/post/index.vue"
-import PostDetail from "./containers/post/detail.vue"
-import StaticDetail from "./containers/static/index.vue"
+import Home from "./pages/home/index.vue"
+import Error from "./pages/error/index.vue"
+import Post from "./pages/post/index.vue"
+import PostDetail from "./pages/post/detail.vue"
+import StaticDetail from "./pages/static/index.vue"
 
 import SuperLayout from "./layouts/super.vue"
 import DefaultLayout from "./layouts/default.vue"
@@ -21,7 +21,7 @@ export default [
       { path: "/author/:username", props: true, component: Post },
       { path: "/post/:title", component: PostDetail },
       { path: "/static/:title", component: StaticDetail },
-      { path: "/super", name: "super_login", component: () => import("./containers/auth/index.vue") }
+      { path: "/super", name: "super_login", component: () => import("./pages/auth/index.vue") }
     ]
   },
 
@@ -31,7 +31,7 @@ export default [
   //   path: "/",
   //   component: DefaultLayout,
   //   children: [
-  //     { path: "/super", name: "super_post", component: () => import("./containers/auth/index.vue") }
+  //     { path: "/super", name: "super_post", component: () => import("./pages/auth/index.vue") }
   //   ]
   // },
 
@@ -43,18 +43,18 @@ export default [
       {
         path: "/super/posts/new",
         name: "super_new_post",
-        component: () => import("./containers/_super/post/form.vue")
+        component: () => import("./pages/_super/post/form.vue")
       },
       {
         path: "/super/posts",
         name: "super_post",
-        component: () => import("./containers/_super/post/index.vue")
+        component: () => import("./pages/_super/post/index.vue")
       },
       {
         path: "/super/post/:id",
         name: "super_post_detail",
         props: true,
-        component: () => import("./containers/_super/post/form.vue")
+        component: () => import("./pages/_super/post/form.vue")
       }
     ]
   },
