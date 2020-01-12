@@ -16,7 +16,7 @@ interface ParamsGetPost {
   limit?: number
   featured?: boolean
   response: any
-  lastcreatedon?: number
+  lastupdatedon?: number
 }
 
 const initialState = {
@@ -50,7 +50,7 @@ const actions = {
 
     request("get", `/api/posts/dW5kZWZpbmVkMTUyMTM0NDA4ODM0Mw?${query}`).then(
       response => {
-        if (typeof params.lastcreatedon === "number") {
+        if (typeof params.lastupdatedon === "number") {
           // loadmore news
           commit(types.GET_MORE_POSTS, {
             response,

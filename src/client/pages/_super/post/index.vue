@@ -48,7 +48,7 @@ export default Vue.extend({
       console.log("show more post...")
       const post = this.$store.state.post.list[this.filter].result
       let params = this.generateParams()
-      params.lastcreatedon = post[post.length - 1].created_on
+      params.lastupdatedon = post[post.length - 1].updated_on
 
       // fetch lattest created on
       this.$store.dispatch(TYPES.GET_POSTS, params)
@@ -65,7 +65,7 @@ export default Vue.extend({
     }
   },
 
-   watch: {
+  watch: {
     ["post.list"]() {
       console.log(this.post.list)
     }
@@ -74,8 +74,7 @@ export default Vue.extend({
   mounted() {
     let params = this.generateParams()
     const posts = this.post[this.filter] || {}
-    if (!posts.status)
-      this.$store.dispatch(TYPES.GET_POSTS, params)
+    if (!posts.status) this.$store.dispatch(TYPES.GET_POSTS, params)
   },
 
   computed: {
