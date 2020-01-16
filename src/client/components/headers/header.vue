@@ -4,22 +4,20 @@
       .grid-noGutter
         .col.align-center
           router-link(to='/')
-            img.logo#logo(src='/images/logo-wide-2.png')
+            img.logo#logo(src='/images/logo-wide-2.1.png')
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue"
 
-function drawWave() {
-
-}
+function drawWave() {}
 
 export default Vue.extend({
-  name: 'navbar',
+  name: "navbar",
   props: {
     size: {
       type: String,
-      default: 'large'
+      default: "large"
     }
   }
 })
