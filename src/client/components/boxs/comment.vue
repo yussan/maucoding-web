@@ -34,7 +34,7 @@ export default Vue.extend({
 
   watch: {
     link(val) {
-      renderDisqus(`https://academy.byidmore.com${val}`)
+      renderDisqus(`https://yussanacademy.com${val}`)
     }
   },
 
@@ -43,10 +43,10 @@ export default Vue.extend({
       injectScript("//idmoreacademy.disqus.com/embed.js", {
         cb: () => {
         // waiting for DISQUS initialized
-        renderDisqus(`https://academy.byidmore.com${this.link}`)
+        renderDisqus(`https://yussanacademy.com${this.link}`)
       }
       })
-    else renderDisqus(`https://academy.byidmore.com${this.link}`)
+    else renderDisqus(`https://yussanacademy.com${this.link}`)
   }
 })
 </script>

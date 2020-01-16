@@ -32,7 +32,7 @@ export function getFeed(req, res) {
     $match: { draft: false }
   })
 
-  mongo().then(({db, client}) => {
+  mongo().then(({ db, client }) => {
     // ref guid : https://www.w3schools.com/xml/rss_tag_guid.asp
     db.collection("posts")
       .aggregate(aggregate)
@@ -42,7 +42,6 @@ export function getFeed(req, res) {
         if (err) {
           res.end("error get feed")
         } else {
-
           client.close()
 
           result.map(n => {
@@ -56,13 +55,13 @@ export function getFeed(req, res) {
                 500,
                 "[READ MORE...]"
               )}</description>
-              <link>https://academy.byidmore.com/post/${toSlug(n.title)}-${
+              <link>https://yussanacademy.com/post/${toSlug(n.title)}-${
               n._id
             }</link>
-              <guid>https://academy.byidmore.com/post/${toSlug(n.title)}-${
+              <guid>https://yussanacademy.com/post/${toSlug(n.title)}-${
               n._id
             }</guid>
-              <category domain="https://academy.byidmore.com">${n.tags
+              <category domain="https://yussanacademy.com">${n.tags
                 .split(",")
                 .join("/")}</category>
               <pubDate>${new Date(n.created_on * 1000).toUTCString()}</pubDate>
@@ -82,10 +81,10 @@ function xmlFeedWrapper(items = "", update_date = 0) {
   <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
     <channel>
       <title>Yussan Academy Feed</title>
-      <description>Tech from Engineer Perspective by Id More Team</description>
-      <link>https://academy.byidmore.com</link>
-      <category domain="https://academy.byidmore.com">computers/software/internet/development/engineer</category>
-      <copyright>Copyright 2017-2018 Id More Team.</copyright>
+      <description>Tech from Engineer Perspective by Yussan Media Group</description>
+      <link>https://yussanacademy.com</link>
+      <category domain="https://yussanacademy.com">computers/software/internet/development/engineer</category>
+      <copyright>Copyright 2017-2018 Yussan Media Group.</copyright>
       <lastBuildDate>${new Date(
         update_date * 1000
       ).toUTCString()}</lastBuildDate>
@@ -93,12 +92,12 @@ function xmlFeedWrapper(items = "", update_date = 0) {
       <image>
         <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538876985/idmore-academy/Patreon_Cover.png</url>
         <title>Yussan Academy Feed</title>
-        <link>https://academy.byidmore.com</link>
-        <description>Tech from Engineer Perspective by Id More Team</description>
+        <link>https://yussanacademy.com</link>
+        <description>Tech from Engineer Perspective by Yussan Media Group</description>
         <width>60</width>
         <height>60</height>
       </image>
-      <atom:link href="https://academy.byidmore.com/feed" rel="self" type="application/rss+xml" />
+      <atom:link href="https://yussanacademy.com/feed" rel="self" type="application/rss+xml" />
       ${items}
     </channel>
   </rss>
