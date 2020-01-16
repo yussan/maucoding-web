@@ -15,7 +15,7 @@
     
     .fixed(:class='!show_navbar ? "hide" : "" ')
       router-link(to='/')
-        img.logo(src='/images/logo-black-transparent.png')
+        img.logo(src='/images/logo-black-transparent-1.png')
           
 
 </template>

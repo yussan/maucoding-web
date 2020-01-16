@@ -12,11 +12,11 @@
             | |&nbsp;
             a(href='https://docs.google.com/forms/d/e/1FAIpQLSeByAgx7GNG3YyH3vgAupKymlwfJ6mNNaGCQN0ZkG1KC8636A/viewform' target="_blank") Contact Us
           p
-            strong Id More Academy 
-            | Tech from Engineer Perspective by Id More Team
+            strong Yussan Academy 
+            | Tech from Engineer Perspective.
             br 
             | Powered by 
-            a(href='https://byidmore.com' target='_blank') Id More
+            a(href='https://yussanmediagroup.com' rel='noreferer noopener' target='_blank') Yussan Media Group
         
         .col-6_sm-12
           .change-language 
@@ -26,13 +26,15 @@
             strong 
               a(href="/en" v-bind:class="{active: this.selected_lang == 'en'}") EN
           .link-social
-            a(href="https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA" target="_blank" rel="noopener noreferrer")
+            a(href="https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA" title="Yussan Academy Youtube" target="_blank" rel="noopener noreferrer" style="margin-right: 10px")
               span.icono-youtube
-            a(href="https://facebook.com/oopsreview" target="_blank" rel="noopener noreferrer")
-              span.icono-facebook
-            a(href="https://twitter.com/oopsreview" target="_blank" rel="noopener noreferrer")
+            a(href="https://instagram.com/yussanacademy" title="Yussan Academy Instagram" target="_blank" rel="noopener noreferrer" style="margin-right: 6px")
+              span.icono-instagram 
+            a(href="https://twitter.com/yussanacademy" title="Yussan Academy Twitter" target="_blank" rel="noopener noreferrer" style="margin-right: -2px")
               span.icono-twitter 
-            a(href="https://academy.byidmore.com/feed" target="_blank" rel="noopener noreferrer")
+            a(href="https://facebook.com/yussanacademy" title="Yussan Academy Facebook" target="_blank" rel="noopener noreferrer")
+              span.icono-facebook
+            a(href="/feed" target="_blank" title="Yussan Academy Feed" rel="noopener noreferrer")
               span.icono-rss 
 
     // go to top button
@@ -42,17 +44,18 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import Vue from "vue"
 
-const defaultProps = ['route']
+const defaultProps = ["route"]
 
 // add SELECTED_LANG property on window
 declare global {
-  interface Window { SELECTED_LANG: string; }
+  interface Window {
+    SELECTED_LANG: string
+  }
 }
 
 export default Vue.extend({
-
   data() {
     return {
       show_btngototop: false,
@@ -62,12 +65,12 @@ export default Vue.extend({
 
   mounted() {
     this.selected_lang = window.SELECTED_LANG || "id"
-    document.addEventListener('scroll', (e) => {
+    document.addEventListener("scroll", e => {
       const position = window.scrollY
-      if(position > 218) {
+      if (position > 218) {
         // show navbar
         this.show_btngototop = true
-      }else {
+      } else {
         // hide navbar
         this.show_btngototop = false
       }
@@ -77,12 +80,12 @@ export default Vue.extend({
   methods: {
     goToTop() {
       const target: any = document.getElementById("logo")
-      target.scrollIntoView({ 
-        behavior: 'smooth' 
-      });
+      target.scrollIntoView({
+        behavior: "smooth"
+      })
     }
   },
-  
+
   props: defaultProps
 })
 </script>

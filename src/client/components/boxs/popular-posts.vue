@@ -25,9 +25,9 @@
         card-small(:data="data.result[6]")
 
       .popular-end
-          strong Id More Academy 
-          br 
-          | Tech from Engineer Perspective by Id More Team
+          strong Yussan Academy 
+          br
+          | Tech from Engineer Perspective
 </template>
 
 <script lang="ts">
