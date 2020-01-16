@@ -1,4 +1,4 @@
-cd /home/webdev/Web/academy.byidmore.com
+cd /home/webdev/Web/academy.yussan.id
 
 echo "update code from gitlab branch master..."
 git pull origin master
