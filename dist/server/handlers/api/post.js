@@ -77,9 +77,8 @@ function list(req, res) {
       limit = _ref.limit,
       username = _ref.username,
       featured = _ref.featured,
-      lastid = _ref.lastid,
       notid = _ref.notid,
-      lastcreatedon = _ref.lastcreatedon,
+      lastupdatedon = _ref.lastupdatedon,
       tag = _ref.tag,
       keyword = _ref.keyword,
       draft = _ref.draft;
@@ -133,16 +132,16 @@ function list(req, res) {
   } else {
     sort = {
       $sort: {
-        created_on: -1
+        updated_on: -1
       }
     };
   }
   aggregate.push(sort);
 
   // get loadmore data
-  if (lastcreatedon) {
+  if (lastupdatedon) {
     aggregate.push({
-      $match: { created_on: { $lt: parseInt(lastcreatedon) } }
+      $match: { updated_on: { $lt: parseInt(lastupdatedon) } }
     });
   }
 
@@ -179,7 +178,7 @@ function list(req, res) {
         // success
         return res.send(200, (0, _response2.default)(200, "success", { result: result }));
       } else {
-        return res.send(204, (0, _response2.default)(204, "no post available"));
+        return res.send(200, (0, _response2.default)(204, "No post available"));
       }
     });
   });

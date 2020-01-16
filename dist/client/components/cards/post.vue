@@ -9,7 +9,7 @@
         | {{ data.title }}
       .meta 
         //- router-link(:to="'/author/' + data.author.username") {{ data.author.fullname }} 
-        | {{ epochToRelative(data.created_on || 0) }}
+        | updated {{ epochToRelative(data.updated_on || 0) }}
         | | 
         | {{ data.views || 0 }} Views
         | | 
