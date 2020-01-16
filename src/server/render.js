@@ -8,24 +8,24 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
   <head>
       <meta charset="utf-8">
       <title>${
-        meta.title ? `${meta.title} - Id More Academy` : MetaInfo.title
+        meta.title ? `${meta.title} - Yussan Academy` : MetaInfo.title
       }</title>
       <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
       <meta data-vmid="description" data-vue-meta="true" name="description" content="${meta.desc ||
         MetaInfo.description}" />
       <meta data-vmid="keywords" data-vue-meta="true" name="keywords" content="${meta.keywords ||
-        "id more academy,software engineer,tutorial"}" />
+        "Yussan Academy,software engineer,tutorial"}" />
       ${
         meta.title
           ? `
         <meta name="twitter:card" content="summary"/>
         <meta name="twitter:image" content="${meta.image ||
           "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"}"/>
-        <meta name="twitter:title" content="${meta.title} - Id More Academy"/>
+        <meta name="twitter:title" content="${meta.title} - Yussan Academy"/>
         <meta name="twitter:description" content="${meta.desc}" />
 
-        <meta property="og:title" content="${meta.title} - Id More Academy" />
+        <meta property="og:title" content="${meta.title} - Yussan Academy" />
         <meta property="og:type" content="${meta.type || "blog"}" />
         <meta property="og:url" content="${meta.url ||
           "https://academy.byidmore.com"}" />

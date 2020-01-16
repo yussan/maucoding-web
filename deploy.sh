@@ -10,6 +10,6 @@ echo "rebuild app..."
 yarn build:prod
 
 echo "restart pm2..."
-pm2 restart academy
+pm2 restart yussan-academy
 
 echo "deploy finished and SITE IS LIVE..."

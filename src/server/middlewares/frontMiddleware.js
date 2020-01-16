@@ -14,7 +14,7 @@ export const generateMetaPostList = (req, res, next) => {
 
   req.meta = {
     title,
-    desc: `${title} on Id More Academy`,
+    desc: `${title} on Yussan Academy`,
     url: `https://oopsreview.com/${req.originalUrl}`,
     image:
       "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
@@ -23,7 +23,7 @@ export const generateMetaPostList = (req, res, next) => {
   req.html = `
     <div class="post-list">
       <h1>${title}</h1>
-      <h2>${title} on Id More Academy</h2>
+      <h2>${title} on Yussan Academy</h2>
     </div>
   `
 
@@ -54,12 +54,12 @@ export const generateMetaPost = (req, res, next) => {
             headline: json.title,
             alternativeHeadline: json.title,
             image: json.image.original,
-            genre: "id more academy,software engineer,tutorial,development",
+            genre: "Yussan Academy,software engineer,tutorial,development",
             keywords,
             wordcount: json.content.length,
             publisher: {
               "@type": "Organization",
-              name: "Id More Academy",
+              name: "Yussan Academy",
               logo: {
                 "@type": "ImageObject",
                 url: "https://academy.byidmore.com/images/logo-wide-2.png",

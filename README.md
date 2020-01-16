@@ -1,2 +1,3 @@
-# Id More-academy-web
-web version of https://academy.byidmore.com
+# Yussan Academy Web
+
+web version of https://yussanacademy.com

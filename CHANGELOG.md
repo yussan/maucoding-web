@@ -14,4 +14,4 @@ All notable changes to this project will be documented in this file. See [standa
 ### Features
 
 * **deploy:** refactor deploy.sh ([0449042](https://github.com/idmore/oopsreview-web/commit/0449042))
-* **replace oopsreview to Id More Academy:** ok ([e8dd600](https://github.com/idmore/oopsreview-web/commit/e8dd600))
+* **replace oopsreview to Yussan Academy:** ok ([e8dd600](https://github.com/idmore/oopsreview-web/commit/e8dd600))
