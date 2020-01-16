@@ -5,5 +5,5 @@
   <Description>Search oopsreview</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Url method="get" type="text/html" 
-      template="https://academy.byidmore.com/search?q={searchTerms}"/>
+      template="https://yussanacademy.com/search?q={searchTerms}"/>
 </OpenSearchDescription>

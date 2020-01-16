@@ -3,6 +3,6 @@ export default {
     front: 'https://academy.byidmore.local'
   },
   production: {
-    front: 'https://academy.byidmore.com'
+    front: 'https://yussanacademy.com'
   }
 }

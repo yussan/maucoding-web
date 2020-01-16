@@ -14,7 +14,7 @@ export const generateMetaPostList = (req, res, next) => {
 
   req.meta = {
     title,
-    desc: `${title} on Id More Academy`,
+    desc: `${title} on Yussan Academy`,
     url: `https://oopsreview.com/${req.originalUrl}`,
     image:
       "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
@@ -23,7 +23,7 @@ export const generateMetaPostList = (req, res, next) => {
   req.html = `
     <div class="post-list">
       <h1>${title}</h1>
-      <h2>${title} on Id More Academy</h2>
+      <h2>${title} on Yussan Academy</h2>
     </div>
   `
 
@@ -44,7 +44,7 @@ export const generateMetaPost = (req, res, next) => {
         req.meta = {
           title: json.title,
           desc: description,
-          url: `https://academy.byidmore.com/post/${req.params.title}`,
+          url: `https://yussanacademy.com/post/${req.params.title}`,
           image: json.image.original,
           keywords,
           jsonld: {
@@ -54,20 +54,20 @@ export const generateMetaPost = (req, res, next) => {
             headline: json.title,
             alternativeHeadline: json.title,
             image: json.image.original,
-            genre: "id more academy,software engineer,tutorial,development",
+            genre: "Yussan Academy,software engineer,tutorial,development",
             keywords,
             wordcount: json.content.length,
             publisher: {
               "@type": "Organization",
-              name: "Id More Academy",
+              name: "Yussan Academy",
               logo: {
                 "@type": "ImageObject",
-                url: "https://academy.byidmore.com/images/logo-wide-2.png",
+                url: "https://yussanacademy.com/images/logo-wide-2.png",
                 height: "500",
                 width: "500"
               }
             },
-            url: `https://academy.byidmore.com/post/${req.params.title}`,
+            url: `https://yussanacademy.com/post/${req.params.title}`,
             datePublished: new Date(json.created_on * 1000).toISOString(),
             dateCreated: new Date(json.created_on * 1000).toISOString(),
             dateModified: new Date(json.updated_on * 1000).toISOString(),
@@ -106,7 +106,7 @@ export const generateMetaUser = (req, res, next) => {
         req.meta = {
           title: username,
           desc: `Post created by ${json.fullname || username}`,
-          url: `https://academy.byidmore.com/author/${username}`,
+          url: `https://yussanacademy.com/author/${username}`,
           image: json.avatar.original
         }
 
@@ -121,7 +121,7 @@ export const generateMetaUser = (req, res, next) => {
         req.meta = {
           title: "User Not Found",
           desc: "User Not Found",
-          url: `https://academy.byidmore.com/author/${username}`
+          url: `https://yussanacademy.com/author/${username}`
         }
       }
 
