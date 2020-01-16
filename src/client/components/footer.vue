@@ -36,6 +36,7 @@
               span.icono-facebook
             a(href="/feed" target="_blank" title="Yussan Academy Feed" rel="noopener noreferrer")
               span.icono-rss 
+              
 
     // go to top button
     a#button-gototop.button-gototop(href="javascript:;" v-on:click="goToTop" :class='!show_btngototop ? "hide" : "" ')
