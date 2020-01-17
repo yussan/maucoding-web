@@ -44,7 +44,7 @@ function getSitemapTags(req, res) {
 
         // generate xml
         result.map(function (n) {
-          items += "\n            <url>\n              <loc>https://academy.byidmore.com/tag/" + n.tag.toLowerCase() + "</loc>\n              <lastmod>2018-08-09</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
+          items += "\n            <url>\n              <loc>https://yussanacademy.com/tag/" + n.tag.toLowerCase() + "</loc>\n              <lastmod>2018-08-09</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
         });
         res.end(xmlSitemapWrapper(items, 0));
       }
@@ -81,7 +81,7 @@ function getSitemapUsers(req, res) {
 
         // generate xml
         result.map(function (n) {
-          items += "\n            <url>\n              <loc>https://academy.byidmore.com/author/" + n.username.toLowerCase() + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
+          items += "\n            <url>\n              <loc>https://yussanacademy.com/author/" + n.username.toLowerCase() + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
         });
         res.end(xmlSitemapWrapper(items, 0));
       }
@@ -118,7 +118,7 @@ function getSitemapPosts(req, res) {
 
         // generate xml
         result.map(function (n) {
-          items += "\n            <url>\n              <loc>https://academy.byidmore.com/post/" + n.title.replace(/ /g, '-').toLowerCase() + "-" + n._id + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
+          items += "\n            <url>\n              <loc>https://yussanacademy.com/post/" + n.title.replace(/ /g, '-').toLowerCase() + "-" + n._id + "</loc>\n              <lastmod>" + (0, _dateTime.epochToFormat)(n.created_on, "Y-M-D") + "</lastmod>\n              <changefreq>daily</changefreq>\n              <priority>0.8</priority>\n          </url>\n            ";
         });
         res.end(xmlSitemapWrapper(items, 0));
       }

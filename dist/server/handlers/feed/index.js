@@ -53,13 +53,12 @@ function getFeed(req, res) {
       if (err) {
         res.end("error get feed");
       } else {
-
         client.close();
 
         result.map(function (n) {
           // ref: remove &nbsp; from string https://stackoverflow.com/a/6452789/2780875
           n.content = n.content.replace(/&nbsp;/gi, "");
-          items += "\n            <item>\n              <title>" + n.title + "</title>\n              <description>" + (0, _truncate.truncate)((0, _html.stripTags)(n.content), 500, "[READ MORE...]") + "</description>\n              <link>https://academy.byidmore.com/post/" + (0, _slug.toSlug)(n.title) + "-" + n._id + "</link>\n              <guid>https://academy.byidmore.com/post/" + (0, _slug.toSlug)(n.title) + "-" + n._id + "</guid>\n              <category domain=\"https://academy.byidmore.com\">" + n.tags.split(",").join("/") + "</category>\n              <pubDate>" + new Date(n.created_on * 1000).toUTCString() + "</pubDate>\n            </item>\n            ";
+          items += "\n            <item>\n              <title>" + n.title + "</title>\n              <description>" + (0, _truncate.truncate)((0, _html.stripTags)(n.content), 500, "[READ MORE...]") + "</description>\n              <link>https://yussanacademy.com/post/" + (0, _slug.toSlug)(n.title) + "-" + n._id + "</link>\n              <guid>https://yussanacademy.com/post/" + (0, _slug.toSlug)(n.title) + "-" + n._id + "</guid>\n              <category domain=\"https://yussanacademy.com\">" + n.tags.split(",").join("/") + "</category>\n              <pubDate>" + new Date(n.created_on * 1000).toUTCString() + "</pubDate>\n            </item>\n            ";
         });
         res.end(xmlFeedWrapper(items, result[0].created_on));
       }
@@ -73,5 +72,5 @@ function xmlFeedWrapper() {
   var update_date = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 0;
 
   // ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString
-  return "\n  <rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n    <channel>\n      <title>Id More Academy Feed</title>\n      <description>Tech from Engineer Perspective by Id More Team</description>\n      <link>https://academy.byidmore.com</link>\n      <category domain=\"https://academy.byidmore.com\">computers/software/internet/development/engineer</category>\n      <copyright>Copyright 2017-2018 Id More Team.</copyright>\n      <lastBuildDate>" + new Date(update_date * 1000).toUTCString() + "</lastBuildDate>\n      <language>en-us</language>\n      <image>\n        <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538876985/idmore-academy/Patreon_Cover.png</url>\n        <title>Id More Academy Feed</title>\n        <link>https://academy.byidmore.com</link>\n        <description>Tech from Engineer Perspective by Id More Team</description>\n        <width>60</width>\n        <height>60</height>\n      </image>\n      <atom:link href=\"https://academy.byidmore.com/feed\" rel=\"self\" type=\"application/rss+xml\" />\n      " + items + "\n    </channel>\n  </rss>\n  ";
+  return "\n  <rss version=\"2.0\" xmlns:atom=\"http://www.w3.org/2005/Atom\">\n    <channel>\n      <title>Yussan Academy Feed</title>\n      <description>Tech from Engineer Perspective by Yussan Media Group</description>\n      <link>https://yussanacademy.com</link>\n      <category domain=\"https://yussanacademy.com\">computers/software/internet/development/engineer</category>\n      <copyright>Copyright 2017-2018 Yussan Media Group.</copyright>\n      <lastBuildDate>" + new Date(update_date * 1000).toUTCString() + "</lastBuildDate>\n      <language>en-us</language>\n      <image>\n        <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538876985/idmore-academy/Patreon_Cover.png</url>\n        <title>Yussan Academy Feed</title>\n        <link>https://yussanacademy.com</link>\n        <description>Tech from Engineer Perspective by Yussan Media Group</description>\n        <width>60</width>\n        <height>60</height>\n      </image>\n      <atom:link href=\"https://yussanacademy.com/feed\" rel=\"self\" type=\"application/rss+xml\" />\n      " + items + "\n    </channel>\n  </rss>\n  ";
 }

@@ -1,5 +1,1 @@
-<<<<<<< HEAD
-{"app":{"js":"/build/app.5f358435f1cbbed8542f.js"},"vendor":{"js":"/build/vendor.5f358435f1cbbed8542f.js"},"":{"js":["/build/0.5f358435f1cbbed8542f.js","/build/1.5f358435f1cbbed8542f.js","/build/2.5f358435f1cbbed8542f.js","/build/3.5f358435f1cbbed8542f.js"]}}
-=======
-{"app":{"js":"/build/app.js"},"vendor":{"js":"/build/vendor.js"},"":{"js":["/build/0.js","/build/1.js","/build/2.js","/build/3.js"]}}
->>>>>>> e419623ac11f1df3ae431a36ddb9b7771fe6d3eb
+{"app":{"js":"/build/app.dfef263ce209a72adf86.js"},"vendor":{"js":"/build/vendor.dfef263ce209a72adf86.js"},"":{"js":["/build/0.dfef263ce209a72adf86.js","/build/1.dfef263ce209a72adf86.js","/build/2.dfef263ce209a72adf86.js","/build/3.dfef263ce209a72adf86.js"]}}

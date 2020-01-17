@@ -11,7 +11,7 @@
       span.stats-item
         a(href="javascript:;" @click="viewComments")
           span.icono-commentEmpty 
-          span.disqus-comment-count(:data-disqus-identifier="'https://academy.byidmore.com' + link" :data-disqus-url="'https://academy.byidmore.com' + link") 0
+          span.disqus-comment-count(:data-disqus-identifier="'https://yussanacademy.com' + link" :data-disqus-url="'https://yussanacademy.com' + link") 0
           | &nbsp;
       span.stats-item
         span.icono-eye 
@@ -64,7 +64,7 @@ export default Vue.extend({
 
   watch: {
     link() {
-      renderDisqus(`https://academy.byidmore.com${this.link}`)
+      renderDisqus(`https://yussanacademy.com${this.link}`)
     }
   },
 
@@ -74,11 +74,11 @@ export default Vue.extend({
         id: "dsq-count-scr",
         cb: () => {
           // waiting for DISQUS initialized
-          renderDisqus(`https://academy.byidmore.com${this.link}`)
+          renderDisqus(`https://yussanacademy.com${this.link}`)
         }
       })
     } else {
-      renderDisqus(`https://academy.byidmore.com${this.link}`)
+      renderDisqus(`https://yussanacademy.com${this.link}`)
     }
   }
 })
