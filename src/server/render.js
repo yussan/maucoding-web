@@ -88,14 +88,15 @@ function getScript() {
       NODE_ENV === "production"
         ? `
         <!-- Global site tag (gtag.js) - Google Analytics -->
-        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-106471389-3"></script>
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-156429570-1"></script>
         <script>
           window.dataLayer = window.dataLayer || [];
           function gtag(){dataLayer.push(arguments);}
           gtag('js', new Date());
-        
-          gtag('config', 'UA-106471389-3');
+
+          gtag('config', 'UA-156429570-1');
         </script>
+
         `
         : ""
     }
