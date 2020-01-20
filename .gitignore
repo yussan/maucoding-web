@@ -63,5 +63,5 @@ typings/
 .next
 public/build
 package-lock.json
-
+internals/webpack-assets.json
 dist
