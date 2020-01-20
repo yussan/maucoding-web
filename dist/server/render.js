@@ -24,7 +24,7 @@ var generateHtml = function generateHtml(_ref) {
 
 function getScript() {
   var webpackAssets = require("../../internals/webpack-assets.json");
-  return "\n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.vendor.js : "/build/vendor.js") + "\"></script>\n    \n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js") + "\"></script>\n    \n    " + (NODE_ENV === "production" ? "\n        <!-- Global site tag (gtag.js) - Google Analytics -->\n        <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-106471389-3\"></script>\n        <script>\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n        \n          gtag('config', 'UA-106471389-3');\n        </script>\n        " : "") + "\n    ";
+  return "\n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.vendor.js : "/build/vendor.js") + "\"></script>\n    \n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js") + "\"></script>\n    \n    " + (NODE_ENV === "production" ? "\n        <!-- Global site tag (gtag.js) - Google Analytics -->\n        <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-156429570-1\"></script>\n        <script>\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n\n          gtag('config', 'UA-156429570-1');\n        </script>\n\n        " : "") + "\n    ";
 }
 
 exports.default = function (req, res, next) {
