@@ -1,6 +1,6 @@
 <template lang="pug">
   .grid-center
-    .col-4_md-12.p-0
+    .col-2_md-3_xs-12.p-0
       .login
         h1 Authentication 
         form.form(method='post' action='javascript:;') 
@@ -72,7 +72,7 @@ export default Vue.extend({
       let nextformdata: any = this.formdata
       nextformdata[name] = value
       const validate = this.validation.validate(this.formdata)
-      console.log('validate', validate)
+      console.log("validate", validate)
 
       this.formdata = Object.assign({}, nextformdata)
       this.formvalidate = validate
@@ -117,5 +117,5 @@ export default Vue.extend({
   @import '../../../design/sass/color'
   .login
     color: $color-white-main
-    padding: 2em .5em
+    padding: 5em .5em
 </style>
