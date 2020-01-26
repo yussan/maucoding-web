@@ -18,8 +18,8 @@
         | {{ data.views || 0 }} 
       span.stats-item(v-if="typeof data.tags === 'object' && data.tags.length > 0")
         span.icono-tag 
-        span(v-for="item, key in data.tags" :key="key") 
-          router-link(to="'/tag/' + item" ) {{ item }}
+        span(v-for="tag, key in data.tags" :key="key") 
+          router-link(:to="`/tag/${tag}`" ) {{ tag }}
           | {{ key < data.tags.length -1 ? ', ' : ''  }}
       span.stats-item
         router-link(:to="data.lang == 'id' ? '/id' : '/en'")
@@ -70,7 +70,7 @@ export default Vue.extend({
 
   created() {
     if (!(<any>window).DISQUSWIDGETS) {
-      injectScript("//idmoreacademy.disqus.com/count.js", {
+      injectScript("//yussan-academy.disqus.com/count.js", {
         id: "dsq-count-scr",
         cb: () => {
           // waiting for DISQUS initialized

@@ -68,11 +68,30 @@ export default [
     component: DefaultLayout,
     children: [
       { path: "/:lang", component: () => import("./pages/v2/home/index.vue") },
-      { path: "/:lang/posts", component: Post },
-      { path: "/:lang/search", component: Post },
-      { path: "/:lang/tag/:tag_name", props: true, component: Post },
+      {
+        path: "/:lang/posts",
+        component: () => import("./pages/v2/post/index.vue")
+      },
+      {
+        path: "/:lang/search",
+        component: () => import("./pages/v2/post/search.vue")
+      },
+      {
+        path: "/:lang/tag/:tag_name",
+        props: true,
+        component: () => import("./pages/v2/post/index.vue")
+      },
       { path: "/:lang/static/:title", component: StaticDetail },
-      { path: "/:lang/author/:username", props: true, component: Post },
+      {
+        path: "/:lang/author/:username",
+        props: true,
+        component: () => import("./pages/v2/post/author.vue")
+      },
+      {
+        path: "/:lang/a/:username",
+        props: true,
+        component: () => import("./pages/v2/post/author.vue")
+      },
       { path: "/:lang/post/:title", component: PostDetail },
       { path: "/:lang/static/:title", component: StaticDetail },
       { path: "*", component: Error }

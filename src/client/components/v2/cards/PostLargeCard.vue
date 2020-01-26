@@ -7,7 +7,7 @@
           router-link(v-for="tag, key in data.tags" :key="key"  :to="`/tag/${tag}`") {{ tag }}
         h2 {{ data.title }}
         .card-post-large_author
-          router-link(:to="`/a/${data.author.username}`")
+          router-link(:to="`/author/${data.author.username}`")
             img(:src="data.author.avatar.small" :alt="data.author.username")
             span.text {{ data.author.username }} · {{ epochToRelative(data.created_on || 0) }}
 

@@ -40,7 +40,7 @@ export default Vue.extend({
 
   created() {
     if (!(<any>window).DISQUS)
-      injectScript("//idmoreacademy.disqus.com/embed.js", {
+      injectScript("//yussan-academy.disqus.com/embed.js", {
         cb: () => {
         // waiting for DISQUS initialized
         renderDisqus(`https://yussanacademy.com${this.link}`)

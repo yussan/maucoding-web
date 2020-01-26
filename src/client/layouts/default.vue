@@ -1,7 +1,6 @@
 <template lang='pug'>
   div 
     navbar(:keyword='$route.query.q || \'\'')
-    .m-t-30 
     div(v-bind:class="isFullscreen ? '' : 'container'")
       router-view
       thanks-to
@@ -39,8 +38,16 @@ NOT_REDIRECT_LANG = [
   "super_post_detail"
 ]
 
+const IS_FULLSCREEN = ["search", "a", "author", "tag", "posts", "apps", "app"]
+
 export default Vue.extend({
   name: "layout-default",
+
+  data() {
+    return {
+      isFullscreen: IS_FULLSCREEN.includes(this.$route.path.split("/")[2])
+    }
+  },
 
   mounted() {
     const { fullPath, params } = this.$route
@@ -57,8 +64,9 @@ export default Vue.extend({
 
   watch: {
     $route(to: any) {
-      const { fullPath, params, name: string = "" } = to
+      const { path, fullPath, params, name: string = "" } = to
       const { lang } = params
+      this.isFullscreen = IS_FULLSCREEN.includes(path.split("/")[2])
       if (!lang && !NOT_REDIRECT_LANG.includes(name)) {
         router.push({ path: `/${window.SELECTED_LANG || "id"}${fullPath}` })
       }

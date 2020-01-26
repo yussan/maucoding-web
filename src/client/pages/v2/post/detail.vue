@@ -18,7 +18,7 @@
           .grid-no-gutters.meta-box
             .col-6_sm-12.meta-box__left
               .post-detail_author 
-                router-link(:to="`/a/${post.detail[id].author.username}`")
+                router-link(:to="`/author/${post.detail[id].author.username}`")
                   img(:src="post.detail[id].author.avatar.small" :alt="post.detail[id].author.username")
                   span.text {{ post.detail[id].author.username }} · {{ epochToRelative(post.detail[id].created_on) }}
             .col-6_sm-12.meta-box__right
@@ -28,7 +28,7 @@
                   | {{ post.detail[id].views }}
                 a.post-detail_meta-icon_item(href="javascript:;" @click="jumpToDivId('comment')")
                   i.icono-commentEmpty
-                  span.disqus-comment-count(:data-disqus-identifier="'https://oopsreview.com' + link" :data-disqus-url="'https://oopsreview.com' + link") 0
+                  span.disqus-comment-count(:data-disqus-identifier="'https://yussanacademy.com' + link" :data-disqus-url="'https://yussanacademy.com' + link") 0
                 a.post-detail_meta-icon_item(style="zoom:0.7" href="javascript:;" @click="jumpToDivId('share')")
                   i.icono-share
                   | &nbsp;
@@ -236,15 +236,15 @@ export default {
 
   mounted() {
     if (!window.DISQUSWIDGETS) {
-      injectScript("//oopsreview.disqus.com/count.js", {
+      injectScript("//yussan-academy.disqus.com/count.js", {
         id: "dsq-count-scr",
         cb: () => {
           // waiting for DISQUS initialized
-          renderDisqus(`https://oopsreview.com${this.link}`)
+          renderDisqus(`https://yussanacademy.com${this.link}`)
         }
       })
     } else {
-      renderDisqus(`https://oopsreview.com${this.link}`)
+      renderDisqus(`https://yussanacademy.com${this.link}`)
     }
   },
 

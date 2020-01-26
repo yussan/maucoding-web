@@ -1,5 +1,6 @@
 <template lang="pug">
   layout
+    .m-t-30 
     div(slot="main-content")
 
       slider(v-if="post.featured && post.featured.result && post.featured.result.length > 0" :total="post.featured && post.featured.result ? post.featured.result.length : 0")

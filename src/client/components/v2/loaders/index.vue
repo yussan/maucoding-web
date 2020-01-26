@@ -18,6 +18,7 @@ export default {}
   align-items: center
   justify-content: center
   padding: 10px 5px
+  min-height: 400px
 
 .dot
   display: inline-block

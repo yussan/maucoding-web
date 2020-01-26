@@ -82,14 +82,14 @@ export default {
   methods: {
     generateMeta(tag_name, q) {
       let meta = {
-        title: "Oopsreview Posts",
-        description: "Oopsreview posts"
+        title: "Available Posts",
+        description: "Yussan Academy posts"
       }
 
       if (tag_name) {
         meta = {
-          title: `Oopsreview Posts With Tag "${tag_name}"`,
-          description: `Oopsreview posts with tag "${tag_name}"`
+          title: `Available Posts With Tag "${tag_name}"`,
+          description: `OYussan Academy posts with tag "${tag_name}"`
         }
       }
 

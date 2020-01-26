@@ -2,11 +2,11 @@
   .small-post-block
     
     .grid-center(v-if="postData.result && postData.result.length > 0")
-      .col-7_md-7_sm-12.post-search_header
+      .col-8_md-8_sm-12.post-search_header
         h2(style="font-size:20px") Found {{ postData.result.length || 0 }} of Many Posts
     
     .grid-center
-      .col-7_md-7_sm-12.post-search_list
+      .col-8_md-8_sm-12.post-search_list
         //- looping post results
         .post-list(v-if="postData.result && postData.result.length > 0")  
           post-small-card(v-for="data, key in postData.result" :key="key" :data="data")

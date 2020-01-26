@@ -1,6 +1,8 @@
 <template lang="pug">
   div(v-if="typeof post.detail[id] !== 'undefined'")
 
+    .m-t-30
+
     div(v-if="post.detail[id].status === 200")
       .post-detail.bg-white
         .container
@@ -12,9 +14,10 @@
           .grid 
             .col-8_md-12(data-push-left="off-2_md-0")
               app-card(v-if="post.detail[id].app._id" :data="post.detail[id]" :app="post.detail[id].app")
-
+          
           .grid 
             .col-12.post-detail-mainimage
+              .m-t-50
 
               //- if have video show iframe
               .post-detail-video(v-if="post.detail[id].video") 
@@ -26,11 +29,13 @@
               //- end of main image
 
             .col-8_md-12(data-push-left="off-2_md-0")
+              .m-t-50
               article.post-detail-content
                 div(v-html="post.detail[id].content")
 
           .grid 
             .col-8_md-12(data-push-left="off-2_md-0")
+              .m-t-50
               comment(:link='link') 
 
           .grid.p-t-2 
@@ -39,9 +44,11 @@
               box-post(:data='post.list.latest_detail || {}') 
             
     div(v-else)
+      .m-t-30
       error-box
 
   div(v-else)
+    .m-t-30
     loader
 
 

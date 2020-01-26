@@ -17,6 +17,7 @@ interface ParamsGetPost {
   featured?: boolean
   response: any
   lastupdatedon?: number
+  query?: object
 }
 
 const initialState = {
@@ -31,13 +32,6 @@ const actions = {
   // delete post
   [types.DELETE_POST]: ({ commit }: any, post_id: string) => {
     commit(types.DELETE_POST, { post_id })
-
-    // request to api
-    // request("post", `/api/posts/${post_id}/delete/dW5kZWZpbmVkMTUyMTM0NDA4ODM0Mw`).then(
-    //   response => {
-
-    //   }
-    // )
   },
 
   // request to api post list
@@ -46,11 +40,12 @@ const actions = {
 
     // generate querystring
     if (!params.limit) params.limit = 8
-    const query = objToQuery(params)
+    const queryObj: any = params.query || params
+    const query = objToQuery(queryObj)
 
     request("get", `/api/posts/dW5kZWZpbmVkMTUyMTM0NDA4ODM0Mw?${query}`).then(
       response => {
-        if (typeof params.lastupdatedon === "number") {
+        if (typeof queryObj.lastupdatedon != "undefined") {
           // loadmore news
           commit(types.GET_MORE_POSTS, {
             response,
@@ -176,8 +171,9 @@ const mutations = {
     { filter, response }: ParamsGetPost
   ) => {
     let { list } = state
-    list[filter].status = response.status
-    if (response.status === 200) {
+    list[filter].status = response.data.status
+    list[filter].message = response.data.message
+    if (response.data.status === 200) {
       console.log(response)
       list[filter].result = list[filter].result.concat(response.data.result)
     }

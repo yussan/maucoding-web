@@ -3,10 +3,12 @@
     .card-post-small 
       .card-post-small_thumb(:style="`background-image:url(${data.image[600]})`")
       .card-post-small_meta 
+        .tag-post 
+          router-link(v-for="tag, key in data.tags" :key="key"  :to="`/tag/${tag}`") {{ tag }}
         h3 {{ data.title }}
         p {{ data.plain_content }}
         .card-post-small_author
-          router-link(:to="`/a/${data.author.username}`")
+          router-link(:to="`/author/${data.author.username}`")
             img(:src="data.author.avatar.small" :alt="data.author.username")
             span.text {{ data.author.username }} · {{ epochToRelative(data.created_on || 0) }}
 </template>
@@ -35,6 +37,15 @@
       p
         max-height: 110px
         overflow: hidden
+      .tag-post 
+        margin-bottom: 10px
+        a 
+          text-transform: uppercase
+          color: $color-gray-medium
+          border-bottom: 1px solid $color-red-main 
+          margin-right: 10px
+          padding-bottom: 5px 
+          font-size: 14px
     .card-post-small_author 
       a
         color: $color-gray-medium !important

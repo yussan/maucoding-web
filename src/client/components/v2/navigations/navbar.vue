@@ -8,7 +8,7 @@
         .col-5_md-5_sm-hidden
           .main-nav_menu.main-nav_menu_left
             ul.main-nav-menu_link
-              li(:class="$route.path.includes(menu.matchPath) ? 'active' : ''" v-for="menu, key in menus" :key="key") 
+              li(:class="menu.matchPath.includes(activePath) ? 'active' : ''" v-for="menu, key in menus" :key="key") 
                 router-link(v-if="menu.target != 'blank'" :to="menu.link") {{ menu.name }}
                 a(v-if="menu.target == 'blank'" :href="menu.link" target="_blank") {{ menu.name }}
         .col-6_md-6_sm-9
@@ -61,6 +61,7 @@
             color: $color-white-main
             zoom: 0.8
           input[type="search"]
+            color: $color-white-main
             padding: 5px 0
             background: none
             outline: none
@@ -80,7 +81,7 @@ import { router } from "../../../index"
 const menus = [
   {
     name: "posts",
-    matchPath: "/post",
+    matchPath: ["post", "posts", "tag", "a", "author", "search"],
     link: "/posts"
   }
   // {
@@ -95,6 +96,7 @@ export default {
     return {
       hideSearch: true,
       keywordSearch: "",
+      activePath: this.$route.path.split("/")[2],
       menus
     }
   },
@@ -112,11 +114,13 @@ export default {
         this.keywordSearch = ""
       }
     }
+  },
+
+  watch: {
+    $route: function(to) {
+      const { path } = to
+      this.activePath = path.split("/")[2]
+    }
   }
-  // watch: {
-  //   $route: function(newData) {
-  //     console.log("new data", newData)
-  //   }
-  // }
 }
 </script>

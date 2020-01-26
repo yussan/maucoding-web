@@ -7,7 +7,7 @@
             h1 {{ $route.params.username }}
             p Yogyakarta, Indonesia
           .col-4.post-author-header_avatar
-            img(src="/v2/images/dummy-square.jpg" alt="this is avatar")
+            img(src="/v2/images/dummy-avatar.png" alt="this is avatar")
     .bg-soft-gray
       small-post-block(:postData="post.list[filter]" :loadMoreHandler="fetchMoreData")
         
