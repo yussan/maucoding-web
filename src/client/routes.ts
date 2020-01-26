@@ -6,7 +6,6 @@ import StaticDetail from "./pages/static/index.vue"
 
 import SuperLayout from "./layouts/super.vue"
 import DefaultLayout from "./layouts/default.vue"
-// import ErrorLayout from "./layouts/error.vue"
 
 export default [
   // public page
@@ -14,14 +13,18 @@ export default [
     path: "/",
     component: DefaultLayout,
     children: [
-      { path: "/", component: Home },
+      { path: "/", component: () => import("./pages/v2/home/index.vue") },
       { path: "/posts", component: Post },
       { path: "/search", component: Post },
       { path: "/tag/:tag_name", props: true, component: Post },
       { path: "/author/:username", props: true, component: Post },
       { path: "/post/:title", component: PostDetail },
       { path: "/static/:title", component: StaticDetail },
-      { path: "/super", name: "super_login", component: () => import("./pages/auth/index.vue") }
+      {
+        path: "/super",
+        name: "super_login",
+        component: () => import("./pages/auth/index.vue")
+      }
     ]
   },
 
@@ -64,7 +67,7 @@ export default [
     path: "/:lang",
     component: DefaultLayout,
     children: [
-      { path: "/:lang", component: Home },
+      { path: "/:lang", component: () => import("./pages/v2/home/index.vue") },
       { path: "/:lang/posts", component: Post },
       { path: "/:lang/search", component: Post },
       { path: "/:lang/tag/:tag_name", props: true, component: Post },

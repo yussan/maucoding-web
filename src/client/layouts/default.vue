@@ -1,16 +1,17 @@
 <template lang='pug'>
   div 
-    top-navbar
     navbar(:keyword='$route.query.q || \'\'')
-    router-view
-    thanks-to
+    .m-t-30 
+    div(v-bind:class="isFullscreen ? '' : 'container'")
+      router-view
+      thanks-to
     bottom-navbar(:route='$route')
     toast
 </template>
 
 <script lang='ts'>
 import Vue from "vue"
-import navbar from "../components/navbar.vue"
+import navbar from "../components/v2/navigations/navbar.vue"
 import header from "../components/headers/header.vue"
 import footer from "../components/footer.vue"
 import toast from "../components/toast.vue"
@@ -42,7 +43,7 @@ export default Vue.extend({
   name: "layout-default",
 
   mounted() {
-    const { fullPath, params} = this.$route
+    const { fullPath, params } = this.$route
     const { lang } = params
     if (!lang && !NOT_REDIRECT_LANG.includes(this.$route.name || "")) {
       location.href = `/${window.SELECTED_LANG || "id"}${fullPath}`
@@ -89,5 +90,12 @@ export default Vue.extend({
     color: $color-gray-medium
   .no-padding
     padding: 0 !important
+  [class*=col-]
+    padding-bottom: 0 !important
+  // helpers
+  .m-t-30
+    margin-top: 30px
+  .m-t-50
+    margin-top: 50px
 
 </style>
