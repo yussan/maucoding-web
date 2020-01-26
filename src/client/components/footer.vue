@@ -80,7 +80,7 @@ export default Vue.extend({
 
   methods: {
     goToTop() {
-      const target: any = document.getElementById("logo")
+      const target: any = document.getElementsByClassName("main-nav_logo")[0]
       target.scrollIntoView({
         behavior: "smooth"
       })
