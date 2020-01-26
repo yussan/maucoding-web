@@ -1,6 +1,6 @@
 <template lang="pug">
   .grid-center
-    .col-2_md-3_xs-12.p-0
+    .col-4_md-3_xs-12.p-0
       .login
         h1 Authentication 
         form.form(method='post' action='javascript:;') 
