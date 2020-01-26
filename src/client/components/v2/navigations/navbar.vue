@@ -24,7 +24,7 @@
   @import '../../../../design/sass/color'
 
   .main-nav
-    background-color: $color-black-main
+    background-color: $color-blue-dark
     color: $color-gray-verysoft
     padding: 0 5px
     .main-nav_logo

@@ -98,7 +98,7 @@ export default Vue.extend({
   footer 
     border-top: 1px solid $color-gray-medium
     padding: 2em 0
-    background-color: $color-black-main
+    background-color: $color-gray-verydark
     color: $color-gray-soft
     font-weight: 300
     line-height: 1.3
