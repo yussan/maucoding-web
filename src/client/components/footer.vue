@@ -96,17 +96,15 @@ export default Vue.extend({
   @import '../../design/sass/color'
 
   footer 
-    border-top: 1px solid $color-gray-medium
-    padding: 2em 0
-    background-color: $color-gray-verydark
-    color: $color-gray-soft
+    padding: 3em 0 2em
+    background-color: $color-gray-verysoft
+    color: $color-gray-medium
     font-weight: 300
-    line-height: 1.3
+    line-height: 1.6
+    font-size: 13px
 
     a 
-      color: $color-gray-soft
-      &:hover
-        color: $color-white-main
+      color: $color-gray-medium
 
     .change-language 
       margin-bottom: 20px
@@ -118,6 +116,9 @@ export default Vue.extend({
 
     .link-social 
       float: right
+      [class*=icono]
+        color: $color-gray-medium
+
 
     // button go to top
     .button-gototop
@@ -129,8 +130,6 @@ export default Vue.extend({
       right: 10px
       background: $color-white-main
       color: $color-gray-medium
-      &:hover 
-        color: $color-gray-medium
       border-radius: 20px
       padding: 5px 15px 5px 5px
       cursor: pointer

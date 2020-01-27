@@ -4,7 +4,7 @@
       .grid-middle
         .col-1_md-1_sm-3.main-nav_logo
           router-link(to="/" title="Back to home" style="height:45px")
-            img(src="/v2/images/logo-square.png" alt="square logo of yussan academy")
+            img(src="/images/icons/icon-512x512.png" alt="square logo of yussan academy")
         .col-5_md-5_sm-hidden
           .main-nav_menu.main-nav_menu_left
             ul.main-nav-menu_link
@@ -24,8 +24,9 @@
   @import '../../../../design/sass/color'
 
   .main-nav
-    background-color: $color-blue-dark
-    color: $color-gray-verysoft
+    background-color: $color-white-main
+    color: $color-gray-medium
+    border-bottom: 1px solid $color-gray-verysoft
     padding: 0 5px
     .main-nav_logo
       img  
@@ -43,15 +44,13 @@
         li 
           display: inline-block
           padding: 20px
+          &:hover, &.active 
+            background-color: $color-gray-verysoft
           a  
             text-transform: capitalize
-            &:hover
-              color: $color-gray-verysoft
-            color: $color-white-main
-          &.active 
-            background-color: $color-white-main
-            a  
-              color: $color-black-main
+            // &:hover
+            //   color: $color-gray-verysoft
+            // color: $color-blue-main
 
     .main-nav_menu_right
         float: right
