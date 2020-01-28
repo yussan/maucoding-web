@@ -57,10 +57,10 @@
         .nav_menu_right_search
           padding: 15px 10px
           .icono-search 
-            color: $color-white-main
+            color: $color-gray-medium
             zoom: 0.8
           input[type="search"]
-            color: $color-white-main
+            color: $color-gray-medium
             padding: 5px 0
             background: none
             outline: none
