@@ -41,7 +41,6 @@
     // go to top button
     a#button-gototop.button-gototop(href="javascript:;" v-on:click="goToTop" :class='!show_btngototop ? "hide" : "" ')
       span.icono-caretUp
-      small Back to Top
 </template>
 
 <script lang="ts">
@@ -128,10 +127,10 @@ export default Vue.extend({
       position: fixed
       bottom: 10px
       right: 10px
-      background: $color-white-main
-      color: $color-gray-medium
       border-radius: 20px
-      padding: 5px 15px 5px 5px
+      padding: 5px
       cursor: pointer
+      span
+        color: $color-gray-dark 
 </style>
 
