@@ -39,8 +39,9 @@
               comment(:link='link') 
 
           .grid.p-t-2 
-            .col-8_md-12(data-push-left="off-2_md-0")
-              h2.title-menu The Latest
+            .col-12
+              box-title(text="Recommended Content")
+              .p-t-2 
               box-post(:data='post.list.latest_detail || {}') 
             
     div(v-else)
@@ -64,6 +65,8 @@ import { toCamelCase, truncate, stripTags } from "string-manager"
 import { epochToRelative } from "../../modules/datetime"
 
 // components
+import BoxTitle from "../../components/v2/headings/box-title.vue"
+import RecommendedPost from "../../components/v2/blocks/RecommendedPostBlock.vue"
 import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
 import post from "../../components/boxs/post.vue"
@@ -79,6 +82,8 @@ Vue.component("box-post", post)
 Vue.component("box-meta", meta)
 Vue.component("error-box", ErrorBox)
 Vue.component("Loader", Loader)
+Vue.component("box-title", BoxTitle)
+Vue.component("recommended-post", RecommendedPost)
 
 export default Vue.extend({
   name: "post-detail",
@@ -156,7 +161,7 @@ export default Vue.extend({
     fetchPostRelated(id) {
       this.$store.dispatch(TYPES.GET_POSTS, {
         filter: "latest_detail",
-        limit: 6,
+        limit: 4,
         draft: false,
         notid: id
       })
