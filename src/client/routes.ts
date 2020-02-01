@@ -1,6 +1,4 @@
-import Home from "./pages/home/index.vue"
 import Error from "./pages/error/index.vue"
-import Post from "./pages/post/index.vue"
 import PostDetail from "./pages/post/detail.vue"
 import StaticDetail from "./pages/static/index.vue"
 
@@ -14,10 +12,20 @@ export default [
     component: DefaultLayout,
     children: [
       { path: "/", component: () => import("./pages/v2/home/index.vue") },
-      { path: "/posts", component: Post },
-      { path: "/search", component: Post },
-      { path: "/tag/:tag_name", props: true, component: Post },
-      { path: "/author/:username", props: true, component: Post },
+      { path: "/posts", component: () => import("./pages/v2/post/index.vue") },
+      {
+        path: "/search",
+        component: () => import("./pages/v2/post/search.vue")
+      },
+      {
+        path: "/tag/:tag_name",
+        component: () => import("./pages/v2/post/index.vue")
+      },
+      {
+        path: "/author/:username",
+        props: true,
+        component: () => import("./pages/v2/post/author.vue")
+      },
       { path: "/post/:title", component: PostDetail },
       { path: "/static/:title", component: StaticDetail },
       {
