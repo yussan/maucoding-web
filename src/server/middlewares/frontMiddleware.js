@@ -55,6 +55,28 @@ export const generateMetaPostList = (req, res, next) => {
   return next()
 }
 
+export const generateMetaSuper = (req, res, next) => {
+  let title = "Super Access"
+  const desc = `${title} on Yussan Academy`
+  title += " - Yussan Academy"
+
+  req.meta = {
+    title,
+    desc,
+    url: `https://yussanacademy.com/${req.originalUrl}`,
+    image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+  }
+
+  req.html = `
+    <div class="super">
+      <h1>${title}</h1>
+      <h2>${desc}</h2>
+    </div>
+  `
+
+  return next()
+}
+
 export const generateMetaPostSearch = (req, res, next) => {
   const query = req.getQuery() ? queryToObj(req.getQuery()) : {}
   let title = `Search results "${query.q || "keyword"}"`

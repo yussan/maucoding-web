@@ -43,7 +43,12 @@ if (NODE_ENV == "development") {
 }
 
 // render vuejs
-server.get(/\/super\/*/, authMiddleware, render)
+server.get(
+  /\/super\/*/,
+  authMiddleware,
+  frontMiddleware.generateMetaSuper,
+  render
+)
 
 // tricky SSR
 server.get(
