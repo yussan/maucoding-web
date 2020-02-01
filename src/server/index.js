@@ -45,10 +45,17 @@ if (NODE_ENV == "development") {
 // render vuejs
 server.get(/\/super\/*/, authMiddleware, render)
 
+// tricky SSR
 server.get(
   "/posts",
   frontMiddleware.checkLanguage,
   frontMiddleware.generateMetaPostList,
+  render
+)
+server.get(
+  "/search",
+  frontMiddleware.checkLanguage,
+  frontMiddleware.generateMetaPostSearch,
   render
 )
 server.get(
@@ -75,11 +82,16 @@ server.get(
   frontMiddleware.generateMetaUser,
   render
 )
-
 server.get(
   "/:lang/posts",
   frontMiddleware.checkLanguage,
   frontMiddleware.generateMetaPostList,
+  render
+)
+server.get(
+  "/:lang/search",
+  frontMiddleware.checkLanguage,
+  frontMiddleware.generateMetaPostSearch,
   render
 )
 server.get(
@@ -137,7 +149,12 @@ server.get(
   })
 )
 
-server.get("/:lang", frontMiddleware.checkLanguage, render)
+server.get(
+  "/:lang",
+  frontMiddleware.checkLanguage,
+  frontMiddleware.generateMetaHomepage,
+  render
+)
 server.get(/\/:lang\/*/, frontMiddleware.checkLanguage, render)
 
 server.get(

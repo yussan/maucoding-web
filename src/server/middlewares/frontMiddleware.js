@@ -2,28 +2,75 @@ import * as postModule from "../modules/post"
 import * as userModule from "../modules/user"
 import { stripTags } from "string-manager/dist/modules/html"
 import { truncate } from "string-manager/dist/modules/truncate"
-import { encString, decString } from "../modules/password"
+import { queryToObj } from "string-manager/dist/modules/httpquery"
 import * as cookies from "../modules/cookies"
 
 const AVAILABLE_LANG = ["id", "en"]
 
-export const generateMetaPostList = (req, res, next) => {
-  let title = "Post"
-
-  if (req.params.tag) title = `${title} by tag ${req.params.tag}`
+export const generateMetaHomepage = (req, res, next) => {
+  const title = "Yussan Academy - Tech from engineer perspective"
+  const desc =
+    "Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
 
   req.meta = {
     title,
-    desc: `${title} on Yussan Academy`,
-    url: `https://oopsreview.com/${req.originalUrl}`,
-    image:
-      "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_500/v1538876985/idmore-academy/Patreon_Cover.png"
+    desc,
+    url: `https://yussanacademy.com/${req.originalUrl}`,
+    image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+  }
+
+  req.html = `
+    <div class="home">
+      <img src="${req.meta.image}" alt="Yussan Academy Logo" />
+      <h1>${title}</h1>
+      <h2>${desc}</h2>
+    </div>
+  `
+
+  return next()
+}
+
+export const generateMetaPostList = (req, res, next) => {
+  let title = "Available Posts"
+
+  if (req.params.tag) title = `${title} with tag "${req.params.tag}"`
+
+  const desc = `${title} on Yussan Academy`
+
+  req.meta = {
+    title,
+    desc,
+    url: `https://yussanacademy.com/${req.originalUrl}`,
+    image: "https://yussanacademy.com/images/logo-wide-2.1.png"
   }
 
   req.html = `
     <div class="post-list">
       <h1>${title}</h1>
-      <h2>${title} on Yussan Academy</h2>
+      <h2>${desc}</h2>
+    </div>
+  `
+
+  return next()
+}
+
+export const generateMetaPostSearch = (req, res, next) => {
+  const query = req.getQuery() ? queryToObj(req.getQuery()) : {}
+  let title = `Search results "${query.q || "keyword"}"`
+
+  const desc = `${title} on Yussan Academy`
+
+  req.meta = {
+    title,
+    desc,
+    url: `https://yussanacademy.com/${req.originalUrl}`,
+    image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+  }
+
+  req.html = `
+    <div class="post-search">
+      <h1>${title}</h1>
+      <h2>${desc}</h2>
     </div>
   `
 
@@ -112,8 +159,8 @@ export const generateMetaUser = (req, res, next) => {
 
         req.html = `
         <div class="author">
-          <h1>${json.username}</h1>
-          <h2>${json.fullname}</h2>
+          <h1>Post by "${json.username}" - Yussan Academy</h1>
+          <h2>Find all available post posted by "${json.username}". Yussan Academy - Tech from engineer perspective</h2>
           <img src="${json.avatar.original}" alt="${json.username}" />
         </div>
       `
@@ -128,6 +175,29 @@ export const generateMetaUser = (req, res, next) => {
       return next()
     }
   })
+}
+
+export const generateMetaNotFound = (req, res, next) => {
+  const title = "Page Not Found - Yussan Academy"
+  const desc =
+    "The page you are looking for was not found, please visit the others. Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
+
+  req.meta = {
+    title,
+    desc,
+    url: `https://yussanacademy.com/${req.originalUrl}`,
+    image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+  }
+
+  req.html = `
+    <div class="home">
+      <img src="${req.meta.image}" alt="Yussan Academy Logo" />
+      <h1>${title}</h1>
+      <h2>${desc}</h2>
+    </div>
+  `
+
+  return next()
 }
 
 export const checkLanguage = (req, res, next) => {
@@ -152,5 +222,4 @@ export const checkLanguage = (req, res, next) => {
     cookies.set(req, res, "idmoreacademy_lang_session", params_lang)
     return next()
   }
-  
 }

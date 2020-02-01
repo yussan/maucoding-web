@@ -108,6 +108,28 @@ export default (req, res, next) => {
     "Content-Type": "text/html"
   })
 
+  // default req meta and initial html
+  if (!req.meta && !req.html) {
+    const title = "Page Not Found - Yussan Academy"
+    const desc =
+      "The page you are looking for was not found, please visit the others. Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
+
+    req.meta = {
+      title,
+      desc,
+      url: `https://yussanacademy.com/${req.originalUrl}`,
+      image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+    }
+
+    req.html = `
+      <div class="home">
+        <img src="${req.meta.image}" alt="Yussan Academy Logo" />
+        <h1>${title}</h1>
+        <h2>${desc}</h2>
+      </div>
+    `
+  }
+
   const html = generateHtml({
     lang: req.params.lang,
     meta: req.meta,
