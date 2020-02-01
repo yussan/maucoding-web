@@ -36,6 +36,7 @@ export const generateMetaPostList = (req, res, next) => {
   if (req.params.tag) title = `${title} with tag "${req.params.tag}"`
 
   const desc = `${title} on Yussan Academy`
+  title += " - Yussan Academy"
 
   req.meta = {
     title,
@@ -59,6 +60,7 @@ export const generateMetaPostSearch = (req, res, next) => {
   let title = `Search results "${query.q || "keyword"}"`
 
   const desc = `${title} on Yussan Academy`
+  title += " - Yussan Academy"
 
   req.meta = {
     title,

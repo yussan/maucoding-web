@@ -13,14 +13,18 @@
         
         //- load more button
         div
-          big-button(v-if="typeof loadMoreHandler == 'function' && postData.status == 200 && !postData.loading" type="button" :onClick="loadMoreHandler" text="More Posts")
+          big-button(
+            v-if="typeof loadMoreHandler == 'function' && postData.status == 200 && !postData.loading" 
+            type="button" 
+            :onClick="loadMoreHandler" 
+            text="More Posts")
         
         //- if get status not 200 from api
-        div(v-if="postData.status && postData.status != 200")
+        div(v-if="postData.status && postData.status != 200 && !postData.loading")
           p.text-static {{ postData.message || "Post Not Available" }}
 
         //- loading component
-        div(v-if="!postData || !postData.status || postData.loading")
+        div(v-if="!postData.status || postData.loading")
           loader
 
         .m-t-30
