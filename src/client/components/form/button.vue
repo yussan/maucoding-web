@@ -9,20 +9,20 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
+import vue from "vue"
 
 const props = {
   type: {
     type: String,
-    default: 'button'
+    default: "button"
   },
   button_type: {
     type: String,
-    default: 'blue'
+    default: "blue"
   },
   customStyle: {
     type: String,
-    default: ''
+    default: ""
   },
   loading: {
     type: Boolean,
@@ -34,13 +34,13 @@ const props = {
   onclick: {
     type: Function,
     default() {
-      return {}  
+      return {}
     }
   }
 }
 
-export default Vue.extend({
-  name: 'oops-button',
+export default vue.extend({
+  name: "oops-button",
   props
 })
 </script>

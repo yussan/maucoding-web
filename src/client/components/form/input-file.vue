@@ -54,8 +54,8 @@ const defaultProps = {
 }
 
 // component init
-import Vue from "vue"
-export default Vue.extend({
+import vue from "vue"
+export default vue.extend({
   name: "input-file",
   props: defaultProps,
   data() {

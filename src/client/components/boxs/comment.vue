@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import { injectScript } from "../../modules/dom"
 
 function renderDisqus(target: string) {
@@ -22,7 +22,7 @@ function renderDisqus(target: string) {
   }, 1000)
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "comment",
 
   props: {
@@ -42,9 +42,9 @@ export default Vue.extend({
     if (!(<any>window).DISQUS)
       injectScript("//yussan-academy.disqus.com/embed.js", {
         cb: () => {
-        // waiting for DISQUS initialized
-        renderDisqus(`https://yussanacademy.com${this.link}`)
-      }
+          // waiting for DISQUS initialized
+          renderDisqus(`https://yussanacademy.com${this.link}`)
+        }
       })
     else renderDisqus(`https://yussanacademy.com${this.link}`)
   }

@@ -157,7 +157,7 @@
 </style>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import host from "../../../../config/host"
 import * as TYPES from "../../../vuex/types"
 import { injectScript } from "../../../modules/dom"
@@ -173,13 +173,13 @@ import ShareSocial from "../../../components/v2/blocks/Share"
 import Loading from "../../../components/cards/global-loader.vue"
 import App from "../../../components/v2/cards/App"
 
-Vue.component("layout", Layout)
-Vue.component("box-title", BoxTitle)
-Vue.component("recommended-post", RecommendedPost)
-Vue.component("comment", Comment)
-Vue.component("share-social", ShareSocial)
-Vue.component("loading", Loading)
-Vue.component("app", App)
+vue.component("layout", Layout)
+vue.component("box-title", BoxTitle)
+vue.component("recommended-post", RecommendedPost)
+vue.component("comment", Comment)
+vue.component("share-social", ShareSocial)
+vue.component("loading", Loading)
+vue.component("app", App)
 
 // render disqus count
 // see: https://help.disqus.com/developer/adding-comment-count-links-to-your-home-page

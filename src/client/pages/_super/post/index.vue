@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import { mapState } from "vuex"
 import * as TYPES from "../../../vuex/types"
 
@@ -35,12 +35,12 @@ import superboxpost from "../../../components/boxs/super-post.vue"
 import inputtext from "../../../components/form/input-text.vue"
 import bigbutton from "../../../components/form/button-big.vue"
 
-Vue.component("header-tag", header)
-Vue.component("super-box-post", superboxpost)
-Vue.component("input-text", inputtext)
-Vue.component("big-button", bigbutton)
+vue.component("header-tag", header)
+vue.component("super-box-post", superboxpost)
+vue.component("input-text", inputtext)
+vue.component("big-button", bigbutton)
 
-export default Vue.extend({
+export default vue.extend({
   name: "super-posts-list",
 
   data() {

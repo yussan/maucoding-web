@@ -14,7 +14,7 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue"
+import vue from "vue"
 import { truncate, stripTags, toCamelCase } from "string-manager"
 import { epochToRelative } from "../../modules/datetime"
 import { DELETE_POST } from "../../vuex/types"
@@ -23,10 +23,10 @@ import { DELETE_POST } from "../../vuex/types"
 import label from "../label.vue"
 import BtnDropdown from "../buttons/BtnDropdown.vue"
 
-Vue.component("label-component", label)
-Vue.component("btn-dropdown", BtnDropdown)
+vue.component("label-component", label)
+vue.component("btn-dropdown", BtnDropdown)
 
-export default Vue.extend({
+export default vue.extend({
   data() {
     const { handleDelete }: any = this
     return {

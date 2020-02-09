@@ -9,7 +9,7 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue"
+import vue from "vue"
 import navbar from "../components/v2/navigations/navbar.vue"
 import header from "../components/headers/header.vue"
 import footer from "../components/footer.vue"
@@ -18,11 +18,11 @@ import thanksTo from "../components/boxs/thanks-to.vue"
 import { router } from "../index"
 import { objToQuery } from "string-manager"
 
-Vue.component("navbar", navbar)
-Vue.component("top-navbar", header)
-Vue.component("bottom-navbar", footer)
-Vue.component("toast", toast)
-Vue.component("thanks-to", thanksTo)
+vue.component("navbar", navbar)
+vue.component("top-navbar", header)
+vue.component("bottom-navbar", footer)
+vue.component("toast", toast)
+vue.component("thanks-to", thanksTo)
 
 interface ToInterface {
   path: string
@@ -40,7 +40,7 @@ NOT_REDIRECT_LANG = [
 
 const IS_FULLSCREEN = ["search", "a", "author", "tag", "posts", "apps", "app"]
 
-export default Vue.extend({
+export default vue.extend({
   name: "layout-default",
 
   data() {

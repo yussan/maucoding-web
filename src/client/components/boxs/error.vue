@@ -5,10 +5,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  name: 'error-box',
-  props: ['error_code', 'error_message']
+import vue from "vue"
+export default vue.extend({
+  name: "error-box",
+  props: ["error_code", "error_message"]
 })
 </script>
 

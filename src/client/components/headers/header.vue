@@ -8,11 +8,11 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 
 function drawWave() {}
 
-export default Vue.extend({
+export default vue.extend({
   name: "navbar",
   props: {
     size: {

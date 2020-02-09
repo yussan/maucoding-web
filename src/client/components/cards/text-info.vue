@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  name: 'card-text-info',
-  props: ['text']
+import vue from "vue"
+export default vue.extend({
+  name: "card-text-info",
+  props: ["text"]
 })
 </script>
 

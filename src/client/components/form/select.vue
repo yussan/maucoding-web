@@ -11,7 +11,7 @@
       small {{ validation.result[name].message }}
 </template>
 <script>
-import Vue from "vue"
+import vue from "vue"
 
 const props = {
   name: {
@@ -46,7 +46,7 @@ const props = {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "input-select",
   props
 })

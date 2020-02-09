@@ -12,10 +12,10 @@
 
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import Editor from "@tinymce/tinymce-vue"
 
-Vue.component("editor", Editor)
+vue.component("editor", Editor)
 
 const props = {
   name: {
@@ -36,7 +36,7 @@ const props = {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "tinymce-editor",
   props
 })

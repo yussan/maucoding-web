@@ -7,13 +7,13 @@
 </style>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 
 import PostVerySmallCard from "../cards/PostVerySmallCard"
 
 const props = ["data"]
 
-Vue.component("post-card", PostVerySmallCard)
+vue.component("post-card", PostVerySmallCard)
 
 export default {
   props

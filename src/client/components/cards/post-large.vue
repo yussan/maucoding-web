@@ -15,12 +15,12 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import BtnPlay from "../buttons/BtnVideoPlay.vue"
 
-Vue.component("BtnPlay", BtnPlay)
+vue.component("BtnPlay", BtnPlay)
 
-export default Vue.extend({
+export default vue.extend({
   name: "card-post-large",
   props: ["data"]
 })

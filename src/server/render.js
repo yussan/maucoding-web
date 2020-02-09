@@ -105,10 +105,6 @@ function getScript() {
 }
 
 export default (req, res) => {
-  res.writeHead(200, {
-    "Content-Type": "text/html"
-  })
-
   const template = generateHtml({
     lang: req.params.lang,
     meta: req.meta,
@@ -116,24 +112,31 @@ export default (req, res) => {
   })
 
   const renderer = createBundleRenderer(serverBundle, {
+    // template: require("fs").readFileSync("./internals/index.template.html", "utf-8"),
     template,
     clientManifest,
     runInNewContext: false
   })
 
-  const context = {
+  let context = {
     url: req.url
+    // title: "Tech from engineer's perspective - Yussan Academy",
+    // meta: null
   }
 
   renderer.renderToString(context, (err, html) => {
+    // ref : http://restify.com/docs/response-api/#send
     if (err) {
       if (err.code === 404) {
-        res.status(400).send("Not found")
+        return res.send("Not found")
       } else {
-        console.log(err)
-        res.status(500).send("Internal server error")
+        console.error("server render error", err)
+        return res.send(err)
       }
     } else {
+      res.writeHead(200, {
+        "Content-Type": "text/html"
+      })
       res.write(html)
       return res.end()
     }

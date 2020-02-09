@@ -12,10 +12,10 @@
 </template>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import SidebarRight from "../../components/v2/navigations/sidebar-right"
 
-Vue.component("sidebar-right", SidebarRight)
+vue.component("sidebar-right", SidebarRight)
 
 export default {}
 </script>

@@ -19,14 +19,13 @@
 </style>
 
 <script>
-
-import Vue from "vue" 
+import vue from "vue"
 
 import BigButton from "../buttons/FullWidthButton"
 import AppCard from "../cards/App.vue"
 
-Vue.component("app-card", AppCard)
-Vue.component("big-button", BigButton)
+vue.component("app-card", AppCard)
+vue.component("big-button", BigButton)
 
 const props = ["postData", "loadMoreHandler"]
 

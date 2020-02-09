@@ -5,7 +5,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 
 const props = {
   title: {
@@ -18,7 +18,7 @@ const props = {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "header-tag",
   props
 })

@@ -21,17 +21,26 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import { router } from '../index'
+import vue from "vue"
+import { router } from "../index"
 
-const popular_tags = ['ReactJS', 'VueJS', 'Python', 'Javascript', 'Firebase', 'Tensorflow', 'NodeJS', 'Github']
+const popular_tags = [
+  "ReactJS",
+  "VueJS",
+  "Python",
+  "Javascript",
+  "Firebase",
+  "Tensorflow",
+  "NodeJS",
+  "Github"
+]
 
-export default Vue.extend({
-  name: 'navbar',
+export default vue.extend({
+  name: "navbar",
   data() {
     return {
       search: false,
-      search_text: '',
+      search_text: "",
       show_navbar: false,
       popular_tags
     }
@@ -40,15 +49,15 @@ export default Vue.extend({
   props: {
     keyword: {
       type: String,
-      default: ''
+      default: ""
     }
   },
 
   watch: {
     keyword(nv, ov) {
-      if(nv == '') {
-        this.search = false 
-        this.search_text = ''
+      if (nv == "") {
+        this.search = false
+        this.search_text = ""
       }
     }
   },
@@ -56,31 +65,33 @@ export default Vue.extend({
   methods: {
     toggleSearch() {
       this.search = !this.search
-      if(this.search === true) {
+      if (this.search === true) {
         setTimeout(() => {
-          const search_input:HTMLElement | null = document.getElementById('search-input')
-          if(search_input) search_input.focus()
+          const search_input: HTMLElement | null = document.getElementById(
+            "search-input"
+          )
+          if (search_input) search_input.focus()
         }, 300)
       } else {
-        this.search_text = ''
+        this.search_text = ""
         // if close on route /search - redirect to home
-        if (this.$route.name == 'search') router.push({path: `/`})
+        if (this.$route.name == "search") router.push({ path: `/` })
       }
     },
 
     handleChangeSearch(e: KeyboardEvent) {
-      if(e.keyCode == 13 && this.search_text != '') {
-        router.push({path: `/search?q=${this.search_text}`})
+      if (e.keyCode == 13 && this.search_text != "") {
+        router.push({ path: `/search?q=${this.search_text}` })
       }
     },
 
     handleScroll() {
-      document.addEventListener('scroll', (e) => {
+      document.addEventListener("scroll", e => {
         const position = window.scrollY
-        if(position > 218) {
+        if (position > 218) {
           // show navbar
           this.show_navbar = true
-        }else {
+        } else {
           // hide navbar
           this.show_navbar = false
         }
@@ -90,7 +101,7 @@ export default Vue.extend({
 
   mounted() {
     // user is doing search, and access /search page
-    if(this.keyword != '') {
+    if (this.keyword != "") {
       this.search_text = this.keyword
       this.search = true
     }

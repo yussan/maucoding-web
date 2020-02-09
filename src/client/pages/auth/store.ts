@@ -1,4 +1,4 @@
-import Vue from "vue"
+import vue from "vue"
 import request from "../../vuex/utils/api"
 import * as TYPES from "../../vuex/types"
 
@@ -26,7 +26,7 @@ interface LoginPayload {
 const actions = {
   /**
    * @description function to login ans save session
-   * @param {string} payload.username 
+   * @param {string} payload.username
    * @param {string} payload.password
    */
   [TYPES.LOGIN]: ({ commit }: any, payload: LoginPayload) => {
@@ -58,9 +58,9 @@ const mutations = {
   },
 
   [TYPES.LOGOUT]: (state: InitialState = initialState, payload: any) => {
-    console.log('logout muttation...')
+    console.log("logout muttation...")
     state.loading = false
-      state.response = payload
+    state.response = payload
   }
 }
 

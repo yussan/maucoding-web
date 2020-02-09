@@ -1,13 +1,13 @@
-import Vue from "vue"
+import vue from "vue"
 import Vuex from "vuex"
 import Meta from "vue-meta"
 import VueRouter from "vue-router"
 import routes from "./routes"
 import storeModules from "./vuex/modules"
 
-Vue.use(VueRouter)
-Vue.use(Vuex)
-Vue.use(Meta)
+vue.use(VueRouter)
+vue.use(Vuex)
+vue.use(Meta)
 
 // initial router
 export const router = new VueRouter({
@@ -24,7 +24,7 @@ export const store = new Vuex.Store({
 })
 
 // initial app
-export const app = new Vue({
+export const app = new vue({
   router,
   store,
   template: "<router-view />"

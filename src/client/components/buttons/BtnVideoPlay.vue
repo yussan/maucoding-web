@@ -4,8 +4,8 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import vue from "vue"
+export default vue.extend({
   name: "button-play",
   props: ["size"]
 })

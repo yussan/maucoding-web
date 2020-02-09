@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import vue from "vue"
+export default vue.extend({
   name: "section-title",
-  props:["title", "style"]
+  props: ["title", "style"]
 })
 </script>
 

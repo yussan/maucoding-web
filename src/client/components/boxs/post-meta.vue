@@ -29,7 +29,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import { injectScript } from "../../modules/dom"
 import { epochToRelative } from "../../modules/datetime"
 import { toCamelCase } from "string-manager"
@@ -44,7 +44,7 @@ function renderDisqus(target: string = "") {
   }, 1500)
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "post-meta",
 
   props: ["data", "link"],

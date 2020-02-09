@@ -11,21 +11,20 @@ div
 </template>
 
 <script lang='ts'>
-import Vue from 'vue'
-import sidebar from '../components/super-sidebar.vue'
-import header from '../components/headers/header.vue'
-import footer from '../components/footer.vue'
+import vue from "vue"
+import sidebar from "../components/super-sidebar.vue"
+import header from "../components/headers/header.vue"
+import footer from "../components/footer.vue"
 import toast from "../components/toast.vue"
 
-Vue.component('super-sidebar', sidebar)
-Vue.component('top-navbar', header)
-Vue.component('bottom-navbar', footer)
-Vue.component('toast', toast)
+vue.component("super-sidebar", sidebar)
+vue.component("top-navbar", header)
+vue.component("bottom-navbar", footer)
+vue.component("toast", toast)
 
-export default Vue.extend({
-  name: 'layout-super'
+export default vue.extend({
+  name: "layout-super"
 })
-
 </script>
 
 <style lang='sass'>

@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import BtnPlay from "../buttons/BtnVideoPlay.vue"
 
-export default Vue.extend({
+export default vue.extend({
   name: "card-post-small",
 
   props: ["data"]

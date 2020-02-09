@@ -15,7 +15,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import { getData } from "../../../../internals/static-data"
 import { epochToRelative } from "../../modules/datetime"
 import { truncate, toCamelCase, stripTags } from "string-manager"
@@ -23,13 +23,13 @@ import { truncate, toCamelCase, stripTags } from "string-manager"
 // components
 import ErrorContainer from "../error/index.vue"
 
-Vue.component("error-box", ErrorContainer)
+vue.component("error-box", ErrorContainer)
 
 interface Data {
   content: any
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "static-detail",
 
   data() {
@@ -41,13 +41,13 @@ export default Vue.extend({
   metaInfo() {
     if (typeof this.content !== "undefined") {
       const { title, html }: any = this.content
-      const description = truncate(stripTags(html), 500, '...')
+      const description = truncate(stripTags(html), 500, "...")
 
       return {
         title: toCamelCase(title),
         meta: [
           {
-            vmid: 'description',
+            vmid: "description",
             name: "description",
             content: description
           }
@@ -58,7 +58,7 @@ export default Vue.extend({
         title: "Page Not Found",
         meta: [
           {
-            vmid: 'description',
+            vmid: "description",
             name: "description",
             content: "Are you lost, click link bellow to acccess other page"
           }

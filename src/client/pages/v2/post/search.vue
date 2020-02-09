@@ -41,13 +41,13 @@
 </style>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import * as TYPES from "../../../vuex/types"
 
 import SmallPostBock from "../../../components/v2/blocks/SmallPostBlock"
 import { router } from "../../../index"
 
-Vue.component("small-post-block", SmallPostBock)
+vue.component("small-post-block", SmallPostBock)
 
 export default {
   data() {

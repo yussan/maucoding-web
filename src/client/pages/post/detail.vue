@@ -56,7 +56,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import host from "../../../config/host"
 import * as TYPES from "../../vuex/types"
 import { injectCss, injectScript } from "../../modules/dom"
@@ -72,19 +72,19 @@ import meta from "../../components/boxs/post-meta.vue"
 import ErrorBox from "../error/index.vue"
 import Loader from "../../components/loaders/index.vue"
 
-Vue.component("app-card", resolve =>
+vue.component("app-card", resolve =>
   import("../../components/cards/post-app.vue")
 )
 
-Vue.component("comment", comment)
-// Vue.component("box-post", post)
-Vue.component("box-meta", meta)
-Vue.component("error-box", ErrorBox)
-Vue.component("Loader", Loader)
-Vue.component("box-title", BoxTitle)
-Vue.component("recommended-post", RecommendedPost)
+vue.component("comment", comment)
+// vue.component("box-post", post)
+vue.component("box-meta", meta)
+vue.component("error-box", ErrorBox)
+vue.component("Loader", Loader)
+vue.component("box-title", BoxTitle)
+vue.component("recommended-post", RecommendedPost)
 
-export default Vue.extend({
+export default vue.extend({
   name: "post-detail",
 
   // metaInfo: this.meta,

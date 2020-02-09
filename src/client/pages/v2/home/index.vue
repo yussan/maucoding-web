@@ -21,7 +21,7 @@
 </template>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import DefaultMeta from "../../../../config/metainfo"
 import * as TYPES from "../../../vuex/types"
 
@@ -34,13 +34,13 @@ import BoxTitle from "../../../components/v2/headings/box-title"
 import FullWidthButton from "../../../components/v2/buttons/FullWidthButton"
 import GA from "../../../components/v2/cards/ads"
 
-Vue.component("post-card-large", PostCardLarge)
-Vue.component("post-block", PostBlock)
-Vue.component("box-title", BoxTitle)
-Vue.component("layout", Layout)
-Vue.component("full-button", FullWidthButton)
-Vue.component("ga", GA)
-Vue.component("slider", Slider)
+vue.component("post-card-large", PostCardLarge)
+vue.component("post-block", PostBlock)
+vue.component("box-title", BoxTitle)
+vue.component("layout", Layout)
+vue.component("full-button", FullWidthButton)
+vue.component("ga", GA)
+vue.component("slider", Slider)
 
 export default {
   metaInfo() {
