@@ -229,19 +229,24 @@ export const checkLanguage = (req, res, next) => {
 
   // return next()
   // get lang from url
-  const params_lang = req.params.lang
+  let params_lang = req.params.lang
   // get lang from session
-  const session_lang = req.cookies.idmoreacademy_lang_session
+  const session_lang = req.cookies.idmoreacademy_lang_session || "id"
+
+  if (!params_lang) {
+    const pathArr = req.path().split("/")
+    params_lang = pathArr[1]
+  }
+
+  console.log("params_lang", params_lang)
 
   if (!AVAILABLE_LANG.includes(params_lang)) {
-    const new_lang = session_lang || "id"
-
     // set new cookies of lang
-    cookies.set(req, res, "idmoreacademy_lang_session", new_lang)
+    cookies.set(req, res, "idmoreacademy_lang_session", session_lang)
 
     // redirect to select lang
     return res.redirect(
-      `/${new_lang}${req.path()}`.replace(`/${params_lang}`, ""),
+      `/${session_lang}${req.path()}`.replace(`/${params_lang}`, ""),
       next
     )
   } else {

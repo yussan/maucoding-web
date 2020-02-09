@@ -3,6 +3,7 @@ import cookies from "restify-cookies"
 import render from "./render"
 import debug from "debug"
 import routes from "./routes"
+import * as cookiesMod from "./modules/cookies"
 
 // handlers
 import handlerSeal from "./handlers/seal"
@@ -104,8 +105,27 @@ server.get(
 )
 
 server.get("/:lang", frontMiddleware.checkLanguage, render)
-server.get(/\/\:lang\/*/, frontMiddleware.checkLanguage, render)
-server.get(/\/*/, render)
+// tricky
+server.get(
+  /\/id\/*/,
+  (req, res, next) => {
+    req.params.lang = "id"
+    cookiesMod.set(req, res, "idmoreacademy_lang_session", "id")
+    return next()
+  },
+  render
+)
+server.get(
+  /\/en\/*/,
+  (req, res, next) => {
+    req.params.lang = "en"
+    cookiesMod.set(req, res, "idmoreacademy_lang_session", "en")
+    return next()
+  },
+  render
+)
+// end of tricky
+server.get(/\/*/, frontMiddleware.checkLanguage, render)
 
 server.listen(port, () => {
   debugServer(`App SUCCESS run on port  ${port}`)
