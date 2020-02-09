@@ -124,7 +124,7 @@ export default Vue.extend({
       editorHtml: "",
       editorTab: "editor",
       title: id ? "Update Post" : "New Post",
-      formdata: <any>{lang: "en"},
+      formdata: <any>{ lang: "en" },
       formvalidate: <any>{},
       validation: new validation(rules)
     }

@@ -1014,7 +1014,10 @@ var mergePlugins = function (initPlugins, inputPlugins) {
 
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_vue__ = __webpack_require__(3);
-const reader = new FileReader();
+let reader = null;
+if (typeof window !== "undefined") {
+    reader = new FileReader();
+}
 // default props
 const defaultProps = {
     name: {
@@ -1052,7 +1055,8 @@ const defaultProps = {
     props: defaultProps,
     data() {
         return {
-            image_preview: this.preview || "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"
+            image_preview: this.preview ||
+                "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"
         };
     },
     watch: {

@@ -49,80 +49,6 @@ server.get(
   render
 )
 
-// tricky SSR
-// server.get(
-//   "/posts",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPostList,
-//   render
-// )
-// server.get(
-//   "/search",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPostSearch,
-//   render
-// )
-// server.get(
-//   "/tag/:tag",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPostList,
-//   render
-// )
-// server.get(
-//   "/post/:title",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPost,
-//   render
-// )
-// server.get(
-//   "/author/:username",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaUser,
-//   render
-// )
-// server.get(
-//   "/a/:username",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaUser,
-//   render
-// )
-// server.get(
-//   "/:lang/posts",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPostList,
-//   render
-// )
-// server.get(
-//   "/:lang/search",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPostSearch,
-//   render
-// )
-// server.get(
-//   "/:lang/tag/:tag",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPostList,
-//   render
-// )
-// server.get(
-//   "/:lang/post/:title",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaPost,
-//   render
-// )
-// server.get(
-//   "/:lang/author/:username",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaUser,
-//   render
-// )
-// server.get(
-//   "/:lang/a/:username",
-//   frontMiddleware.checkLanguage,
-//   frontMiddleware.generateMetaUser,
-//   render
-// )
-
 server.get(
   /\/client-build\/*/,
   restify.plugins.serveStatic({
@@ -185,15 +111,7 @@ server.get(
 )
 server.get(/\/:lang\/*/, frontMiddleware.checkLanguage, render)
 
-// server.get(
-//   /\/?.*\//,
-//   restify.plugins.serveStatic({
-//     directory: `${__dirname}/../../public`,
-//     maxAge: 0
-//   })
-// )
-
-server.get(/\/*/, render)
+server.get(/\/*/, frontMiddleware.checkLanguage, render)
 
 server.listen(port, () => {
   debugServer(`App SUCCESS run on port  ${port}`)

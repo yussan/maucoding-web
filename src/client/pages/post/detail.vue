@@ -42,7 +42,7 @@
             .col-12
               box-title(text="Recommended Content")
               .p-t-2 
-              box-post(:data='post.list.latest_detail || {}') 
+              recommended-post(:data="post.list.latest_detail || {}")
             
     div(v-else)
       .m-t-30
@@ -69,7 +69,6 @@ import BoxTitle from "../../components/v2/headings/box-title.vue"
 import RecommendedPost from "../../components/v2/blocks/RecommendedPostBlock.vue"
 import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
-import post from "../../components/boxs/post.vue"
 import ErrorBox from "../error/index.vue"
 import Loader from "../../components/loaders/index.vue"
 
@@ -78,7 +77,7 @@ Vue.component("app-card", resolve =>
 )
 
 Vue.component("comment", comment)
-Vue.component("box-post", post)
+// Vue.component("box-post", post)
 Vue.component("box-meta", meta)
 Vue.component("error-box", ErrorBox)
 Vue.component("Loader", Loader)
@@ -140,8 +139,8 @@ export default Vue.extend({
 
   created() {
     // inject primsjs
-    this.injectCss("/prismjs/prismjs.css")
-    this.injectScript("/prismjs/prismjs.js")
+    this.injectCss("/vendors/prismjs/prismjs.css")
+    this.injectScript("/vendors/prismjs/prismjs.js")
 
     const title_arr = this.$route.params.title.split("-")
     const id = title_arr[title_arr.length - 1]
