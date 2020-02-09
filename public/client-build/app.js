@@ -1315,7 +1315,7 @@ __WEBPACK_IMPORTED_MODULE_0_vue__["default"].component("recommended-post", __WEB
         return {
             link: `/post/${this.$route.params.title}`,
             meta: {
-                title: "Yussan Academy - Tech from Engineer Perspective",
+                title: "Tech from Engineer Perspective",
                 description: "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
             },
             id: 0

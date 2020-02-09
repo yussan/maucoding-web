@@ -8,7 +8,7 @@ import * as cookies from "../modules/cookies"
 const AVAILABLE_LANG = ["id", "en"]
 
 export const generateMetaHomepage = (req, res, next) => {
-  const title = "Yussan Academy - Tech from engineer perspective"
+  const title = "Tech from engineer perspective"
   const desc =
     "Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
 

@@ -1243,7 +1243,7 @@ exports.default = {
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony default export */ __webpack_exports__["default"] = ({
-    title: "Yussan Academy - Tech from Engineer Perspective",
+    title: "Tech from Engineer Perspective",
     description: "Let's make technology accessible, affordable and easy for everyone to learn with Yussan Academy"
 });
 

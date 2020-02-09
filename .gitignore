@@ -62,6 +62,8 @@ typings/
 # next.js build output
 .next
 public/build
+public/client-build
+public/server-build
 package-lock.json
 internals/webpack-assets.json
 dist
