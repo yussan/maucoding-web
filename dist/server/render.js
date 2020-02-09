@@ -24,13 +24,28 @@ var generateHtml = function generateHtml(_ref) {
 
 function getScript() {
   var webpackAssets = require("../../internals/webpack-assets.json");
-  return "\n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.vendor.js : "/build/vendor.js") + "\"></script>\n    \n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js") + "\"></script>\n    \n    " + (NODE_ENV === "production" ? "\n        <!-- Global site tag (gtag.js) - Google Analytics -->\n        <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-156429570-1\"></script>\n        <script>\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n\n          gtag('config', 'UA-156429570-1');\n        </script>\n\n        " : "") + "\n    ";
+  return "\n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.vendor.js : "/build/vendor.js") + "\"></script>\n    \n    <script src=\"" + (NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js") + "\"></script>\n    \n    " + (NODE_ENV === "production" ? "\n        <!-- Global site tag (gtag.js) - Google Analytics -->\n        <script async src=\"https://www.googletagmanager.com/gtag/js?id=UA-156429570-1\"></script>\n        <script>\n          window.dataLayer = window.dataLayer || [];\n          function gtag(){dataLayer.push(arguments);}\n          gtag('js', new Date());\n\n          gtag('config', 'UA-156429570-1');\n        </script>\n\n        <script async src=\"https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js\"></script>\n        <script>\n            (adsbygoogle = window.adsbygoogle || []).push({\n                  google_ad_client: \"ca-pub-4468477322781117\",\n                  enable_page_level_ads: true\n            });\n        </script>\n\n        " : "") + "\n    ";
 }
 
 exports.default = function (req, res, next) {
   res.writeHead(200, {
     "Content-Type": "text/html"
   });
+
+  // default req meta and initial html
+  if (!req.meta && !req.html) {
+    var title = "Page Not Found - Yussan Academy";
+    var desc = "The page you are looking for was not found, please visit the others. Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers";
+
+    req.meta = {
+      title: title,
+      desc: desc,
+      url: "https://yussanacademy.com/" + req.originalUrl,
+      image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+    };
+
+    req.html = "\n      <div class=\"home\">\n        <img src=\"" + req.meta.image + "\" alt=\"Yussan Academy Logo\" />\n        <h1>" + title + "</h1>\n        <h2>" + desc + "</h2>\n      </div>\n    ";
+  }
 
   var html = generateHtml({
     lang: req.params.lang,

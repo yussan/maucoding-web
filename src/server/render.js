@@ -77,11 +77,13 @@ function getScript() {
   const webpackAssets = require("../../internals/webpack-assets.json")
   return `
     <script src="${
-      NODE_ENV == "production" ? webpackAssets.vendor.js : "/build/vendor.js"
+      NODE_ENV == "production"
+        ? webpackAssets.vendor.js
+        : "/client-build/vendor.js"
     }"></script>
     
     <script src="${
-      NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js"
+      NODE_ENV == "production" ? webpackAssets.app.js : "/client-build/app.js"
     }"></script>
     
     ${

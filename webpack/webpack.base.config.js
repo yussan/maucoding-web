@@ -1,49 +1,7 @@
 require("dotenv").config()
 
-const webpack = require("webpack")
-const path = require("path")
-const AssetsPlugin = require("assets-webpack-plugin")
-
-let outputPath
-let plugins = [
-  new webpack.NoEmitOnErrorsPlugin(),
-  new webpack.optimize.CommonsChunkPlugin({
-    name: "vendor",
-    filename:
-      process.env.NODE_ENV === "production" ? "vendor.[hash].js" : "vendor.js",
-    minChunks: Infinity
-  }),
-  new AssetsPlugin({
-    prettyPrint: false,
-    path: path.join(__dirname, "../internals")
-  }),
-  new webpack.DefinePlugin({
-    "process.env": {
-      NODE_ENV: JSON.stringify(process.env.NODE_ENV)
-    }
-  })
-]
-
-outputPath = path.resolve(__dirname, "../public/build")
-
-// production config
-if (process.env.NODE_ENV === "production") {
-  // minify appjs
-  const UglifyJSPlugin = require("uglifyjs-webpack-plugin")
-  plugins.push(new UglifyJSPlugin())
-}
-
 // default config
 module.exports = {
-  output: {
-    filename:
-      process.env.NODE_ENV === "production" ? "[name].[hash].js" : "[name].js",
-    chunkFilename:
-      process.env.NODE_ENV === "production" ? "[name].[hash].js" : "[name].js",
-    path: outputPath,
-    publicPath: "/build/"
-  },
-
   module: {
     loaders: [
       {
@@ -79,7 +37,5 @@ module.exports = {
     alias: {
       vue$: "vue/dist/vue.esm.js"
     }
-  },
-
-  plugins
+  }
 }
