@@ -24,14 +24,14 @@
 </style>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import { router } from "../../../index"
 import * as TYPES from "../../../vuex/types"
 
 // components
 import SmallPostBock from "../../../components/v2/blocks/SmallPostBlock"
 
-Vue.component("small-post-block", SmallPostBock)
+vue.component("small-post-block", SmallPostBock)
 
 export default {
   data() {

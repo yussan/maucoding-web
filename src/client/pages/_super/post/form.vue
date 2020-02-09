@@ -83,7 +83,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import tinyMceEditor from "../../../components/form/tinymce-editor.vue"
 import header from "../../../components/cards/header-tag.vue"
 import inputText from "../../../components/form/input-text.vue"
@@ -98,13 +98,13 @@ import { mapState } from "vuex"
 import { router } from "../../../index"
 import inputTags from "vue-input-tag"
 
-Vue.component("header-tag", header)
-Vue.component("input-text", inputText)
-Vue.component("input-file", inputFile)
-Vue.component("oops-button", button)
-Vue.component("input-select", select)
-Vue.component("tinymce-editor", tinyMceEditor)
-Vue.component("input-tags", inputTags)
+vue.component("header-tag", header)
+vue.component("input-text", inputText)
+vue.component("input-file", inputFile)
+vue.component("oops-button", button)
+vue.component("input-select", select)
+vue.component("tinymce-editor", tinyMceEditor)
+vue.component("input-tags", inputTags)
 
 const rules = {
   title: "required",
@@ -112,7 +112,7 @@ const rules = {
   lang: "required"
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "super-posts-form",
 
   data() {
@@ -124,7 +124,7 @@ export default Vue.extend({
       editorHtml: "",
       editorTab: "editor",
       title: id ? "Update Post" : "New Post",
-      formdata: <any>{lang: "en"},
+      formdata: <any>{ lang: "en" },
       formvalidate: <any>{},
       validation: new validation(rules)
     }

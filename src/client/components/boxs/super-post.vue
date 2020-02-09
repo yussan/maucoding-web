@@ -11,14 +11,14 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue"
+import vue from "vue"
 import rowSuperPost from "../rows/super-post.vue"
 import textinfo from "../cards/text-info.vue"
 import loading from "../loaders/index.vue"
 
-Vue.component("row-super-post", rowSuperPost)
-Vue.component("loading", loading)
-Vue.component("text-info", textinfo)
+vue.component("row-super-post", rowSuperPost)
+vue.component("loading", loading)
+vue.component("text-info", textinfo)
 
 const props = {
   data: {
@@ -26,7 +26,7 @@ const props = {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "box-post",
   props
 })

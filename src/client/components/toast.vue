@@ -28,8 +28,8 @@
 </style>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
+import vue from "vue"
+export default vue.extend({
   name: "toast",
   mounted() {
     const Toast = <HTMLElement>document.getElementById("toast-oopsreview")

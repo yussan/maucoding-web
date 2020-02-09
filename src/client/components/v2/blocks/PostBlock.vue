@@ -19,20 +19,19 @@ div
 </style>
 
 <script>
-
-import Vue from "vue"
+import vue from "vue"
 import PostCardLarge from "../cards/PostLargeCard"
 import PostCardSmall from "../cards/PostSmallCard"
 import Loading from "../loaders/index"
 
 const props = ["postData", "removeFirst"]
 
-Vue.component("post-card-large", PostCardLarge)
-Vue.component("post-card-small", PostCardSmall)
-Vue.component("loading", Loading)
+vue.component("post-card-large", PostCardLarge)
+vue.component("post-card-small", PostCardSmall)
+vue.component("loading", Loading)
 
 export default {
-  props, 
+  props
 
   // watch: {
   //   postData(val) {

@@ -31,7 +31,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import text from "../../components/form/input-text.vue"
 import button from "../../components/form/button.vue"
 import alert from "../../components/cards/alert.vue"
@@ -46,11 +46,11 @@ const rules = {
   password: "required"
 }
 
-Vue.component("input-text", text)
-Vue.component("submit", button)
-Vue.component("alert", alert)
+vue.component("input-text", text)
+vue.component("submit", button)
+vue.component("alert", alert)
 
-export default Vue.extend({
+export default vue.extend({
   name: "auth",
 
   data() {

@@ -14,12 +14,12 @@
 </template>
 
 <script lang='ts'>
-import Vue from "vue"
+import vue from "vue"
 import * as TYPES from "../vuex/types"
 import toast from "../modules/toast"
-import {mapState} from "vuex"
+import { mapState } from "vuex"
 
-export default Vue.extend({
+export default vue.extend({
   name: "super-sidebar",
 
   methods: {
@@ -34,7 +34,7 @@ export default Vue.extend({
   // },
 
   watch: {
-    ["auth.response"]():any {
+    ["auth.response"](): any {
       if (this.auth.response.status) {
         if (this.auth.response.status === 200) {
           toast("Logout success", "success")
@@ -42,17 +42,14 @@ export default Vue.extend({
             location.reload()
           }, 1000)
         } else {
-          toast(
-            "Failed to logout, please try again",
-            "error"
-          )
+          toast("Failed to logout, please try again", "error")
         }
       }
     }
   },
 
   computed: {
-    ...mapState(['auth'])
+    ...mapState(["auth"])
   }
 })
 </script>

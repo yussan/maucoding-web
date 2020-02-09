@@ -16,7 +16,10 @@
 </template>
 
 <script lang="ts">
-const reader = new FileReader()
+let reader: any = null
+if (typeof window !== "undefined") {
+  reader = new FileReader()
+}
 
 // default props
 const defaultProps = {
@@ -51,13 +54,15 @@ const defaultProps = {
 }
 
 // component init
-import Vue from "vue"
-export default Vue.extend({
+import vue from "vue"
+export default vue.extend({
   name: "input-file",
   props: defaultProps,
-  data(){
+  data() {
     return {
-      image_preview: this.preview || "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"
+      image_preview:
+        this.preview ||
+        "https://res.cloudinary.com/dhjkktmal/image/upload/v1535163093/oopsreview/2018/default_post_image.png"
     }
   },
   watch: {
@@ -68,9 +73,9 @@ export default Vue.extend({
   methods: {
     changeHandler(e) {
       const file = e.target.files[0]
-      if(file) {
+      if (file) {
         // generate url
-        this.image_preview  = window.URL.createObjectURL(file)
+        this.image_preview = window.URL.createObjectURL(file)
         this.onchange(e)
       }
     }

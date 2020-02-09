@@ -74,7 +74,7 @@
 </style>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import * as TYPES from "../../../vuex/types"
 
 import TagButton from "../buttons/TagButton"
@@ -92,8 +92,8 @@ const DUMMY_POPULAR_TAGS = [
   "frontend"
 ]
 
-Vue.component("box-title", BoxTitle)
-Vue.component("tag-button", TagButton)
+vue.component("box-title", BoxTitle)
+vue.component("tag-button", TagButton)
 
 export default {
   name: "sidebar-right",

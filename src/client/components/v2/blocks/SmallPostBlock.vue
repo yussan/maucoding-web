@@ -59,14 +59,14 @@
 </style>
 
 <script>
-import Vue from "vue"
+import vue from "vue"
 import PostSmallCard from "../cards/PostSmallCard"
 import BigButton from "../buttons/FullWidthButton"
 import Loader from "../loaders/index"
 
-Vue.component("post-small-card", PostSmallCard)
-Vue.component("big-button", BigButton)
-Vue.component("loader", Loader)
+vue.component("post-small-card", PostSmallCard)
+vue.component("big-button", BigButton)
+vue.component("loader", Loader)
 
 const props = ["postData", "loadMoreHandler"]
 

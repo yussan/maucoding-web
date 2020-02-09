@@ -4,7 +4,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 
 const props = {
   size: {
@@ -13,7 +13,7 @@ const props = {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   props
 })
 </script>

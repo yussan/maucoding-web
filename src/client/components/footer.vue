@@ -44,7 +44,7 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 
 const defaultProps = ["route"]
 
@@ -55,7 +55,7 @@ declare global {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   data() {
     return {
       show_btngototop: false,

@@ -4,9 +4,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  name: 'alert',
+import vue from "vue"
+export default vue.extend({
+  name: "alert",
   props: {
     type: {
       type: String

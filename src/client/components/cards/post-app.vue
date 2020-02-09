@@ -30,10 +30,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import { toCamelCase } from "string-manager"
 
-export default Vue.extend({
+export default vue.extend({
   name: "card-post-app",
   props: ["app"],
   methods: {

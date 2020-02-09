@@ -13,13 +13,13 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-import navbar from '../../components/navbar.vue'
+import vue from "vue"
+import navbar from "../../components/navbar.vue"
 
-Vue.component('navbar', navbar)
+vue.component("navbar", navbar)
 
-export default Vue.extend({
-  name: 'error-page'  
+export default vue.extend({
+  name: "error-page"
 })
 </script>
 

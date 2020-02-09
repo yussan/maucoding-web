@@ -31,14 +31,14 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import CardSmall from "../cards/post-small.vue"
 import CardLarge from "../cards/post-large.vue"
 
-Vue.component("card-small", CardSmall)
-Vue.component("card-large", CardLarge)
+vue.component("card-small", CardSmall)
+vue.component("card-large", CardLarge)
 
-export default Vue.extend({
+export default vue.extend({
   name: "popular-post-box",
 
   props: ["data"]

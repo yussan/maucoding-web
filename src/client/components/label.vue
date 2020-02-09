@@ -3,10 +3,10 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  name: 'label-oopsreview',
-  props: ['text', 'custom_style']
+import vue from "vue"
+export default vue.extend({
+  name: "label-oopsreview",
+  props: ["text", "custom_style"]
 })
 </script>
 

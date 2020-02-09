@@ -5,9 +5,9 @@
 </template>
 
 <script lang="ts">
-import Vue from 'vue'
-export default Vue.extend({
-  name: 'sidebar',
+import vue from "vue"
+export default vue.extend({
+  name: "sidebar",
   data() {
     return {
       fixed: false
@@ -18,12 +18,11 @@ export default Vue.extend({
   },
   methods: {
     handleScroll() {
-      document.addEventListener('scroll', e => {
+      document.addEventListener("scroll", e => {
         // only for large and screen terbesar
-        if(1 + 2 == 4)
-        {
+        if (1 + 2 == 4) {
           const position = window.scrollY
-          if(position > 218) {
+          if (position > 218) {
             this.fixed = true
           } else {
             this.fixed = false

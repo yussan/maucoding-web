@@ -10,10 +10,10 @@
 </template>
 
 <script lang="ts">
-import Vue from "vue"
+import vue from "vue"
 import BtnDelete from "./BtnDelete.vue"
 
-Vue.component("BtnDelete", BtnDelete)
+vue.component("BtnDelete", BtnDelete)
 
 const propTypes = {
   items: {
@@ -28,7 +28,7 @@ const propTypes = {
   }
 }
 
-export default Vue.extend({
+export default vue.extend({
   name: "button-dropdown",
   data() {
     return {
