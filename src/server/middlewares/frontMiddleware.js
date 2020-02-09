@@ -225,6 +225,9 @@ export const generateMetaNotFound = (req, res, next) => {
 }
 
 export const checkLanguage = (req, res, next) => {
+  console.log(req.path(), req.params)
+
+  // return next()
   // get lang from url
   const params_lang = req.params.lang
   // get lang from session

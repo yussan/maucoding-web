@@ -103,15 +103,9 @@ server.get(
   })
 )
 
-server.get(
-  "/:lang",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaHomepage,
-  render
-)
-server.get(/\/:lang\/*/, frontMiddleware.checkLanguage, render)
-
-server.get(/\/*/, frontMiddleware.checkLanguage, render)
+server.get("/:lang", frontMiddleware.checkLanguage, render)
+server.get(/\/\:lang\/*/, frontMiddleware.checkLanguage, render)
+server.get(/\/*/, render)
 
 server.listen(port, () => {
   debugServer(`App SUCCESS run on port  ${port}`)
