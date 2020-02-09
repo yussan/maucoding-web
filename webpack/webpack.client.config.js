@@ -2,9 +2,12 @@ require("dotenv").config()
 
 const webpack = require("webpack")
 const path = require("path")
+const merge = require("webpack-merge")
+const outputPath = path.resolve(__dirname, "../public/client-build")
+const baseConfig = require("./webpack.base.config")
+const VueSSRClientPlugin = require("vue-server-renderer/client-plugin")
 const AssetsPlugin = require("assets-webpack-plugin")
 
-let outputPath
 let plugins = [
   new webpack.NoEmitOnErrorsPlugin(),
   new webpack.optimize.CommonsChunkPlugin({
@@ -15,16 +18,15 @@ let plugins = [
   }),
   new AssetsPlugin({
     prettyPrint: false,
-    path: path.join(__dirname, "internals")
+    path: path.join(__dirname, "../internals")
   }),
   new webpack.DefinePlugin({
     "process.env": {
       NODE_ENV: JSON.stringify(process.env.NODE_ENV)
     }
-  })
+  }),
+  new VueSSRClientPlugin()
 ]
-
-outputPath = path.resolve(__dirname, "public/build")
 
 // production config
 if (process.env.NODE_ENV === "production") {
@@ -33,58 +35,18 @@ if (process.env.NODE_ENV === "production") {
   plugins.push(new UglifyJSPlugin())
 }
 
-// default config
-module.exports = {
+module.exports = merge(baseConfig, {
   entry: {
     app: "./src/client/index.ts",
     vendor: ["vue", "vuex", "vue-router", "string-manager"]
   },
-
   output: {
     filename:
       process.env.NODE_ENV === "production" ? "[name].[hash].js" : "[name].js",
     chunkFilename:
       process.env.NODE_ENV === "production" ? "[name].[hash].js" : "[name].js",
     path: outputPath,
-    publicPath: "/build/"
+    publicPath: "/client-build/"
   },
-
-  module: {
-    loaders: [
-      {
-        test: /\.js$/,
-        exclude: /(node_modules)/,
-        loader: "babel-loader",
-        query: {
-          presets: ["es2015"]
-        }
-      },
-      {
-        test: /\.vue$/,
-        exclude: /(node_modules)/,
-        loader: "vue-loader"
-      },
-      {
-        test: /\.ts$/,
-        exclude: /node_modules|vue\/src/,
-        loader: "ts-loader",
-        options: {
-          appendTsSuffixTo: [/\.vue$/]
-        }
-      },
-      {
-        test: /\.css$/,
-        loader: "css-loader"
-      }
-    ]
-  },
-
-  resolve: {
-    extensions: [".ts", ".js", ".vue"],
-    alias: {
-      vue$: "vue/dist/vue.esm.js"
-    }
-  },
-
   plugins
-}
+})

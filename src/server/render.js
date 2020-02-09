@@ -1,5 +1,7 @@
 import MetaInfo from "../config/metainfo.js"
-
+import serverBundle from "../../public/server-build/vue-ssr-server-bundle.json"
+import clientManifest from "../../public/client-build/vue-ssr-client-manifest.json"
+const { createBundleRenderer } = require("vue-server-renderer")
 const { NODE_ENV } = process.env
 
 const generateHtml = ({ lang, meta = {}, initialHTML }) => {
@@ -57,7 +59,7 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
       </script>    
   </head>
   <body>
-      <div id="app">${initialHTML || ""}</div>
+      <div id="app"><!--vue-ssr-outlet--></div>
       <script>
         //global inline script
         // document.addEventListener('click', function(e){
@@ -74,16 +76,16 @@ const generateHtml = ({ lang, meta = {}, initialHTML }) => {
 }
 
 function getScript() {
-  const webpackAssets = require("../../internals/webpack-assets.json")
+  // const webpackAssets = require("../../internals/webpack-assets.json")
+  // <script src="${
+  //   NODE_ENV == "production"
+  //     ? webpackAssets.vendor.js
+  //     : "/client-build/vendor.js"
+  // }"></script>
+  // <script src="${
+  //   NODE_ENV == "production" ? webpackAssets.app.js : "/client-build/app.js"
+  // }"></script>
   return `
-    <script src="${
-      NODE_ENV == "production" ? webpackAssets.vendor.js : "/build/vendor.js"
-    }"></script>
-    
-    <script src="${
-      NODE_ENV == "production" ? webpackAssets.app.js : "/build/app.js"
-    }"></script>
-    
     ${
       NODE_ENV === "production"
         ? `
@@ -111,38 +113,74 @@ function getScript() {
     `
 }
 
-export default (req, res, next) => {
+export default (req, res) => {
   res.writeHead(200, {
     "Content-Type": "text/html"
   })
 
-  // default req meta and initial html
-  if (!req.meta && !req.html) {
-    const title = "Page Not Found - Yussan Academy"
-    const desc =
-      "The page you are looking for was not found, please visit the others. Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
-
-    req.meta = {
-      title,
-      desc,
-      url: `https://yussanacademy.com/${req.originalUrl}`,
-      image: "https://yussanacademy.com/images/logo-wide-2.1.png"
-    }
-
-    req.html = `
-      <div class="home">
-        <img src="${req.meta.image}" alt="Yussan Academy Logo" />
-        <h1>${title}</h1>
-        <h2>${desc}</h2>
-      </div>
-    `
-  }
-
-  const html = generateHtml({
+  const template = generateHtml({
     lang: req.params.lang,
     meta: req.meta,
     initialHTML: req.html
   })
-  res.write(html)
-  return res.end()
+
+  const renderer = createBundleRenderer(serverBundle, {
+    template,
+    clientManifest,
+    runInNewContext: false
+  })
+
+  const context = {
+    url: req.url
+  }
+
+  renderer.renderToString(context, (err, html) => {
+    if (err) {
+      if (err.code === 404) {
+        res.status(400).send("Not found")
+      } else {
+        console.log(err)
+        res.status(500).send("Internal server error")
+      }
+    } else {
+      res.write(html)
+      return res.end()
+    }
+  })
 }
+
+// export default (req, res, next) => {
+//   res.writeHead(200, {
+//     "Content-Type": "text/html"
+//   })
+
+//   // default req meta and initial html
+//   if (!req.meta && !req.html) {
+//     const title = "Page Not Found - Yussan Academy"
+//     const desc =
+//       "The page you are looking for was not found, please visit the others. Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
+
+//     req.meta = {
+//       title,
+//       desc,
+//       url: `https://yussanacademy.com/${req.originalUrl}`,
+//       image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+//     }
+
+//     req.html = `
+//       <div class="home">
+//         <img src="${req.meta.image}" alt="Yussan Academy Logo" />
+//         <h1>${title}</h1>
+//         <h2>${desc}</h2>
+//       </div>
+//     `
+//   }
+
+// const html = generateHtml({
+//   lang: req.params.lang,
+//   meta: req.meta,
+//   initialHTML: req.html
+// })
+//   res.write(html)
+//   return res.end()
+// }

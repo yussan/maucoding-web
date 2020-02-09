@@ -24,7 +24,6 @@ const server = restify.createServer()
 const port = process.env.PORT || 19090
 
 // global handler initial
-// server.use(prerenderNode)
 server.use(cookies.parse)
 server.use(restify.plugins.gzipResponse())
 server.use(
@@ -51,81 +50,105 @@ server.get(
 )
 
 // tricky SSR
+// server.get(
+//   "/posts",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPostList,
+//   render
+// )
+// server.get(
+//   "/search",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPostSearch,
+//   render
+// )
+// server.get(
+//   "/tag/:tag",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPostList,
+//   render
+// )
+// server.get(
+//   "/post/:title",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPost,
+//   render
+// )
+// server.get(
+//   "/author/:username",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaUser,
+//   render
+// )
+// server.get(
+//   "/a/:username",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaUser,
+//   render
+// )
+// server.get(
+//   "/:lang/posts",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPostList,
+//   render
+// )
+// server.get(
+//   "/:lang/search",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPostSearch,
+//   render
+// )
+// server.get(
+//   "/:lang/tag/:tag",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPostList,
+//   render
+// )
+// server.get(
+//   "/:lang/post/:title",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaPost,
+//   render
+// )
+// server.get(
+//   "/:lang/author/:username",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaUser,
+//   render
+// )
+// server.get(
+//   "/:lang/a/:username",
+//   frontMiddleware.checkLanguage,
+//   frontMiddleware.generateMetaUser,
+//   render
+// )
+
 server.get(
-  "/posts",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPostList,
-  render
-)
-server.get(
-  "/search",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPostSearch,
-  render
-)
-server.get(
-  "/tag/:tag",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPostList,
-  render
-)
-server.get(
-  "/post/:title",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPost,
-  render
-)
-server.get(
-  "/author/:username",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaUser,
-  render
-)
-server.get(
-  "/a/:username",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaUser,
-  render
-)
-server.get(
-  "/:lang/posts",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPostList,
-  render
-)
-server.get(
-  "/:lang/search",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPostSearch,
-  render
-)
-server.get(
-  "/:lang/tag/:tag",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPostList,
-  render
-)
-server.get(
-  "/:lang/post/:title",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaPost,
-  render
-)
-server.get(
-  "/:lang/author/:username",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaUser,
-  render
-)
-server.get(
-  "/:lang/a/:username",
-  frontMiddleware.checkLanguage,
-  frontMiddleware.generateMetaUser,
-  render
+  /\/client-build\/*/,
+  restify.plugins.serveStatic({
+    directory: `${__dirname}/../../public`,
+    maxAge: 0
+  })
 )
 
 server.get(
-  /\/build\/*/,
+  /\/images\/*/,
+  restify.plugins.serveStatic({
+    directory: `${__dirname}/../../public`,
+    maxAge: 0
+  })
+)
+
+server.get(
+  /\/vendors\/*/,
+  restify.plugins.serveStatic({
+    directory: `${__dirname}/../../public`,
+    maxAge: 0
+  })
+)
+
+server.get(
+  /\/opensearch\/*/,
   restify.plugins.serveStatic({
     directory: `${__dirname}/../../public`,
     maxAge: 0
@@ -162,51 +185,15 @@ server.get(
 )
 server.get(/\/:lang\/*/, frontMiddleware.checkLanguage, render)
 
-server.get(
-  /\/?.*\//,
-  restify.plugins.serveStatic({
-    directory: `${__dirname}/../../public`,
-    maxAge: 0
-  })
-)
-
-// server.get("/:lang/*", render)
-server.on("NotFound", render)
-// server.on("NotFound", (req, res) => {
-//   renderVue({ url: req.url }).then(app => {
-//     //context to use as data source
-//     //in the template for interpolation
-//     const context = {
-//       title: "Vue JS - Server Render",
-//       meta: `
-//         <meta description="vuejs server side render">
-//       `
-//     }
-
-//     renderer.renderToString(
-//       app,
-//       context,
-//       function(err, html) {
-//         if (err) {
-//           if (err.code === 404) {
-//             res.status(404).end("Page not found")
-//           } else {
-//             res.status(500).end("Internal Server Error")
-//           }
-//         } else {
-//           res.writeHead(200, {
-//             "Content-Type": "text/html"
-//           })
-//           res.write(html)
-//           res.end()
-//         }
-//       },
-//       err => {
-//         console.log(err)
-//       }
-//     )
+// server.get(
+//   /\/?.*\//,
+//   restify.plugins.serveStatic({
+//     directory: `${__dirname}/../../public`,
+//     maxAge: 0
 //   })
-// })
+// )
+
+server.get(/\/*/, render)
 
 server.listen(port, () => {
   debugServer(`App SUCCESS run on port  ${port}`)
