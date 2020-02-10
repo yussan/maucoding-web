@@ -6,6 +6,7 @@
 import * as cookies from "../modules/cookies"
 
 const AVAILABLE_LANG = ["id", "en"]
+const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 
 // export const generateMetaHomepage = (req, res, next) => {
 //   const title = "Tech from engineer perspective"
@@ -232,7 +233,11 @@ export const checkLanguage = (req, res, next) => {
 
   if (!params_lang) {
     const pathArr = req.path().split("/")
-    params_lang = pathArr[1]
+    if (!NOT_REDIRECT_LANG.includes(pathArr[1])) {
+      params_lang = pathArr[1]
+    } else {
+      params_lang = "id"
+    }
   }
 
   if (!AVAILABLE_LANG.includes(params_lang)) {
