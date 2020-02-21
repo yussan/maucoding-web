@@ -49,7 +49,7 @@ export function getFeed(req, res) {
             n.content = n.content.replace(/&nbsp;/gi, "")
             items += `
             <item>
-              <title>${n.title}</title>
+              <title>${n.title} by ${n.author[0].username}</title>
               <description>${truncate(
                 stripTags(n.content),
                 500,
