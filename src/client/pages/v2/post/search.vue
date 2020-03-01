@@ -63,12 +63,12 @@ export default {
 
   metaInfo() {
     return {
-      title: `Result search "${this.keyword}" - Oopsreview`,
+      title: `Result search "${this.keyword}" - Yussan Academy`,
       meta: [
         {
           vmid: "description",
           name: "description",
-          content: `Result search "${this.keyword}" - Oopsreview`
+          content: `Result search "${this.keyword}" - Yussan Academy`
         }
       ]
     }

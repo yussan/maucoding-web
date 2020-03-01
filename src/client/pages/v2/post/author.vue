@@ -52,12 +52,12 @@ export default {
 
   metaInfo() {
     return {
-      title: `Post by "${this.$route.params.username}" - Oopsreview`,
+      title: `Post by "${this.$route.params.username}" - Yussan Academy`,
       meta: [
         {
           vmid: "description",
           name: "description",
-          content: `Post by "${this.$route.params.username}" - Oopsreview`
+          content: `Post created by "${this.$route.params.username}" - Yussan Academy`
         }
       ]
     }
