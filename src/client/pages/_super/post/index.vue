@@ -128,7 +128,9 @@ export default vue.extend({
   },
 
   computed: {
-    ...mapState(["post"])
+    post() {
+      return this.$store.state.post || {}
+    }
   }
 })
 </script>
