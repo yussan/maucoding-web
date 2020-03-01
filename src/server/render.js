@@ -1,23 +1,34 @@
-import MetaInfo from "../config/metainfo.js"
 import serverBundle from "../../public/server-build/vue-ssr-server-bundle.json"
 import clientManifest from "../../public/client-build/vue-ssr-client-manifest.json"
 const { createBundleRenderer } = require("vue-server-renderer")
 const { NODE_ENV } = process.env
 
-function generateHtml({ lang, meta = {}, initialHTML }) {
+function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
+  const {
+    title,
+    htmlAttrs,
+    headAttrs,
+    bodyAttrs,
+    link,
+    style,
+    script,
+    noscript,
+    meta
+  } = context.meta.inject()
   return `<!DOCTYPE html>   
-<html lang="en">
-  <head>
+<html lang="en" ${htmlAttrs.text()}>
+  <head ${headAttrs.text()}>
       <meta charset="utf-8">
-      <title>${
-        meta.title ? `${meta.title} - Yussan Academy` : MetaInfo.title
-      }</title>
       <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
-      <meta data-vmid="description" data-vue-meta="true" name="description" content="${meta.desc ||
-        MetaInfo.description}" />
       <meta data-vmid="keywords" data-vue-meta="true" name="keywords" content="${meta.keywords ||
         "Yussan Academy,software engineer,tutorial"}" />
+      ${meta.text()}
+      ${title.text()}
+      ${link.text()}
+      ${style.text()}
+      ${script.text()}
+      ${noscript.text()}
       ${
         meta.title
           ? `
@@ -58,19 +69,13 @@ function generateHtml({ lang, meta = {}, initialHTML }) {
         window.SELECTED_LANG = "${lang || "id"}"    
       </script>    
   </head>
-  <body>
-      <div id="app"><!--vue-ssr-outlet--></div>
-      <script>
-        //global inline script
-        // document.addEventListener('click', function(e){
-        //   // if(e.target.className === 'icono-caretDown') {}
-        //   const dropdownEl = document.getElementsByClassName('dropdown');
-        //   for(let n=0;n<dropdownEl.length;n++){
-        //     dropdownEl[n].classList.remove('show')
-        //   }
-        // })
-      </script>
+  <body ${bodyAttrs.text()}>
+      <div id="app">${initialHTML}</div>
       ${getScript()}
+      <!-- appended metaInfo properties -->
+      ${style.text({ body: true })}
+      ${script.text({ body: true })}
+      ${noscript.text({ body: true })}
   </body>
 </html>`
 }
@@ -105,22 +110,14 @@ function getScript() {
 }
 
 export default (req, res) => {
-  const template = generateHtml({
-    lang: req.params.lang,
-    meta: req.meta,
-    initialHTML: req.html
-  })
-
   const renderer = createBundleRenderer(serverBundle, {
-    template,
+    template: "<!--vue-ssr-outlet-->",
     clientManifest,
     runInNewContext: false
   })
 
   let context = {
     url: req.url
-    // title: "Tech from engineer's perspective - Yussan Academy",
-    // meta: null
   }
 
   renderer.renderToString(context, (err, html) => {
@@ -136,7 +133,13 @@ export default (req, res) => {
       res.writeHead(200, {
         "Content-Type": "text/html"
       })
-      res.write(html)
+      const fullHTML = generateHtml({
+        context,
+        lang: req.params.lang,
+        meta: req.meta,
+        initialHTML: html
+      })
+      res.write(fullHTML)
       return res.end()
     }
   })

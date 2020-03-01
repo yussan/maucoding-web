@@ -13,22 +13,25 @@ export default context => {
         return reject({ code: 404 })
       }
 
-      resolve(app)
-      // Promise.all(
-      //   matchedComponents.map(Component => {
-      //     if (Component.asyncData) {
-      //       return Component.asyncData({
-      //         store,
-      //         route: router.currentRoute
-      //       })
-      //     }
-      //   })
-      // )
-      //   .then(() => {
-      //     context.state = store.state
-      //     resolve(app)
-      //   })
-      //   .catch(reject)
+      // resolve(app)
+      Promise.all(
+        matchedComponents.map(Component => {
+          // server request
+          if (Component.asyncData) {
+            return Component.asyncData({
+              store,
+              route: router.currentRoute
+            })
+          }
+        })
+      )
+        .then(() => {
+          // REF: https://vue-meta.nuxtjs.org/guide/ssr.html#add-vue-meta-to-the-context
+          context.meta = app.$meta()
+          context.state = store.state
+          resolve(app)
+        })
+        .catch(reject)
     }, reject)
   })
 }
