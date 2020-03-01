@@ -43,6 +43,19 @@ vue.component("big-button", bigbutton)
 export default vue.extend({
   name: "super-posts-list",
 
+  metaInfo() {
+    return {
+      title: "Posts - Yussan Academy Super",
+      meta: [
+        {
+          vmid: "description",
+          name: "description",
+          content: "List posts on Yussan Academy super page"
+        }
+      ]
+    }
+  },
+
   data() {
     return {
       filter: "post_all",
@@ -63,7 +76,6 @@ export default vue.extend({
     },
 
     keyDownTextHandler(e: any) {
-      // console.log("code", e.keyCode, this.formdata.keyword)
       this.changeTextHandler(e)
       if (e.keyCode === 13) {
         // redirect
@@ -105,9 +117,6 @@ export default vue.extend({
   },
 
   watch: {
-    // ["post.list"]() {
-    //   console.log(this.post.list)
-    // }
     ["$route.query.q"]() {
       console.log("q", this.$route.query.q)
       return this.fetchPosts()

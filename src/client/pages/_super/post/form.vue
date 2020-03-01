@@ -115,6 +115,36 @@ const rules = {
 export default vue.extend({
   name: "super-posts-form",
 
+  metaInfo() {
+    let metaInfo = {}
+
+    if (this.id) {
+      metaInfo = {
+        title: "Update Post - Yussan Academy Super",
+        meta: [
+          {
+            vmid: "description",
+            name: "description",
+            content: "Update post on Yussan Academy super page"
+          }
+        ]
+      }
+    } else {
+      metaInfo = {
+        title: "Create Post - Yussan Academy Super",
+        meta: [
+          {
+            vmid: "description",
+            name: "description",
+            content: "Create post on Yussan Academy super page"
+          }
+        ]
+      }
+    }
+
+    return metaInfo
+  },
+
   data() {
     const { id, imageHandler }: any = this
 
@@ -126,7 +156,8 @@ export default vue.extend({
       title: id ? "Update Post" : "New Post",
       formdata: <any>{ lang: "en" },
       formvalidate: <any>{},
-      validation: new validation(rules)
+      validation: new validation(rules),
+      windowReady: false
     }
   },
 
@@ -190,24 +221,31 @@ export default vue.extend({
 
   // why mounted?, ref: https://alligator.io/vuejs/component-lifecycle/
   mounted() {
+    console.log("window", window)
+
+    if (typeof window !== "undefined") {
+      this.windowReady = true
+      // if (window.document) vue.component("input-tags", inputTags)
+
+      // add event handle before unload to prevent data gone on closing tab
+      window.onbeforeunload = function(e) {
+        e = e || window.event
+
+        // For IE and Firefox prior to version 4
+        if (e) {
+          e.returnValue = "Sure?"
+        }
+
+        // For Safari
+        return "Sure?"
+      }
+    }
+
     // this.id defined, this page is edit post
     if (typeof this.id !== "undefined") {
       this.$store.dispatch(TYPES.GET_POST, this.id)
     } else {
       this.loading = false
-    }
-
-    // add event handle before unload to prevent data gone on closing tab
-    window.onbeforeunload = function(e) {
-      e = e || window.event
-
-      // For IE and Firefox prior to version 4
-      if (e) {
-        e.returnValue = "Sure?"
-      }
-
-      // For Safari
-      return "Sure?"
     }
   },
 

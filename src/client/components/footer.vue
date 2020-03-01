@@ -32,7 +32,7 @@
               span.icono-instagram 
             a(href="https://twitter.com/yussanacademy" title="Yussan Academy Twitter" target="_blank" rel="noopener noreferrer" style="margin-right: -2px")
               span.icono-twitter 
-            a(href="https://facebook.com/yussanacademy" title="Yussan Academy Facebook" target="_blank" rel="noopener noreferrer")
+            a(href="https://facebook.com/yussanacademy.team" title="Yussan Academy Facebook" target="_blank" rel="noopener noreferrer")
               span.icono-facebook
             a(href="/feed" target="_blank" title="Yussan Academy Feed" rel="noopener noreferrer")
               span.icono-rss 
