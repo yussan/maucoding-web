@@ -23,7 +23,7 @@
 
 </template>
 
-<script lang="ts">
+<script>
 import vue from "vue"
 import { mapState } from "vuex"
 import * as TYPES from "../../../vuex/types"
@@ -66,16 +66,16 @@ export default vue.extend({
   },
 
   methods: {
-    changeTextHandler(e: any) {
+    changeTextHandler(e) {
       const { name, value } = e.target
 
-      let nextformdata: any = this.formdata
+      let nextformdata = this.formdata
       nextformdata[name] = value
 
       this.formdata = Object.assign({}, nextformdata)
     },
 
-    keyDownTextHandler(e: any) {
+    keyDownTextHandler(e) {
       this.changeTextHandler(e)
       if (e.keyCode === 13) {
         // redirect
@@ -108,7 +108,7 @@ export default vue.extend({
     generateParams() {
       const { q } = this.$route.query
 
-      let params: any = {
+      let params = {
         filter: this.filter
       }
       if (q) params.keyword = q
