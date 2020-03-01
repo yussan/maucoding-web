@@ -36,6 +36,7 @@
           margin-right: 10px
           padding-bottom: 5px 
           font-size: 14px
+          line-height: 2
       h2 
         font-size: 37px
         font-weight: 700

@@ -45,6 +45,7 @@
           border-bottom: 1px solid $color-red-main 
           margin-right: 10px
           padding-bottom: 5px 
+          line-height: 2
           font-size: 14px
     .card-post-small_author 
       a

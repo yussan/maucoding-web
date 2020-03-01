@@ -82,12 +82,13 @@ const menus = [
     name: "posts",
     matchPath: ["post", "posts", "tag", "a", "author", "search"],
     link: "/posts"
+  },
+  {
+    name: "Youtube Videos",
+    target: "blank",
+    matchPath: [],
+    link: "https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA"
   }
-  // {
-  //   name: "videos",
-  //   target: "blank",
-  //   link: "https://www.youtube.com/channel/UCw-_8IVEy5x-y6zRyztZddw"
-  // }
 ]
 
 export default {
