@@ -18,6 +18,5 @@ module.exports = merge(baseConfig, {
   externals: nodeExternals({
     whitelist: /\.css$/
   }),
-
   plugins: [new VueSSRServerPlugin()]
 })

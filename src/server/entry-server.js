@@ -3,6 +3,7 @@ import { app, router, store } from "../client/index"
 
 export default context => {
   return new Promise((resolve, reject) => {
+    // set server-side router's location
     router.push(context.url)
 
     router.onReady(() => {
@@ -12,21 +13,22 @@ export default context => {
         return reject({ code: 404 })
       }
 
-      Promise.all(
-        matchedComponents.map(Component => {
-          if (Component.asyncData) {
-            return Component.asyncData({
-              store,
-              route: router.currentRoute
-            })
-          }
-        })
-      )
-        .then(() => {
-          context.state = store.state
-          resolve(app)
-        })
-        .catch(reject)
+      resolve(app)
+      // Promise.all(
+      //   matchedComponents.map(Component => {
+      //     if (Component.asyncData) {
+      //       return Component.asyncData({
+      //         store,
+      //         route: router.currentRoute
+      //       })
+      //     }
+      //   })
+      // )
+      //   .then(() => {
+      //     context.state = store.state
+      //     resolve(app)
+      //   })
+      //   .catch(reject)
     }, reject)
   })
 }

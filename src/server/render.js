@@ -112,7 +112,6 @@ export default (req, res) => {
   })
 
   const renderer = createBundleRenderer(serverBundle, {
-    // template: require("fs").readFileSync("./internals/index.template.html", "utf-8"),
     template,
     clientManifest,
     runInNewContext: false

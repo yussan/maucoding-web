@@ -5,6 +5,8 @@ import VueRouter from "vue-router"
 import routes from "./routes"
 import storeModules from "./vuex/modules"
 
+// import HomePage from "./pages/v2/home/index.vue"
+
 vue.use(VueRouter)
 vue.use(Vuex)
 vue.use(Meta)
@@ -24,10 +26,11 @@ export const store = new Vuex.Store({
 })
 
 // initial app
+// runtime compiler: https://cli.vuejs.org/config/#runtimecompiler
 export const app = new vue({
   router,
   store,
-  template: "<router-view />"
+  render: h => h("router-view")
 })
 
 app.$mount("#app")

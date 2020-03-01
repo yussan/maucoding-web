@@ -167,17 +167,6 @@ export default vue.extend({
     }
   },
 
-  // beforeRouteUpdate(to, from, next) {
-  //   // request post detail
-  //   const title_arr = to.params.title.split("-")
-  //   const id = title_arr[title_arr.length - 1]
-  //   this.fetchPostDetail(id)
-  //   this.fetchPostRelated(id)
-  //   this.link = `/post/${to.params.title}`
-
-  //   next()
-  // },
-
   watch: {
     $route() {
       const { title } = this.$route.params
