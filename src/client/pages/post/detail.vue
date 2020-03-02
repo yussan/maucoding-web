@@ -71,13 +71,10 @@ import comment from "../../components/boxs/comment.vue"
 import meta from "../../components/boxs/post-meta.vue"
 import ErrorBox from "../error/index.vue"
 import Loader from "../../components/loaders/index.vue"
+import AppCard from "../../components/cards/post-app.vue"
 
-vue.component("app-card", resolve =>
-  import("../../components/cards/post-app.vue")
-)
-
+vue.component("app-card", AppCard)
 vue.component("comment", comment)
-// vue.component("box-post", post)
 vue.component("box-meta", meta)
 vue.component("error-box", ErrorBox)
 vue.component("Loader", Loader)
@@ -202,7 +199,7 @@ export default vue.extend({
 })
 </script>
 
-<style lang="sass" scoped>
+<style lang="sass">
 @import '../../../design/sass/size'
 @import '../../../design/sass/color'
 
