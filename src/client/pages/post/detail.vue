@@ -133,7 +133,20 @@ export default vue.extend({
         }
       }
     } else {
-      return {}
+      let { title } = this.$route.params
+      const title_arr = title.split("-")
+      const id = title_arr[title_arr.length - 1]
+      title = title.replace(/-/g, " ")
+      return {
+        title: `${title.replace(` ${id}`, "")} - Yussan Academy`,sol
+        meta: [
+          {
+            vmid: "description",
+            name: "description",
+            content: `Post detail on Yussan Academy with title ${title}`
+          }
+        ]
+      }
     }
   },
 
