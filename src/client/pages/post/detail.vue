@@ -138,7 +138,7 @@ export default vue.extend({
       const id = title_arr[title_arr.length - 1]
       title = title.replace(/-/g, " ")
       return {
-        title: `${title.replace(` ${id}`, "")} - Yussan Academy`,sol
+        title: `${title.replace(` ${id}`, "")} - Yussan Academy`,
         meta: [
           {
             vmid: "description",
