@@ -10,19 +10,6 @@
               
 </template>
 
-<style lang="sass" scoped>
-  @import "../../../../design/sass/color" 
-  .posts
-    .post-header
-      padding: 50px 0  
-      font-size: 20px
-      h1
-        font-size: 30px;
-        text-align: center; 
-    // .posts-gray
-    //   background-color: $color-gray-verysoft
-</style>
-
 <script>
 import vue from "vue"
 import { router } from "../../../index"
@@ -126,3 +113,16 @@ export default {
   }
 }
 </script>
+
+<style lang="sass" scoped>
+  @import "../../../../design/sass/color" 
+  .posts
+    .post-header
+      padding: 50px 0  
+      font-size: 20px
+      h1
+        font-size: 30px;
+        text-align: center; 
+    // .posts-gray
+    //   background-color: $color-gray-verysoft
+</style>

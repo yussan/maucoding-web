@@ -202,7 +202,7 @@ export default vue.extend({
 })
 </script>
 
-<style lang="sass">
+<style lang="sass" scoped>
 @import '../../../design/sass/size'
 @import '../../../design/sass/color'
 
