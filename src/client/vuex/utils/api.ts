@@ -16,24 +16,25 @@ export default function request(
       url,
       data: {}
     }
-    if(method != 'get') {
-      if(formdata) {
+    if (method != "get") {
+      if (formdata) {
         let formdata_input = new FormData()
         const keys = Object.keys(formdata)
         keys.map(n => {
           formdata_input.set(n, formdata[n])
         })
-        
+
         config.data = formdata_input
       }
       // config.config = { headers: {'Content-Type': 'multipart/form-data' }}
     }
     return axios(config)
-      .then((response: any) => {
-        const {status, data} = response
-        resolve({status, data})
+      .then((response: any = {}) => {
+        const { status, data = {} } = response
+        resolve({ status, data })
       })
       .catch((error: any) => reject(error))
-   
+  }).catch((error: any) => {
+    console.error("API request error")
   })
 }

@@ -70,7 +70,7 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
       </script>    
   </head>
   <body ${bodyAttrs.text()}>
-      <div id="app">${initialHTML}</div>
+      ${initialHTML}
       ${getScript()}
       <!-- appended metaInfo properties -->
       ${style.text({ body: true })}
@@ -111,7 +111,7 @@ function getScript() {
 
 export default (req, res) => {
   const renderer = createBundleRenderer(serverBundle, {
-    template: "<!--vue-ssr-outlet-->",
+    template: `<div id="app"><!--vue-ssr-outlet--></div>`,
     clientManifest,
     runInNewContext: false
   })
