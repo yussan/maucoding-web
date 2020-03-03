@@ -1,4 +1,14 @@
 import axios from "axios"
+import Host from "../../../config/host"
+
+// TODOS : move to global
+declare const process: {
+  env: {
+    NODE_ENV: string
+  }
+}
+
+const { front } = Host[process.env.NODE_ENV]
 
 // ref: https://github.com/axios/axios#global-axios-defaults
 axios.defaults.headers.post["Content-Type"] =
@@ -9,6 +19,7 @@ export default function request(
   url: string,
   formdata?: object
 ) {
+  if (typeof window != "undefined") url = `${front}${url}`
   method = method.toLowerCase()
   return new Promise((resolve, reject) => {
     let config = {

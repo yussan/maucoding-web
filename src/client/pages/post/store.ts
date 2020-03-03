@@ -126,7 +126,7 @@ const mutations = {
   // on receive tag
   [types.GET_TAG]: (state: State = initialState, { filter, response }) => {
     let { tags } = state
-    tags[filter] = response.data
+    tags[filter] = response && response.data ? response.data : {}
 
     state.tags = { ...tags }
   },
@@ -134,7 +134,7 @@ const mutations = {
   // on receive post detail
   [types.GET_POST]: (state: State = initialState, { filter, response }) => {
     let { detail } = state
-    detail[filter] = response.data
+    detail[filter] = response && response.data ? response.data : {}
     detail[filter].loading = false
 
     state.detail = Object.assign({}, detail)
@@ -155,8 +155,8 @@ const mutations = {
     { filter, response }: ParamsGetPost
   ) => {
     let { list } = state
-    list[filter] = response.data
-    if (!response.data) {
+    list[filter] = response && response.data ? response.data : {}
+    if (response && !response.data) {
       list[filter] = {}
       list[filter].status = response.status
     }
@@ -171,11 +171,12 @@ const mutations = {
     { filter, response }: ParamsGetPost
   ) => {
     let { list } = state
-    list[filter].status = response.data.status
-    list[filter].message = response.data.message
-    if (response.data.status === 200) {
-      console.log(response)
-      list[filter].result = list[filter].result.concat(response.data.result)
+    if (response && response.data) {
+      list[filter].status = response.data.status
+      list[filter].message = response.data.message
+      if (response.data.status === 200) {
+        list[filter].result = list[filter].result.concat(response.data.result)
+      }
     }
     list[filter].loading = false
 

@@ -1,8 +1,8 @@
 export default {
   development: {
-    front: 'https://academy.byidmore.local'
+    front: "http://localhost:19091"
   },
   production: {
-    front: 'https://yussanacademy.com'
+    front: "https://yussanacademy.com"
   }
 }
