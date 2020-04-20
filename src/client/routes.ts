@@ -1,12 +1,9 @@
 import Error from "./pages/error/index.vue"
-import PostDetail from "./pages/post/detail.vue"
-import StaticDetail from "./pages/static/index.vue"
-
 import SuperLayout from "./layouts/super.vue"
 import DefaultLayout from "./layouts/default.vue"
 
 export default [
-  // public page
+  // public pages
   {
     path: "/",
     component: DefaultLayout,
@@ -26,8 +23,8 @@ export default [
         props: true,
         component: () => import("./pages/v2/post/author.vue")
       },
-      { path: "/post/:title", component: PostDetail },
-      { path: "/static/:title", component: StaticDetail },
+      { path: "/post/:title", props: true, component: () => import("./pages/post/detail.vue") },
+      { path: "/static/:title", props: true, component: () => import("./pages/static/index.vue") },
       {
         path: "/super",
         name: "super_login",
@@ -36,17 +33,7 @@ export default [
     ]
   },
 
-  // super routes
-  // super page auth
-  // {
-  //   path: "/",
-  //   component: DefaultLayout,
-  //   children: [
-  //     { path: "/super", name: "super_post", component: () => import("./pages/auth/index.vue") }
-  //   ]
-  // },
-
-  // super
+  // super pages
   {
     path: "/super/*",
     component: SuperLayout,
@@ -89,7 +76,6 @@ export default [
         props: true,
         component: () => import("./pages/v2/post/index.vue")
       },
-      { path: "/:lang/static/:title", component: StaticDetail },
       {
         path: "/:lang/author/:username",
         props: true,
@@ -100,8 +86,8 @@ export default [
         props: true,
         component: () => import("./pages/v2/post/author.vue")
       },
-      { path: "/:lang/post/:title", component: PostDetail },
-      { path: "/:lang/static/:title", component: StaticDetail },
+      { path: "/:lang/post/:title", props: true, component: () => import("./pages/post/detail.vue")},
+      { path: "/:lang/static/:title", props: true, component: () => import("./pages/static/index.vue")},
       { path: "*", component: Error }
     ]
   }

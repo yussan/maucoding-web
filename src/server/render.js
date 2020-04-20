@@ -63,7 +63,7 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
         NODE_ENV === "production"
           ? "/opensearch/production.xml"
           : "/opensearch/development.xml"
-      }" rel="search" title="oopsreview" type="application/opensearchdescription+xml">
+      }" rel="search" title="Yussan Academy" type="application/opensearchdescription+xml">
       <link rel="alternate" href="https://yussanacademy.com" lang="en-US"/> 
       <script>
         window.SELECTED_LANG = "${lang || "id"}"    
