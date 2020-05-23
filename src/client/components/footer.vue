@@ -26,6 +26,8 @@
             strong 
               a(href="/en" v-bind:class="{active: this.selected_lang == 'en'}") EN
           .link-social
+            a(href="https://wa.me/6285156934428?text=Ada%20pertanyaan%20seputar%20produk%20Yussan%20Media%20Group%2C%20bisa%20disini." title="contact Whatsapp" target="_blank" rel="noopener noreferrer" style="margin-right: 10px")
+              span.icono-commentEmpty
             a(href="https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA" title="Yussan Academy Youtube" target="_blank" rel="noopener noreferrer" style="margin-right: 10px")
               span.icono-youtube
             a(href="https://instagram.com/yussanacademy" title="Yussan Academy Instagram" target="_blank" rel="noopener noreferrer" style="margin-right: 6px")
@@ -92,37 +94,36 @@ export default vue.extend({
 
 
 <style lang="sass" scoped>
-  @import '../../design/sass/color'
+@import '../../design/sass/color'
 
-  footer 
-    padding: 3em 0 2em
-    background-color: $color-gray-verysoft
+footer
+  padding: 3em 0 2em
+  background-color: $color-gray-verysoft
+  color: $color-gray-medium
+  font-weight: 300
+  line-height: 1.6
+  font-size: 13px
+
+  a
     color: $color-gray-medium
-    font-weight: 300
-    line-height: 1.6
-    font-size: 13px
 
-    a 
+  .change-language
+    text-align: right
+    margin-bottom: 20px
+    a
+      margin-left: 10px
+    a.active
+      border-bottom: 2px solid $color-gray-soft
+
+  .link-social
+    float: right
+    [class*=icono]
       color: $color-gray-medium
 
-    .change-language 
-      margin-bottom: 20px
-      a 
-        margin-left: 10px
-      a.active 
-        border-bottom: 2px solid $color-gray-soft 
-      text-align: right
-
-    .link-social 
-      float: right
-      [class*=icono]
-        color: $color-gray-medium
-
-
-    // button go to top
-    .button-gototop
-      &.hide
-        bottom: -200px
+  // button go to top
+  .button-gototop
+    &.hide
+      bottom: -200px
       transition: all .5s ease
       position: fixed
       bottom: 10px
@@ -130,7 +131,7 @@ export default vue.extend({
       border-radius: 20px
       padding: 5px
       cursor: pointer
-      span
-        color: $color-gray-dark 
+    span
+      color: $color-gray-dark
 </style>
 
