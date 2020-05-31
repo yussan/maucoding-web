@@ -10,10 +10,10 @@
 </template>
 
 <style lang="sass" scoped>
-.share-social-media 
-  display: flex 
+.share-social-media
+  display: flex
   align-items: center
-  a.share-social-media-link 
+  a.share-social-media-link
     margin-right: 10px
 </style>
 
@@ -39,7 +39,7 @@ export default {
 
     shareToTwitter() {
       return window.open(
-        `https://twitter.com/intent/tweet?status=${this.url}`,
+        `https://twitter.com/intent/tweet?text=${this.url}`,
         "Share Mau Gowes ke Twitter",
         "width=600,height=400"
       )
