@@ -5,8 +5,6 @@ import VueRouter from "vue-router"
 import routes from "./routes"
 import storeModules from "./vuex/modules"
 
-// import HomePage from "./pages/v2/home/index.vue"
-
 vue.use(VueRouter)
 vue.use(Vuex)
 vue.use(Meta)

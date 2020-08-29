@@ -9,7 +9,6 @@ import handlerSeal from "./handlers/seal"
 
 // middlewares
 import authMiddleware from "./middlewares/authMiddleware"
-import * as frontMiddleware from "./middlewares/frontMiddleware"
 
 const { NODE_ENV } = process.env
 
@@ -103,8 +102,7 @@ server.get(
   })
 )
 
-server.get("/:lang", frontMiddleware.checkLanguage, render)
-server.get(/\/*/, frontMiddleware.checkLanguage, render)
+server.on("NotFound", render)
 
 server.listen(port, () => {
   debugServer(`App SUCCESS run on port  ${port}`)

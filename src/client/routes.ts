@@ -23,8 +23,16 @@ export default [
         props: true,
         component: () => import("./pages/v2/post/author.vue")
       },
-      { path: "/post/:title", props: true, component: () => import("./pages/post/detail.vue") },
-      { path: "/static/:title", props: true, component: () => import("./pages/static/index.vue") },
+      {
+        path: "/post/:title",
+        props: true,
+        component: () => import("./pages/post/detail.vue")
+      },
+      {
+        path: "/static/:title",
+        props: true,
+        component: () => import("./pages/static/index.vue")
+      },
       {
         path: "/super",
         name: "super_login",
@@ -54,41 +62,6 @@ export default [
         props: true,
         component: () => import("./pages/_super/post/form.vue")
       }
-    ]
-  },
-
-  // lang routes
-  {
-    path: "/:lang",
-    component: DefaultLayout,
-    children: [
-      { path: "/:lang", component: () => import("./pages/v2/home/index.vue") },
-      {
-        path: "/:lang/posts",
-        component: () => import("./pages/v2/post/index.vue")
-      },
-      {
-        path: "/:lang/search",
-        component: () => import("./pages/v2/post/search.vue")
-      },
-      {
-        path: "/:lang/tag/:tag_name",
-        props: true,
-        component: () => import("./pages/v2/post/index.vue")
-      },
-      {
-        path: "/:lang/author/:username",
-        props: true,
-        component: () => import("./pages/v2/post/author.vue")
-      },
-      {
-        path: "/:lang/a/:username",
-        props: true,
-        component: () => import("./pages/v2/post/author.vue")
-      },
-      { path: "/:lang/post/:title", props: true, component: () => import("./pages/post/detail.vue")},
-      { path: "/:lang/static/:title", props: true, component: () => import("./pages/static/index.vue")},
-      { path: "*", component: Error }
     ]
   }
 ]

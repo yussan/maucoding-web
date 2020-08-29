@@ -1,31 +1,34 @@
 <template lang="pug">
-  .post-meta
-    router-link(:to="'/author/' + data.author.username")
-      img.avatar(:src="data.author.avatar.small" alt="avatar user")
-      div.avatar-text
-        | by
-        | {{ toCamelCase(data.author.fullname) }}, 
-        | posted 
-        time {{ epochToRelative(data.created_on) }}
-    .stats 
-      span.stats-item
-        a(href="javascript:;" @click="viewComments")
-          span.icono-commentEmpty 
-          span.disqus-comment-count(:data-disqus-identifier="'https://maucoding.com' + link" :data-disqus-url="'https://maucoding.com' + link") 0
-          | &nbsp;
-      span.stats-item
-        span.icono-eye 
-        | {{ data.views || 0 }} 
-      span.stats-item(v-if="typeof data.tags === 'object' && data.tags.length > 0")
-        span.icono-tag 
-        span(v-for="tag, key in data.tags" :key="key") 
-          router-link(:to="`/tag/${tag}`" ) {{ tag }}
-          | {{ key < data.tags.length -1 ? ', ' : ''  }}
-      span.stats-item
-        router-link(:to="data.lang == 'id' ? '/id' : '/en'")
-          span.icono-flag 
-          | {{ data.lang == 'id' ? 'Bahasa Indonesia' : 'English' }}
-
+.post-meta
+  router-link(:to="'/author/' + data.author.username")
+    img.avatar(:src="data.author.avatar.small", alt="avatar user")
+    .avatar-text
+      | by
+      | {{ toCamelCase(data.author.fullname) }},
+      | posted
+      time {{ epochToRelative(data.created_on) }}
+  .stats 
+    span.stats-item
+      a(href="javascript:;", @click="viewComments")
+        span.icono-commentEmpty 
+        span.disqus-comment-count(
+          :data-disqus-identifier="'https://maucoding.com' + link",
+          :data-disqus-url="'https://maucoding.com' + link"
+        ) 0
+        | &nbsp;
+    span.stats-item
+      span.icono-eye 
+      | {{ data.views || 0 }}
+    span.stats-item(
+      v-if="typeof data.tags === 'object' && data.tags.length > 0"
+    )
+      span.icono-tag 
+      span(v-for="(tag, key) in data.tags", :key="key") 
+        router-link(:to="`/tag/${tag}`") {{ tag }}
+        | {{ key < data.tags.length - 1 ? ', ' : '' }}
+    span.stats-item
+      span.icono-flag 
+      | {{ data.lang == 'id' ? 'Bahasa Indonesia' : 'English' }}
 </template>
 
 <script lang="ts">
@@ -59,13 +62,13 @@ export default vue.extend({
     viewComments() {
       const commentEl: any = document.getElementById("comment")
       commentEl.scrollIntoView({ behavior: "smooth" })
-    }
+    },
   },
 
   watch: {
     link() {
       renderDisqus(`https://maucoding.com${this.link}`)
-    }
+    },
   },
 
   created() {
@@ -75,12 +78,12 @@ export default vue.extend({
         cb: () => {
           // waiting for DISQUS initialized
           renderDisqus(`https://maucoding.com${this.link}`)
-        }
+        },
       })
     } else {
       renderDisqus(`https://maucoding.com${this.link}`)
     }
-  }
+  },
 })
 </script>
 

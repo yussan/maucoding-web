@@ -3,7 +3,7 @@ import clientManifest from "../../public/client-build/vue-ssr-client-manifest.js
 const { createBundleRenderer } = require("vue-server-renderer")
 const { NODE_ENV } = process.env
 
-function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
+function generateHtml({ context = {}, lang = "", initialHTML = "loading..." }) {
   const {
     title,
     htmlAttrs,
@@ -22,7 +22,7 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
       <link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1" />
       <meta data-vmid="keywords" data-vue-meta="true" name="keywords" content="${meta.keywords ||
-        "Yussan Academy,software engineer,tutorial"}" />
+        "Mau Coding,software engineer,tutorial"}" />
       ${meta.text()}
       ${title.text()}
       ${link.text()}
@@ -34,16 +34,16 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
           ? `
         <meta name="twitter:card" content="summary"/>
         <meta name="twitter:image" content="${meta.image ||
-          "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"}"/>
-        <meta name="twitter:title" content="${meta.title} - Yussan Academy"/>
+          "/images/icons-2/icon-2-96x96.png"}"/>
+        <meta name="twitter:title" content="${meta.title} - Mau Coding"/>
         <meta name="twitter:description" content="${meta.desc}" />
 
-        <meta property="og:title" content="${meta.title} - Yussan Academy" />
+        <meta property="og:title" content="${meta.title} - Mau Coding" />
         <meta property="og:type" content="${meta.type || "blog"}" />
         <meta property="og:url" content="${meta.url ||
           "https://maucoding.com"}" />
         <meta property="og:image" content="${meta.image ||
-          "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"}" />
+          "/images/icons-2/icon-2-96x96.png"}" />
         <meta property="og:description" content="${meta.desc}" />
         `
           : ""
@@ -58,12 +58,12 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
           : ""
       }
       <link rel="manifest" href="/manifest.json" />
-      <link rel="icon" href="/images/icons/icon-72x72.png" />
+      <link rel="icon" href="/images/icons-2/icon-2-96x96.png" />
       <link href="${
         NODE_ENV === "production"
           ? "/opensearch/production.xml"
           : "/opensearch/development.xml"
-      }" rel="search" title="Yussan Academy" type="application/opensearchdescription+xml">
+      }" rel="search" title="Mau Coding" type="application/opensearchdescription+xml">
       <link rel="alternate" href="https://maucoding.com" lang="en-US"/> 
       <script>
         window.SELECTED_LANG = "${lang || "id"}"    
@@ -135,7 +135,6 @@ export default (req, res) => {
       })
       const fullHTML = generateHtml({
         context,
-        lang: req.params.lang,
         meta: req.meta,
         initialHTML: html
       })

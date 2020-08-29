@@ -1,85 +1,85 @@
 <template lang='pug'>
-  .super-posts-list.grid
-    .col-8_md-10_sm-12
-      header-tag(
-        :title='title'
-        subtitle='Just remember to Oopsreview vision and mission'
+.super-posts-list.grid
+  .col-8_md-10_sm-12
+    header-tag(
+      :title="title",
+      subtitle="Just remember to Oopsreview vision and mission"
+    )
+    form(method="post", target="javascript:;", style="padding:1em 0")
+      //- select language
+      input-select(
+        name="lang",
+        label="Language",
+        :data="formdata",
+        :validation="formvalidate",
+        :onchange="changeTextHandler",
+        :options="[ { value: 'id', name: 'ID' }, { value: 'en', name: 'EN' }, ]"
       )
-      form(method='post' target='javascript:;' style='padding:1em 0')
 
-        //- select language
-        input-select(
-          name='lang'
-          label="Language"
-          :data='formdata'
-          :validation='formvalidate'
-          :onchange='changeTextHandler'
-          :options='[{value:"id", name:"ID"}, {value:"en", name:"EN"}]'
+      //- input post title
+      input-text(
+        name="title",
+        label="Title",
+        description="Please fill with post title which attracts users to read.",
+        type="text",
+        :data="formdata",
+        :validation="formvalidate",
+        :onchange="changeTextHandler"
+      )
+
+      //- input post image
+      input-file(
+        name="image",
+        label="Image",
+        description="Image size width 800px",
+        :preview="id && post.detail[id] && post.detail[id].status == 200 ? post.detail[id].image[600] : ''",
+        :data="formdata",
+        :validation="formvalidate",
+        :onchange="changeFileHandler"
+      )
+
+      //- input video embed url
+      input-text(
+        name="video",
+        label="Video Embed URL",
+        description="Sample from Youtube: https://www.youtube.com/embed/_KOzKQfiYHE",
+        type="text",
+        :data="formdata",
+        :validation="formvalidate",
+        :onchange="changeTextHandler"
+      )
+
+      //- tinymce editor
+      tinymce-editor(
+        name="content",
+        :data="formdata",
+        :onchange="changeTextHandler"
+      )
+      br
+
+      //- input post tags
+      div(style="margin-bottom:50px")
+        label(style="margin-bottom: 10px;display: block") Post Tags
+        input-tags(name="tags", v-model="formdata.tags")
+
+      //- buttons to submit
+      div(style="padding:1em 0")
+        oops-button(
+          :loading="loading",
+          :onclick="submitHandler",
+          type="submit",
+          :value="id ? 'Update and publish' : 'Publish this Post'",
+          style="margin-right:10px"
         )
 
-        //- input post title
-        input-text(
-          name='title'
-          label="Title"
-          description="Please fill with post title which attracts users to read."
-          type='text'
-          :data='formdata'
-          :validation='formvalidate'
-          :onchange='changeTextHandler'
+        //- only show if form not loading state
+        oops-button(
+          v-if="!loading",
+          :onclick="() => submitHandler(true)",
+          type="submit",
+          button_type="white",
+          value="Save to Draft"
         )
-
-        //- input post image
-        input-file(
-          name='image'
-          label="Image"
-          description="Image size width 800px"
-          :preview=" id && post.detail[id] && post.detail[id].status == 200 ? post.detail[id].image[600] : ''"
-          :data='formdata'
-          :validation='formvalidate'
-          :onchange='changeFileHandler'
-        )
-
-        //- input video embed url
-        input-text(
-          name='video'
-          label="Video Embed URL"
-          description="Sample from Youtube: https://www.youtube.com/embed/_KOzKQfiYHE"
-          type='text'
-          :data='formdata'
-          :validation='formvalidate'
-          :onchange='changeTextHandler'
-        )
-
-        //- tinymce editor
-        tinymce-editor(
-          name='content'
-          :data='formdata' 
-          :onchange='changeTextHandler')
-        br
-
-        //- input post tags
-        div(style="margin-bottom:50px")
-          label(style="margin-bottom: 10px;display: block") Post Tags
-          input-tags(name="tags" v-model="formdata.tags")
-
-        //- buttons to submit
-        div(style='padding:1em 0')
-          oops-button(
-            :loading='loading'
-            :onclick='submitHandler'
-            type='submit'
-            :value='id ? "Update and publish" : "Publish this Post"'
-            style='margin-right:10px'
-          )
-
-          //- only show if form not loading state
-          oops-button(
-            v-if="!loading"
-            :onclick='() => submitHandler(true)'
-            type='submit'
-            button_type='white'
-            value='Save to Draft'
-          )
 </template>
 
 <script lang="ts">
@@ -109,7 +109,7 @@ vue.component("input-tags", inputTags)
 const rules = {
   title: "required",
   tags: "required",
-  lang: "required"
+  lang: "required",
 }
 
 export default vue.extend({
@@ -120,25 +120,25 @@ export default vue.extend({
 
     if (this.id) {
       metaInfo = {
-        title: "Update Post - Yussan Academy Super",
+        title: "Update Post - Mau Coding Super",
         meta: [
           {
             vmid: "description",
             name: "description",
-            content: "Update post on Yussan Academy super page"
-          }
-        ]
+            content: "Update post on Mau Coding super page",
+          },
+        ],
       }
     } else {
       metaInfo = {
-        title: "Create Post - Yussan Academy Super",
+        title: "Create Post - Mau Coding Super",
         meta: [
           {
             vmid: "description",
             name: "description",
-            content: "Create post on Yussan Academy super page"
-          }
-        ]
+            content: "Create post on Mau Coding super page",
+          },
+        ],
       }
     }
 
@@ -157,7 +157,7 @@ export default vue.extend({
       formdata: <any>{ lang: "en" },
       formvalidate: <any>{},
       validation: new validation(rules),
-      windowReady: false
+      windowReady: false,
     }
   },
 
@@ -202,7 +202,7 @@ export default vue.extend({
           content: this.formdata.content,
           tags: this.formdata.tags,
           lang: this.formdata.lang,
-          draft
+          draft,
         }
         if (this.id) params.id = this.id
         if (this.formdata.image) params.image = this.formdata.image
@@ -214,7 +214,7 @@ export default vue.extend({
 
     toggleEditorTab(tab) {
       this.editorTab = tab
-    }
+    },
   },
 
   props: ["id"],
@@ -228,7 +228,7 @@ export default vue.extend({
       // if (window.document) vue.component("input-tags", inputTags)
 
       // add event handle before unload to prevent data gone on closing tab
-      window.onbeforeunload = function(e) {
+      window.onbeforeunload = function (e) {
         e = e || window.event
 
         // For IE and Firefox prior to version 4
@@ -251,7 +251,7 @@ export default vue.extend({
 
   // unmount event
   beforeDestroy() {
-    window.onbeforeunload = function() {}
+    window.onbeforeunload = function () {}
     this.resetForm()
   },
 
@@ -272,7 +272,7 @@ export default vue.extend({
           if (response.status === 201) {
             // success to create / update post
             toast("Post submited", "success")
-            window.onbeforeunload = function() {}
+            window.onbeforeunload = function () {}
             setTimeout(() => {
               location.href = "/super/posts"
             }, 1500)
@@ -293,18 +293,18 @@ export default vue.extend({
             tags: post.tags,
             content: post.content,
             video: post.video,
-            lang: post.lang || "en"
+            lang: post.lang || "en",
           }
           this.loading = false
         }
       }
-    }
+    },
   },
 
   // map state to global variable
   computed: {
-    ...mapState(["post"])
-  }
+    ...mapState(["post"]),
+  },
 })
 </script>
 
@@ -315,7 +315,7 @@ export default vue.extend({
   color: $color-gray-medium
   margin-bottom: 1em
 
-#html-form 
+#html-form
   font-size: .75em
   padding: 10px
   color: $color-gray-verysoft
@@ -323,21 +323,21 @@ export default vue.extend({
   margin-bottom: 1em
   min-height: 300px
   max-height: 500px !important
-  border: 1px solid $color-gray-medium 
+  border: 1px solid $color-gray-medium
   width: calc(100% - 1.5rem)
 
-a.editor-tab 
+a.editor-tab
   transition: background .5s ease
   color: $color-white-main
-  background: $color-gray-soft 
-  padding: 5px 10px 
+  background: $color-gray-soft
+  padding: 5px 10px
   border-radius: 10px
-  display: inline-block 
-  margin-bottom: 10px 
-  margin-right: 10px 
+  display: inline-block
+  margin-bottom: 10px
+  margin-right: 10px
   &.active
     background: $color-blue-main
-  &:hover 
+  &:hover
     background: $color-blue-dark
 
 .vue-input-tag-wrapper

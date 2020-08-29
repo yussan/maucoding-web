@@ -11,7 +11,7 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 // export const generateMetaHomepage = (req, res, next) => {
 //   const title = "Tech from engineer perspective"
 //   const desc =
-//     "Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
+//     "Mau Coding powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
 
 //   req.meta = {
 //     title,
@@ -22,7 +22,7 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 
 //   req.html = `
 //     <div class="home">
-//       <img src="${req.meta.image}" alt="Yussan Academy Logo" />
+//       <img src="${req.meta.image}" alt="Mau Coding Logo" />
 //       <h1>${title}</h1>
 //       <h2>${desc}</h2>
 //     </div>
@@ -36,8 +36,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 
 //   if (req.params.tag) title = `${title} with tag "${req.params.tag}"`
 
-//   const desc = `${title} on Yussan Academy`
-//   title += " - Yussan Academy"
+//   const desc = `${title} on Mau Coding`
+//   title += " - Mau Coding"
 
 //   req.meta = {
 //     title,
@@ -58,8 +58,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 
 // export const generateMetaSuper = (req, res, next) => {
 //   let title = "Super Access"
-//   const desc = `${title} on Yussan Academy`
-//   title += " - Yussan Academy"
+//   const desc = `${title} on Mau Coding`
+//   title += " - Mau Coding"
 
 //   req.meta = {
 //     title,
@@ -82,8 +82,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //   const query = req.getQuery() ? queryToObj(req.getQuery()) : {}
 //   let title = `Search results "${query.q || "keyword"}"`
 
-//   const desc = `${title} on Yussan Academy`
-//   title += " - Yussan Academy"
+//   const desc = `${title} on Mau Coding`
+//   title += " - Mau Coding"
 
 //   req.meta = {
 //     title,
@@ -126,12 +126,12 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //             headline: json.title,
 //             alternativeHeadline: json.title,
 //             image: json.image.original,
-//             genre: "Yussan Academy,software engineer,tutorial,development",
+//             genre: "Mau Coding,software engineer,tutorial,development",
 //             keywords,
 //             wordcount: json.content.length,
 //             publisher: {
 //               "@type": "Organization",
-//               name: "Yussan Academy",
+//               name: "Mau Coding",
 //               logo: {
 //                 "@type": "ImageObject",
 //                 url: "https://maucoding.com/images/logo-wide-2.png",
@@ -184,8 +184,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 
 //         req.html = `
 //         <div class="author">
-//           <h1>Post by "${json.username}" - Yussan Academy</h1>
-//           <h2>Find all available post posted by "${json.username}". Yussan Academy - Tech from engineer perspective</h2>
+//           <h1>Post by "${json.username}" - Mau Coding</h1>
+//           <h2>Find all available post posted by "${json.username}". Mau Coding - Tech from engineer perspective</h2>
 //           <img src="${json.avatar.original}" alt="${json.username}" />
 //         </div>
 //       `
@@ -203,9 +203,9 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 // }
 
 // export const generateMetaNotFound = (req, res, next) => {
-//   const title = "Page Not Found - Yussan Academy"
+//   const title = "Page Not Found - Mau Coding"
 //   const desc =
-//     "The page you are looking for was not found, please visit the others. Yussan Academy powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
+//     "The page you are looking for was not found, please visit the others. Mau Coding powered by Yussan Media Group, here we discuss all kinds of technology from the perspective of engineers"
 
 //   req.meta = {
 //     title,
@@ -216,7 +216,7 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 
 //   req.html = `
 //     <div class="home">
-//       <img src="${req.meta.image}" alt="Yussan Academy Logo" />
+//       <img src="${req.meta.image}" alt="Mau Coding Logo" />
 //       <h1>${title}</h1>
 //       <h2>${desc}</h2>
 //     </div>

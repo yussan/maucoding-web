@@ -1,26 +1,25 @@
 <template lang='pug'>
-  .super-posts-list
-    header-tag(
-      title='All Posts'
-    )
-    //- searh post by title
-    input-text(
-      name='keyword' 
-      placeholder='search post' 
-      :data="formdata" 
-      :onchange='changeTextHandler'
-      :onkeydown='keyDownTextHandler')
-    //- post list
-    super-box-post(:data='post.list[filter] || {}') 
-    br
-    //- big button to load more post
-    big-button(
-      v-if='post.list[filter] && post.list[filter].status && post.list[filter].status === 200' 
-      :loading='post.list[filter].loading'
-      :onclick='() => morePosts()'
-      type="blue" 
-      text="more posts")
-
+.super-posts-list
+  header-tag(title="All Posts")
+  //- searh post by title
+  input-text(
+    name="keyword",
+    placeholder="search post",
+    :data="formdata",
+    :onchange="changeTextHandler",
+    :onkeydown="keyDownTextHandler"
+  )
+  //- post list
+  super-box-post(:data="post.list[filter] || {}") 
+  br
+  //- big button to load more post
+  big-button(
+    v-if="post.list[filter] && post.list[filter].status && post.list[filter].status === 200",
+    :loading="post.list[filter].loading",
+    :onclick="() => morePosts()",
+    type="blue",
+    text="more posts"
+  )
 </template>
 
 <script>
@@ -45,14 +44,14 @@ export default vue.extend({
 
   metaInfo() {
     return {
-      title: "Posts - Yussan Academy Super",
+      title: "Posts - Mau Coding Super",
       meta: [
         {
           vmid: "description",
           name: "description",
-          content: "List posts on Yussan Academy super page"
-        }
-      ]
+          content: "List posts on Mau Coding super page",
+        },
+      ],
     }
   },
 
@@ -60,8 +59,8 @@ export default vue.extend({
     return {
       filter: "post_all",
       formdata: {
-        keyword: this.$route.query.q || ""
-      }
+        keyword: this.$route.query.q || "",
+      },
     }
   },
 
@@ -81,7 +80,7 @@ export default vue.extend({
         // redirect
         if (this.formdata.keyword) {
           return router.push({
-            path: `/super/posts?q=${this.formdata.keyword}`
+            path: `/super/posts?q=${this.formdata.keyword}`,
           })
         } else {
           return router.push({ path: `/super/posts` })
@@ -109,18 +108,18 @@ export default vue.extend({
       const { q } = this.$route.query
 
       let params = {
-        filter: this.filter
+        filter: this.filter,
       }
       if (q) params.keyword = q
       return params
-    }
+    },
   },
 
   watch: {
     ["$route.query.q"]() {
       console.log("q", this.$route.query.q)
       return this.fetchPosts()
-    }
+    },
   },
 
   mounted() {
@@ -130,7 +129,7 @@ export default vue.extend({
   computed: {
     post() {
       return this.$store.state.post || {}
-    }
-  }
+    },
+  },
 })
 </script>

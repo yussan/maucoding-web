@@ -93,9 +93,9 @@ export default vue.extend({
       meta: {
         title: "Tech from Engineer Perspective",
         description:
-          "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
+          "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn.",
       },
-      id: 0
+      id: 0,
     }
   },
 
@@ -113,9 +113,9 @@ export default vue.extend({
             {
               vmid: "description",
               name: "description",
-              content: description
-            }
-          ]
+              content: description,
+            },
+          ],
         }
       } else {
         return {
@@ -124,9 +124,9 @@ export default vue.extend({
             {
               vmid: "description",
               name: "description",
-              content: "Are you lost, click link bellow to acccess other page"
-            }
-          ]
+              content: "Are you lost, click link bellow to acccess other page",
+            },
+          ],
         }
       }
     } else {
@@ -135,14 +135,14 @@ export default vue.extend({
       const id = title_arr[title_arr.length - 1]
       title = title.replace(/-/g, " ")
       return {
-        title: `${title.replace(` ${id}`, "")} - Yussan Academy`,
+        title: `${title.replace(` ${id}`, "")} - Mau Coding`,
         meta: [
           {
             vmid: "description",
             name: "description",
-            content: `Post detail on Yussan Academy with title ${title}`
-          }
-        ]
+            content: `Post detail on Mau Coding with title ${title}`,
+          },
+        ],
       }
     }
   },
@@ -172,9 +172,9 @@ export default vue.extend({
         filter: "latest_detail",
         limit: 4,
         draft: false,
-        notid: id
+        notid: id,
       })
-    }
+    },
   },
 
   watch: {
@@ -190,10 +190,10 @@ export default vue.extend({
         this.fetchPostDetail(id)
         this.fetchPostRelated(id)
       }
-    }
+    },
   },
 
-  computed: mapState(["post"])
+  computed: mapState(["post"]),
 })
 </script>
 
@@ -220,10 +220,11 @@ export default vue.extend({
       width: -webkit-fill-available
       width: -moz-available
   article.post-detail-content
+    line-height: 1.8
     a
       color: $color-gray-soft
       text-decoration: underline
-      word-wrap: break-word;
+      word-wrap: break-word
     h2
       margin-top: 50px
       border-top: 1px solid gray
@@ -233,9 +234,9 @@ export default vue.extend({
     h3
       margin-top: 50px
       // text-align: center
-    line-height: 1.8
-    letter-spacing: .3px
-    font-size: 1.1em
+      line-height: 1.8
+      letter-spacing: .3px
+      font-size: 1.1em
     img
       max-width: 100%
       text-align: center

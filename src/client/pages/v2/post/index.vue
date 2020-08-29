@@ -1,13 +1,15 @@
 <template lang="pug">
-  .posts
-    .grid-center.post-header
-      .col-7_md-7_sm-12
-        .grid
-          .col-12
-            h1 {{ title }}
-    .bg-soft-gray 
-      small-post-block(:postData="post.list[filter]" :loadMoreHandler="fetchMoreData")
-              
+.posts
+  .grid-center.post-header
+    .col-7_md-7_sm-12
+      .grid
+        .col-12
+          h1 {{ title }}
+  .bg-soft-gray 
+    small-post-block(
+      :postData="post.list[filter]",
+      :loadMoreHandler="fetchMoreData"
+    )
 </template>
 
 <script>
@@ -28,7 +30,7 @@ export default {
     return {
       title,
       description,
-      filter: "posts"
+      filter: "posts",
     }
   },
 
@@ -47,7 +49,7 @@ export default {
       // request new data
       const reqParams = this.generateParams(params.tag_name)
       return this.fetchData(reqParams)
-    }
+    },
   },
 
   metaInfo() {
@@ -60,23 +62,23 @@ export default {
         {
           vmid: "description",
           name: "description",
-          content: description
-        }
-      ]
+          content: description,
+        },
+      ],
     }
   },
 
   methods: {
     generateMeta(tag_name, q) {
       let meta = {
-        title: "Available Posts - Yussan Academy",
-        description: "Available Yussan Academy posts"
+        title: "Available Posts - Mau Coding",
+        description: "Available Mau Coding posts",
       }
 
       if (tag_name) {
         meta = {
-          title: `Available Posts With Tag "${tag_name}" - Yussan Academy`,
-          description: `Available Yussan Academy posts with tag "${tag_name}"`
+          title: `Available Posts With Tag "${tag_name}" - Mau Coding`,
+          description: `Available Mau Coding posts with tag "${tag_name}"`,
         }
       }
 
@@ -103,26 +105,26 @@ export default {
       params.query.lastupdatedon = post[post.length - 1].updated_on
 
       this.$store.dispatch(TYPES.GET_POSTS, params)
-    }
+    },
   },
 
   computed: {
     post() {
       return this.$store.state.post || {}
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style lang="sass" scoped>
-  @import "../../../../design/sass/color" 
-  .posts
-    .post-header
-      padding: 50px 0  
-      font-size: 20px
-      h1
-        font-size: 30px;
-        text-align: center; 
-    // .posts-gray
-    //   background-color: $color-gray-verysoft
+@import "../../../../design/sass/color"
+.posts
+  .post-header
+    padding: 50px 0
+    font-size: 20px
+    h1
+      font-size: 30px
+      text-align: center
+  // .posts-gray
+  //   background-color: $color-gray-verysoft
 </style>

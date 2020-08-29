@@ -1,43 +1,48 @@
 <template lang="pug">
-  .post-search
-    .grid-center.post-header
-      .col-7_md-7_sm-12
-        .grid
-          .col-12.post-header_search
-            .post-header_search_input
-              i.icono-search 
-              input(type="search" placeholder="Search here..." v-model="keyword" v-on:keyup="onKeyUp" :disabled="post.list[filter] && post.list[filter].loading") 
-    .post-search-gray
-      small-post-block(:postData="post.list[filter]")
-              
+.post-search
+  .grid-center.post-header
+    .col-7_md-7_sm-12
+      .grid
+        .col-12.post-header_search
+          .post-header_search_input
+            i.icono-search 
+            input(
+              type="search",
+              placeholder="Search here...",
+              v-model="keyword",
+              v-on:keyup="onKeyUp",
+              :disabled="post.list[filter] && post.list[filter].loading"
+            ) 
+  .post-search-gray
+    small-post-block(:postData="post.list[filter]")
 </template>
 
 <style lang="sass" scoped>
-  @import "../../../../design/sass/color" 
-  .post-search
-    .post-header
-      padding: 50px 0  
-      .post-header_search 
-        border-bottom: 1px solid $color-gray-medium 
-        position: relative
-        .post-header_search_input
-          i.icono-search 
-            position: absolute
-            bottom: 9px
-            zoom: 0.8
-            color: $color-gray-dark
-          input[type="search"] 
-            color: $color-gray-dark
-            border: none
-            outline: none 
-            width: 100%
-            padding: 10px 10px 10px 35px
-            font-size: 20px
-            &:disabled 
-              opacity: .5
-              cursor: not-allowed
-    .post-search-gray
-      background-color: $color-gray-verysoft
+@import "../../../../design/sass/color"
+.post-search
+  .post-header
+    padding: 50px 0
+    .post-header_search
+      border-bottom: 1px solid $color-gray-medium
+      position: relative
+      .post-header_search_input
+        i.icono-search
+          position: absolute
+          bottom: 9px
+          zoom: 0.8
+          color: $color-gray-dark
+        input[type="search"]
+          color: $color-gray-dark
+          border: none
+          outline: none
+          width: 100%
+          padding: 10px 10px 10px 35px
+          font-size: 20px
+          &:disabled
+            opacity: .5
+            cursor: not-allowed
+  .post-search-gray
+    background-color: $color-gray-verysoft
 </style>
 
 <script>
@@ -53,7 +58,7 @@ export default {
   data() {
     return {
       keyword: this.$route.query.q || "",
-      filter: "search-post"
+      filter: "search-post",
     }
   },
 
@@ -63,14 +68,14 @@ export default {
 
   metaInfo() {
     return {
-      title: `Result search "${this.keyword}" - Yussan Academy`,
+      title: `Result search "${this.keyword}" - Mau Coding`,
       meta: [
         {
           vmid: "description",
           name: "description",
-          content: `Result search "${this.keyword}" - Yussan Academy`
-        }
-      ]
+          content: `Result search "${this.keyword}" - Mau Coding`,
+        },
+      ],
     }
   },
 
@@ -79,7 +84,7 @@ export default {
       const { path, query } = to
       this.keyword = query.q || ""
       return this.fetchData()
-    }
+    },
   },
 
   methods: {
@@ -106,16 +111,16 @@ export default {
         filter: this.filter,
         query: {
           draft: false,
-          keyword: this.keyword
-        }
+          keyword: this.keyword,
+        },
       }
-    }
+    },
   },
 
   computed: {
     post() {
       return this.$store.state.post || {}
-    }
-  }
+    },
+  },
 }
 </script>

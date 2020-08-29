@@ -1,23 +1,30 @@
 <template lang="pug">
-  nav 
-    .container-medium 
-      div(v-if='search === false')
-        .left
-          ul.navbar
-            li(v-for="n, key in popular_tags") 
-              router-link(:to="'/tag/' + n.toLowerCase()" :key="key") {{ n.toUpperCase() }}
-        .right
-          a.icono-search(href='javascript:;' v-on:click='toggleSearch' style='-webkit-transform: scale(.8) rotate(40deg);-ms-transform: scale(.8) rotate(40deg);transform: scale(.8) rotate(40deg);')
-      
-      ul.search(v-if='search === true') 
-        input#search-input(type='text' v-model='search_text' v-on:keydown='handleChangeSearch' placeholder='search here...')
-        a.icono-cross(href='javascript:;' v-on:click='toggleSearch' style='position:absolute;margin-top:.5em;transform: translateX(-2em) rotate(45deg);')
-    
-    .fixed(:class='!show_navbar ? "hide" : "" ')
-      router-link(to='/')
-        img.logo(src='/images/logo-black-transparent-1.png')
-          
+nav 
+  .container-medium 
+    div(v-if="search === false")
+      .left
+        ul.navbar
+          li(v-for="(n, key) in popular_tags") 
+            router-link(:to="'/tag/' + n.toLowerCase()", :key="key") {{ n.toUpperCase() }}
+      .right
+        a.icono-search(
+          href="javascript:;",
+          v-on:click="toggleSearch",
+          style="-webkit-transform: scale(.8) rotate(40deg);-ms-transform: scale(.8) rotate(40deg);transform: scale(.8) rotate(40deg);"
+        )
 
+    ul.search(v-if="search === true") 
+      input#search-input(
+        type="text",
+        v-model="search_text",
+        v-on:keydown="handleChangeSearch",
+        placeholder="search here..."
+      )
+      a.icono-cross(
+        href="javascript:;",
+        v-on:click="toggleSearch",
+        style="position:absolute;margin-top:.5em;transform: translateX(-2em) rotate(45deg);"
+      )
 </template>
 
 <script lang="ts">
@@ -32,7 +39,7 @@ const popular_tags = [
   "Firebase",
   "Tensorflow",
   "NodeJS",
-  "Github"
+  "Github",
 ]
 
 export default vue.extend({
@@ -42,15 +49,15 @@ export default vue.extend({
       search: false,
       search_text: "",
       show_navbar: false,
-      popular_tags
+      popular_tags,
     }
   },
 
   props: {
     keyword: {
       type: String,
-      default: ""
-    }
+      default: "",
+    },
   },
 
   watch: {
@@ -59,7 +66,7 @@ export default vue.extend({
         this.search = false
         this.search_text = ""
       }
-    }
+    },
   },
 
   methods: {
@@ -86,7 +93,7 @@ export default vue.extend({
     },
 
     handleScroll() {
-      document.addEventListener("scroll", e => {
+      document.addEventListener("scroll", (e) => {
         const position = window.scrollY
         if (position > 218) {
           // show navbar
@@ -96,7 +103,7 @@ export default vue.extend({
           this.show_navbar = false
         }
       })
-    }
+    },
   },
 
   mounted() {
@@ -107,61 +114,61 @@ export default vue.extend({
     }
     // add scroll listener
     this.handleScroll()
-  }
+  },
 })
 </script>
 
 <style lang="sass" scoped>
-  @import '../../design/sass/color'
-  nav 
-    background-color: $color-blue-main
-    border-top: 1px solid $color-white-main
-    border-bottom: 1px solid $color-white-main
-    .fixed
-      &.hide
-        top: -150px  
+@import '../../design/sass/color'
+nav
+  background-color: $color-blue-main
+  border-top: 1px solid $color-white-main
+  border-bottom: 1px solid $color-white-main
+  .fixed
+    &.hide
+      top: -150px
       transition: all .5s ease
-      position: fixed 
+      position: fixed
       width: 100vw
       padding: .5em .5em
-      background: $color-white-transparent 
+      background: $color-white-transparent
       top: 0
       z-index: 5
-      img.logo 
-        width: 150px
+    img.logo
+      width: 150px
 
-    ul.navbar 
-      margin: 0
-      padding: 1em 0
-      display: inline-flex
-      li 
-        display: inline-block
-        margin-right: 1em
-        width: max-content
-        a 
-          transition: all .3s ease
-          color: $color-white-main
-          text-decoration: none
-          font-size: 1em
-          letter-spacing: 1.5px
-          &:hover 
-            color: $color-gray-soft
-    .left
-      overflow-x: auto
-      display: inline-flex
-      width: calc(100% - 35px)
-    .right 
-      display: inline-flex 
-      width: 35px
+  ul.navbar
+    margin: 0
+    padding: 1em 0
+    display: inline-flex
+    li
+      display: inline-block
+      margin-right: 1em
+      width: max-content
+      a
+        transition: all .3s ease
+        color: $color-white-main
+        text-decoration: none
+        font-size: 1em
+        letter-spacing: 1.5px
+        &:hover
+          color: $color-gray-soft
+  .left
+    overflow-x: auto
+    display: inline-flex
+    width: calc(100% - 35px)
+  .right
+    display: inline-flex
+    width: 35px
 
-    ul.search
-      margin: 0
-      padding: .25em 0
-      input[type='text']
-        &:focus
-          outline: none
-        &::placeholder 
-          color: #FFF
+  ul.search
+    margin: 0
+    padding: .25em 0
+    input[type='text']
+      &:focus
+        outline: none
+      &::placeholder
+        color: #FFF
         width: 100%
         background: transparent
         border: none
