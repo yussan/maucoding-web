@@ -16,8 +16,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //   req.meta = {
 //     title,
 //     desc,
-//     url: `https://yussanacademy.com/${req.originalUrl}`,
-//     image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+//     url: `https://maucoding.com/${req.originalUrl}`,
+//     image: "https://maucoding.com/images/logo-wide-2.1.png"
 //   }
 
 //   req.html = `
@@ -42,8 +42,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //   req.meta = {
 //     title,
 //     desc,
-//     url: `https://yussanacademy.com/${req.originalUrl}`,
-//     image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+//     url: `https://maucoding.com/${req.originalUrl}`,
+//     image: "https://maucoding.com/images/logo-wide-2.1.png"
 //   }
 
 //   req.html = `
@@ -64,8 +64,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //   req.meta = {
 //     title,
 //     desc,
-//     url: `https://yussanacademy.com/${req.originalUrl}`,
-//     image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+//     url: `https://maucoding.com/${req.originalUrl}`,
+//     image: "https://maucoding.com/images/logo-wide-2.1.png"
 //   }
 
 //   req.html = `
@@ -88,8 +88,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //   req.meta = {
 //     title,
 //     desc,
-//     url: `https://yussanacademy.com/${req.originalUrl}`,
-//     image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+//     url: `https://maucoding.com/${req.originalUrl}`,
+//     image: "https://maucoding.com/images/logo-wide-2.1.png"
 //   }
 
 //   req.html = `
@@ -116,7 +116,7 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //         req.meta = {
 //           title: json.title,
 //           desc: description,
-//           url: `https://yussanacademy.com/post/${req.params.title}`,
+//           url: `https://maucoding.com/post/${req.params.title}`,
 //           image: json.image.original,
 //           keywords,
 //           jsonld: {
@@ -134,12 +134,12 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //               name: "Yussan Academy",
 //               logo: {
 //                 "@type": "ImageObject",
-//                 url: "https://yussanacademy.com/images/logo-wide-2.png",
+//                 url: "https://maucoding.com/images/logo-wide-2.png",
 //                 height: "500",
 //                 width: "500"
 //               }
 //             },
-//             url: `https://yussanacademy.com/post/${req.params.title}`,
+//             url: `https://maucoding.com/post/${req.params.title}`,
 //             datePublished: new Date(json.created_on * 1000).toISOString(),
 //             dateCreated: new Date(json.created_on * 1000).toISOString(),
 //             dateModified: new Date(json.updated_on * 1000).toISOString(),
@@ -178,7 +178,7 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //         req.meta = {
 //           title: username,
 //           desc: `Post created by ${json.fullname || username}`,
-//           url: `https://yussanacademy.com/author/${username}`,
+//           url: `https://maucoding.com/author/${username}`,
 //           image: json.avatar.original
 //         }
 
@@ -193,7 +193,7 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //         req.meta = {
 //           title: "User Not Found",
 //           desc: "User Not Found",
-//           url: `https://yussanacademy.com/author/${username}`
+//           url: `https://maucoding.com/author/${username}`
 //         }
 //       }
 
@@ -210,8 +210,8 @@ const NOT_REDIRECT_LANG = ["a", "author", "post", "search", "tag", "static"]
 //   req.meta = {
 //     title,
 //     desc,
-//     url: `https://yussanacademy.com/${req.originalUrl}`,
-//     image: "https://yussanacademy.com/images/logo-wide-2.1.png"
+//     url: `https://maucoding.com/${req.originalUrl}`,
+//     image: "https://maucoding.com/images/logo-wide-2.1.png"
 //   }
 
 //   req.html = `

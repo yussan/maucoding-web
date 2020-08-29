@@ -3,6 +3,6 @@ export default {
     front: "http://localhost:19091"
   },
   production: {
-    front: "https://yussanacademy.com"
+    front: "https://maucoding.com"
   }
 }

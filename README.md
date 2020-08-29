@@ -1,3 +1,3 @@
 # Yussan Academy Web
 
-web version of https://yussanacademy.com
+web version of https://maucoding.com

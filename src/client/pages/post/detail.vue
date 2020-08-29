@@ -55,7 +55,7 @@
 
 </template>
 
-<script lang="ts">
+<script>
 import vue from "vue"
 import host from "../../../config/host"
 import * as TYPES from "../../vuex/types"
@@ -193,9 +193,7 @@ export default vue.extend({
     }
   },
 
-  computed: {
-    ...mapState(["post"])
-  }
+  computed: mapState(["post"])
 })
 </script>
 
@@ -204,26 +202,26 @@ export default vue.extend({
 @import '../../../design/sass/color'
 
 .post-detail
-  h1 
+  h1
     font-size: $size-text-large
   .post-detail-mainimage
     text-align: center
-    img 
+    img
       max-width: 100%
   .post-detail-video
     background: $color-black-main
     margin-bottom: 50px
     padding: 0
     height: 500px
-    iframe 
+    iframe
       border: none
       margin: 0
-      height: 100% 
+      height: 100%
       width: -webkit-fill-available
       width: -moz-available
-  article.post-detail-content 
-    a 
-      color: $color-gray-soft 
+  article.post-detail-content
+    a
+      color: $color-gray-soft
       text-decoration: underline
       word-wrap: break-word;
     h2
@@ -232,18 +230,18 @@ export default vue.extend({
       border-bottom: 1px solid gray
       padding: 10px
       text-align: center
-    h3 
+    h3
       margin-top: 50px
       // text-align: center
     line-height: 1.8
     letter-spacing: .3px
     font-size: 1.1em
-    img 
+    img
       max-width: 100%
       text-align: center
-      display: block 
+      display: block
       margin: 2.5em auto
-    br 
+    br
       display: block
       margin: 1em 0
 </style>

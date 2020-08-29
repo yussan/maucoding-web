@@ -41,7 +41,7 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
         <meta property="og:title" content="${meta.title} - Yussan Academy" />
         <meta property="og:type" content="${meta.type || "blog"}" />
         <meta property="og:url" content="${meta.url ||
-          "https://yussanacademy.com"}" />
+          "https://maucoding.com"}" />
         <meta property="og:image" content="${meta.image ||
           "https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538301459/github/Screen_Shot_2018-09-30_at_16.52.32.png"}" />
         <meta property="og:description" content="${meta.desc}" />
@@ -64,7 +64,7 @@ function generateHtml({ context = {}, lang, initialHTML = "loading..." }) {
           ? "/opensearch/production.xml"
           : "/opensearch/development.xml"
       }" rel="search" title="Yussan Academy" type="application/opensearchdescription+xml">
-      <link rel="alternate" href="https://yussanacademy.com" lang="en-US"/> 
+      <link rel="alternate" href="https://maucoding.com" lang="en-US"/> 
       <script>
         window.SELECTED_LANG = "${lang || "id"}"    
       </script>    

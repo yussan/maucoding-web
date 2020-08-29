@@ -17,21 +17,20 @@ export function getSitemapTags(req, res) {
     }
   })
 
-  mongo().then(({db, client}) => {
+  mongo().then(({ db, client }) => {
     db.collection("tags")
       .aggregate(aggregate)
       .toArray((err, result) => {
         if (err) {
           res.end("error get sitemap")
         } else {
-
           client.close()
 
           // generate xml
           result.map(n => {
             items += `
             <url>
-              <loc>https://yussanacademy.com/tag/${n.tag.toLowerCase()}</loc>
+              <loc>https://maucoding.com/tag/${n.tag.toLowerCase()}</loc>
               <lastmod>2018-08-09</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>
@@ -60,21 +59,20 @@ export function getSitemapUsers(req, res) {
     }
   })
 
-  mongo().then(({db, client}) => {
+  mongo().then(({ db, client }) => {
     db.collection("users")
       .aggregate(aggregate)
       .toArray((err, result) => {
         if (err) {
           res.end("error get sitemap")
         } else {
-
           client.close()
 
           // generate xml
           result.map(n => {
             items += `
             <url>
-              <loc>https://yussanacademy.com/author/${n.username.toLowerCase()}</loc>
+              <loc>https://maucoding.com/author/${n.username.toLowerCase()}</loc>
               <lastmod>${epochToFormat(n.created_on, "Y-M-D")}</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>
@@ -103,21 +101,22 @@ export function getSitemapPosts(req, res) {
     }
   })
 
-  mongo().then(({db, client}) => {
+  mongo().then(({ db, client }) => {
     db.collection("posts")
       .aggregate(aggregate)
       .toArray((err, result) => {
         if (err) {
           res.end("error get sitemap")
         } else {
-
           client.close()
 
           // generate xml
           result.map(n => {
             items += `
             <url>
-              <loc>https://yussanacademy.com/post/${(n.title.replace(/ /g,'-')).toLowerCase()}-${n._id}</loc>
+              <loc>https://maucoding.com/post/${n.title
+                .replace(/ /g, "-")
+                .toLowerCase()}-${n._id}</loc>
               <lastmod>${epochToFormat(n.created_on, "Y-M-D")}</lastmod>
               <changefreq>daily</changefreq>
               <priority>0.8</priority>

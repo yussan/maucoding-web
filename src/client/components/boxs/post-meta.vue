@@ -11,7 +11,7 @@
       span.stats-item
         a(href="javascript:;" @click="viewComments")
           span.icono-commentEmpty 
-          span.disqus-comment-count(:data-disqus-identifier="'https://yussanacademy.com' + link" :data-disqus-url="'https://yussanacademy.com' + link") 0
+          span.disqus-comment-count(:data-disqus-identifier="'https://maucoding.com' + link" :data-disqus-url="'https://maucoding.com' + link") 0
           | &nbsp;
       span.stats-item
         span.icono-eye 
@@ -64,7 +64,7 @@ export default vue.extend({
 
   watch: {
     link() {
-      renderDisqus(`https://yussanacademy.com${this.link}`)
+      renderDisqus(`https://maucoding.com${this.link}`)
     }
   },
 
@@ -74,11 +74,11 @@ export default vue.extend({
         id: "dsq-count-scr",
         cb: () => {
           // waiting for DISQUS initialized
-          renderDisqus(`https://yussanacademy.com${this.link}`)
+          renderDisqus(`https://maucoding.com${this.link}`)
         }
       })
     } else {
-      renderDisqus(`https://yussanacademy.com${this.link}`)
+      renderDisqus(`https://maucoding.com${this.link}`)
     }
   }
 })
@@ -86,13 +86,13 @@ export default vue.extend({
 
 <style lang="sass" scoped>
 @import '../../../design/sass/color'
-.post-meta 
+.post-meta
   color: $color-gray-dark !important
   [class*=icono-]
     color: $color-gray-dark !important
     margin-right: 10px
     zoom: 0.8
-  img.avatar 
+  img.avatar
     width: 35px
     height: 35px
     border-radius: 35px
@@ -100,11 +100,10 @@ export default vue.extend({
     margin-right: 5px
     margin-bottom: 5px
     float: left
-  .avatar-text 
+  .avatar-text
     padding: 5px 0
-  .stats 
+  .stats
     padding: 15px 0 10px
-    .stats-item 
+    .stats-item
       margin-right: 5px
 </style>
-

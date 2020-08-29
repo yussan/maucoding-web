@@ -55,13 +55,13 @@ export function getFeed(req, res) {
                 500,
                 "[READ MORE...]"
               )}</description>
-              <link>https://yussanacademy.com/post/${toSlug(n.title)}-${
+              <link>https://maucoding.com/post/${toSlug(n.title)}-${
               n._id
             }</link>
-              <guid>https://yussanacademy.com/post/${toSlug(n.title)}-${
+              <guid>https://maucoding.com/post/${toSlug(n.title)}-${
               n._id
             }</guid>
-              <category domain="https://yussanacademy.com">${n.tags
+              <category domain="https://maucoding.com">${n.tags
                 .split(",")
                 .join("/")}</category>
               <pubDate>${new Date(n.created_on * 1000).toUTCString()}</pubDate>
@@ -82,8 +82,8 @@ function xmlFeedWrapper(items = "", update_date = 0) {
     <channel>
       <title>Yussan Academy Feed</title>
       <description>Tech from Engineer Perspective by Yussan Media Group</description>
-      <link>https://yussanacademy.com</link>
-      <category domain="https://yussanacademy.com">computers/software/internet/development/engineer</category>
+      <link>https://maucoding.com</link>
+      <category domain="https://maucoding.com">computers/software/internet/development/engineer</category>
       <copyright>Copyright 2017-2018 Yussan Media Group.</copyright>
       <lastBuildDate>${new Date(
         update_date * 1000
@@ -92,12 +92,12 @@ function xmlFeedWrapper(items = "", update_date = 0) {
       <image>
         <url>https://res.cloudinary.com/dhjkktmal/image/upload/c_scale,w_800/v1538876985/idmore-academy/Patreon_Cover.png</url>
         <title>Yussan Academy Feed</title>
-        <link>https://yussanacademy.com</link>
+        <link>https://maucoding.com</link>
         <description>Tech from Engineer Perspective by Yussan Media Group</description>
         <width>60</width>
         <height>60</height>
       </image>
-      <atom:link href="https://yussanacademy.com/feed" rel="self" type="application/rss+xml" />
+      <atom:link href="https://maucoding.com/feed" rel="self" type="application/rss+xml" />
       ${items}
     </channel>
   </rss>

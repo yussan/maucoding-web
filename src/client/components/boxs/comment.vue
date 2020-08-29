@@ -34,7 +34,7 @@ export default vue.extend({
 
   watch: {
     link(val) {
-      renderDisqus(`https://yussanacademy.com${val}`)
+      renderDisqus(`https://maucoding.com${val}`)
     }
   },
 
@@ -43,15 +43,12 @@ export default vue.extend({
       injectScript("//yussan-academy.disqus.com/embed.js", {
         cb: () => {
           // waiting for DISQUS initialized
-          renderDisqus(`https://yussanacademy.com${this.link}`)
+          renderDisqus(`https://maucoding.com${this.link}`)
         }
       })
-    else renderDisqus(`https://yussanacademy.com${this.link}`)
+    else renderDisqus(`https://maucoding.com${this.link}`)
   }
 })
 </script>
 
-<style lang="sass" scoped>
-
-</style>
-
+<style lang="sass" scoped></style>

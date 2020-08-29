@@ -5,5 +5,5 @@
   <Description>Search Yussan Academy</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Url method="get" type="text/html" 
-      template="https://yussanacademy.com/search?q={searchTerms}"/>
+      template="https://maucoding.com/search?q={searchTerms}"/>
 </OpenSearchDescription>
