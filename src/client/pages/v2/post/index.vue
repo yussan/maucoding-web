@@ -1,15 +1,14 @@
 <template lang="pug">
 .posts
   .grid-center.post-header
-    .col-7_md-7_sm-12
+    .col-10_sm-12
       .grid
         .col-12
           h1 {{ title }}
-  .bg-soft-gray 
-    small-post-block(
-      :postData="post.list[filter]",
-      :loadMoreHandler="fetchMoreData"
-    )
+  small-post-block(
+    :postData="post.list[filter]",
+    :loadMoreHandler="fetchMoreData"
+  )
 </template>
 
 <script>

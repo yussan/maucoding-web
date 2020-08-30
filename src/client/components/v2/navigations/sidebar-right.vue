@@ -1,76 +1,61 @@
 <template lang="pug">
-  .right-sidebar
-    
-    //- box-title(text="Lattest Apss")
-    //- .right-sidebar_content
-    //-   .right-sidebar_content_list 
-    //-     router-link(to="/app/app-name-dsfjk3jsdfuysdf")
-    //-       .right-sidebar_content_list_thumb.app_thumb(style="background-image:url(/images/apps-logo.jpg)")
-    //-       strong App Name 
-    //-       br
-    //-       small(style="color:gray") 234 posts 
-      
-    //-   .right-sidebar_content_list 
-    //-     router-link(to="/app/app-name-dsfjk3jsdfuysdf")
-    //-       .right-sidebar_content_list_thumb.app_thumb(style="background-image:url(/images/apps-logo.jpg)")
-    //-       strong App Name 
-    //-       br
-    //-       small(style="color:gray") 234 posts 
-    //-   router-link.more-link(:to="`/apps`")
-    //-     | Show more apps
+.right-sidebar
+  box-title(text="Popular Content")
+  .right-sidebar_content(v-if="post.featured && post.featured.status == 200") 
+    .right-sidebar_content_list(
+      v-for="(data, key) in post.featured.result",
+      :key="key"
+    ) 
+      router-link(:to="`/post/${data.nospace_title}-${data._id}`")
+        .right-sidebar_content_list_thumb(
+          :style="`background-image:url(${data.image.small})`"
+        )
+        strong {{ data.title }}
+    router-link.more-link(:to="`/posts?featured=1`")
+      | Show more popular content
 
-    box-title(text="Popular Content")
-    .right-sidebar_content(v-if="post.featured && post.featured.status == 200") 
-      .right-sidebar_content_list(v-for="data, key in post.featured.result" :key="key") 
-        router-link(:to="`/post/${data.nospace_title}-${data._id}`")
-          .right-sidebar_content_list_thumb(:style="`background-image:url(${data.image.small})`")
-          strong {{ data.title }}
-      router-link.more-link(:to="`/posts?featured=1`")
-        | Show more popular content
-    
-    .m-t-30 
+  .m-t-30 
 
-    box-title(text="Popular Tags")
-    p
-      tag-button(v-for="tag, key in popularTags" :key="key"  :text="tag")
-
+  box-title(text="Popular Tags")
+  p
+    tag-button(v-for="(tag, key) in popularTags", :key="key", :text="tag")
 </template>
 
 <style lang="sass" scoped>
-  @import '../../../../design/sass/color'
+@import '../../../../design/sass/color'
 
-  .right-sidebar
-    padding: 0 10px
-    .right-sidebar_content 
-      margin: 20px 0
-      .right-sidebar_content_list
-        &:first-child
-          margin-top: 0
-        width: 100%
-        margin: 20px 0 -4px
-        display: inline-block
-        a 
-          font-weight: bold
-          color: $color-gray-dark
-        .right-sidebar_content_list_thumb
-          background-size: cover 
-          background-position: center
-          width: 90px
-          height: 60px
-          float: left 
-          margin: 0 20px 10px 0
-          &.app_thumb 
-            width: 45px
-            height: 45px 
-      a.more-link 
+.right-sidebar
+  padding: 0 10px
+  .right-sidebar_content
+    margin: 20px 0
+    .right-sidebar_content_list
+      width: 100%
+      margin: 20px 0 -4px
+      display: inline-block
+      &:first-child
+        margin-top: 0
+      a
+        font-weight: bold
         color: $color-gray-dark
-        text-align: center
-        display: block
-        padding: 10px 0
-        font-size: 14px
-        border-top: 1px solid $color-gray-verysoft
-        border-bottom: 1px solid $color-gray-verysoft
-        margin: 20px 0
+      .right-sidebar_content_list_thumb
+        background-size: cover
+        background-position: center
+        width: 90px
+        height: 60px
+        float: left
+        margin: 0 20px 10px 0
+        &.app_thumb
+          width: 45px
+          height: 45px
+    a.more-link
+      color: $color-gray-dark
+      text-align: center
+      display: block
+      padding: 10px 0
+      font-size: 14px
+      border-top: 1px solid $color-gray-verysoft
+      border-bottom: 1px solid $color-gray-verysoft
+      margin: 20px 0
 </style>
 
 <script>
@@ -89,7 +74,17 @@ const DUMMY_POPULAR_TAGS = [
   "third party",
   "api",
   "tensorflow",
-  "frontend"
+  "frontend",
+  "progresive web app",
+  "web core vite",
+  "seo",
+  "web assembly",
+  "webpack",
+  "rollup",
+  "svelte",
+  "brew",
+  "mongodb",
+  "redis",
 ]
 
 vue.component("box-title", BoxTitle)
@@ -99,7 +94,7 @@ export default {
   name: "sidebar-right",
   data() {
     return {
-      popularTags: DUMMY_POPULAR_TAGS
+      popularTags: DUMMY_POPULAR_TAGS,
     }
   },
   created() {
@@ -108,14 +103,14 @@ export default {
       query: {
         featured: true,
         draft: false,
-        limit: 8
-      }
+        limit: 8,
+      },
     })
   },
   computed: {
     post() {
       return this.$store.state.post.list || {}
-    }
-  }
+    },
+  },
 }
 </script>

@@ -2,12 +2,13 @@
 nav#main-nav.main-nav 
   .container
     .grid-middle
-      .main-nav_logo(style="paddingLeft: 0 20")
-        router-link(to="/", title="Back to home", style="height:45px")
-          img(
-            src="/images/icons-2/icon-2-96x96.png",
-            alt="square logo of Mau Coding"
-          )
+      .col-1
+        .main-nav_logo(style="")
+          router-link(to="/", title="Back to home", style="height:45px")
+            img(
+              src="/images/icons-2/icon-2-96x96.png",
+              alt="square logo of Mau Coding"
+            )
       .col-5_md-5_sm-hidden
         .main-nav_menu.main-nav_menu_left
           ul.main-nav-menu_link
@@ -22,7 +23,7 @@ nav#main-nav.main-nav
                 :href="menu.link",
                 target="_blank"
               ) {{ menu.name }}
-      .col-6_md-6_sm-9
+      .col-6_md-6_sm-11
         .main-nav_menu.main-nav_menu_right
           .nav_menu_right_search 
             a(
@@ -50,11 +51,13 @@ nav#main-nav.main-nav
   border-bottom: 1px solid $color-gray-verysoft
   padding: 0 5px
   .main-nav_logo
-    img
-      width: 45px
-      height: 45px
-      justify-content: center
-      border-radius: 5px
+    a
+      margin: 0 auto
+      img
+        width: 45px
+        height: 45px
+        justify-content: center
+        border-radius: 5px
   .main-nav_logo, .main-nav_menu
     display: flex
     align-items: center
@@ -66,6 +69,8 @@ nav#main-nav.main-nav
       li
         display: inline-block
         padding: 20px
+        &:first-child
+          padding-left: 0
         &:hover, &.active
           background-color: $color-gray-verysoft
         a
