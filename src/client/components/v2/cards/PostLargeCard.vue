@@ -27,6 +27,7 @@
       height: 450px
       width: 100% 
       border-radius: 15px
+      border: 1px solid #f4f4f4
     .card-post-large_meta 
       padding: 20px 15px
       .tag-post 
@@ -54,6 +55,7 @@
         width: 30px
         height: 30px
         border-radius: 15px
+        border: 1px solid #f4f4f4
         margin-right: 10px
     h2 
       color: $color-gray-dark
