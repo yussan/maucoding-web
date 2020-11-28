@@ -17,6 +17,7 @@
       background-size: cover
       background-position: center
       border-radius: 10px
+      border: 1px solid #f4f4f4
     h3 
       color: $color-gray-dark
       text-transform: capitalize

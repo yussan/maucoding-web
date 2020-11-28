@@ -26,8 +26,9 @@
       height: 200px 
       background-size: cover 
       background-position: center  
-      border-radius: 15px
+      border: 1px solid #f4f4f4
       border-radius: 10px
+      border: 1px solid #f4f4f4
     .card-post-small_meta 
       width: calc(100% - 400px)
       h3 
