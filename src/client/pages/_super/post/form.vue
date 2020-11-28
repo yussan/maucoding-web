@@ -332,6 +332,7 @@ a.editor-tab
   background: $color-gray-soft
   padding: 5px 10px
   border-radius: 10px
+  border: 1px solid #f4f4f4
   display: inline-block
   margin-bottom: 10px
   margin-right: 10px
