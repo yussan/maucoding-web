@@ -44,6 +44,7 @@
         height: 60px
         float: left
         margin: 0 20px 10px 0
+        border-radius: 5px
         &.app_thumb
           width: 45px
           height: 45px

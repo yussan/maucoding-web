@@ -49,7 +49,6 @@ nav#main-nav.main-nav
   background-color: $color-white-main
   color: $color-gray-medium
   border-bottom: 1px solid $color-gray-verysoft
-  padding: 0 5px
   .main-nav_logo
     a
       margin: 0 auto
@@ -58,6 +57,7 @@ nav#main-nav.main-nav
         height: 45px
         justify-content: center
         border-radius: 5px
+        margin-left: 20px
   .main-nav_logo, .main-nav_menu
     display: flex
     align-items: center
@@ -69,8 +69,6 @@ nav#main-nav.main-nav
       li
         display: inline-block
         padding: 20px
-        &:first-child
-          padding-left: 0
         &:hover, &.active
           background-color: $color-gray-verysoft
         a

@@ -39,7 +39,6 @@ export default {
   #oopsreview-slider.glide
     .card-post-large
       box-shadow: none 
-      background: $color-gray-verysoft
     .glide__bullets
       bottom: 0 
       button.glide__bullet

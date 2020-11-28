@@ -16,6 +16,7 @@
       height: 150px
       background-size: cover
       background-position: center
+      border-radius: 10px
     h3 
       color: $color-gray-dark
       text-transform: capitalize

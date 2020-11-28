@@ -208,6 +208,7 @@ export default vue.extend({
     text-align: center
     img
       max-width: 100%
+      border-radius: 15px
   .post-detail-video
     background: $color-black-main
     margin-bottom: 50px
@@ -242,6 +243,7 @@ export default vue.extend({
       text-align: center
       display: block
       margin: 2.5em auto
+      border-radius: 15px
     br
       display: block
       margin: 1em 0

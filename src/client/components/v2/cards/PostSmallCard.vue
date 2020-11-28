@@ -18,7 +18,7 @@
 
   .card-post-small
     width: 100%
-    margin-bottom: 30px
+    margin-bottom: 40px
     display: inline-flex
     .card-post-small_thumb 
       margin-right: 30px
@@ -26,6 +26,8 @@
       height: 200px 
       background-size: cover 
       background-position: center  
+      border-radius: 15px
+      border-radius: 10px
     .card-post-small_meta 
       width: calc(100% - 400px)
       h3 
