@@ -18,9 +18,7 @@
 
   .card-post-large 
     margin-bottom: 40px
-    // box-shadow: 0 2px 5px 1px rgba(0, 0, 0, .05)
-    // &:hover 
-    //   box-shadow: 0 3px 7px 2px rgba(0, 0, 0, .1)
+
     .card-post-large_thumb
       background-size: cover 
       background-position: center
@@ -28,6 +26,7 @@
       width: 100% 
       border-radius: 15px
       border: 1px solid #f4f4f4
+
     .card-post-large_meta 
       padding: 20px 15px
       .tag-post 
@@ -59,6 +58,24 @@
         margin-right: 10px
     h2 
       color: $color-gray-dark
+
+  // responsiveness
+  @media screen and (max-width: 600px)
+    .card-post-large 
+      .card-post-large_thumb
+        height: 202px
+      .card-post-large_meta 
+        padding: 0
+        h2 
+          font-size: 21px
+          margin-bottom: 2em
+      .card-post-large_author 
+        img 
+          width: 20px
+          height: 20px
+        .text
+          font-size: 14px
+      
   </style>
 
 
