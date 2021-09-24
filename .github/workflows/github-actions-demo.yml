@@ -14,4 +14,4 @@ jobs:
         host: ${{ secrets.PROD_SSH_HOST }}
         user: ${{ secrets.PROD_SSH_USER }}
         key: ${{ secrets.PROD_SSH_KEY}}
-        command: cd /home/webdev/Web/maucoding.com && git pull origin && npm install install && npm run build:prod && pm2 restart mc
+        command: cd /home/webdev/Web/maucoding.com && git pull origin && rm -rf node_modules && npm install && npm run build:prod && pm2 restart mc
