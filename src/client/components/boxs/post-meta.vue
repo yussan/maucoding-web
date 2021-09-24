@@ -3,9 +3,8 @@
   router-link(:to="'/author/' + data.author.username")
     img.avatar(:src="data.author.avatar.small", alt="avatar user")
     .avatar-text
-      | by
-      | {{ toCamelCase(data.author.fullname) }},
-      | posted
+      | {{ toCamelCase(data.author.fullname) }}
+      | &nbsp;•&nbsp;
       time {{ epochToRelative(data.created_on) }}
   .stats 
     span.stats-item
@@ -62,13 +61,13 @@ export default vue.extend({
     viewComments() {
       const commentEl: any = document.getElementById("comment")
       commentEl.scrollIntoView({ behavior: "smooth" })
-    },
+    }
   },
 
   watch: {
     link() {
       renderDisqus(`https://maucoding.com${this.link}`)
-    },
+    }
   },
 
   created() {
@@ -78,12 +77,12 @@ export default vue.extend({
         cb: () => {
           // waiting for DISQUS initialized
           renderDisqus(`https://maucoding.com${this.link}`)
-        },
+        }
       })
     } else {
       renderDisqus(`https://maucoding.com${this.link}`)
     }
-  },
+  }
 })
 </script>
 
@@ -105,6 +104,8 @@ export default vue.extend({
     float: left
   .avatar-text
     padding: 5px 0
+    time
+      text-transform: capitalize
   .stats
     padding: 15px 0 10px
     .stats-item

@@ -16,11 +16,6 @@
 </template>
 
 <script lang="ts">
-let reader: any = null
-if (typeof window !== "undefined") {
-  reader = new FileReader()
-}
-
 // default props
 const defaultProps = {
   name: {
@@ -76,7 +71,7 @@ export default vue.extend({
       if (file) {
         // generate url
         this.image_preview = window.URL.createObjectURL(file)
-        this.onchange(e)
+        // this.onchange(e)
       }
     }
   }
@@ -88,7 +83,7 @@ export default vue.extend({
 @import '../../../design/sass/color'
 
 .form-input
-  img.preview 
+  img.preview
     max-width: 100%
     max-height: 500px
   input

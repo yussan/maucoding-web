@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
 .super-posts-list.grid
   .col-8_md-10_sm-12
     header-tag(
@@ -91,7 +91,7 @@ import inputFile from "../../../components/form/input-file.vue"
 import select from "../../../components/form/select.vue"
 import button from "../../../components/form/button.vue"
 import toast from "../../../modules/toast"
-import { injectCss } from "../../../modules/dom"
+// import { injectCss } from "../../../modules/dom"
 import { validation } from "../../../modules/form"
 import * as TYPES from "../../../vuex/types"
 import { mapState } from "vuex"
@@ -109,7 +109,7 @@ vue.component("input-tags", inputTags)
 const rules = {
   title: "required",
   tags: "required",
-  lang: "required",
+  lang: "required"
 }
 
 export default vue.extend({
@@ -125,9 +125,9 @@ export default vue.extend({
           {
             vmid: "description",
             name: "description",
-            content: "Update post on Mau Coding super page",
-          },
-        ],
+            content: "Update post on Mau Coding super page"
+          }
+        ]
       }
     } else {
       metaInfo = {
@@ -136,9 +136,9 @@ export default vue.extend({
           {
             vmid: "description",
             name: "description",
-            content: "Create post on Mau Coding super page",
-          },
-        ],
+            content: "Create post on Mau Coding super page"
+          }
+        ]
       }
     }
 
@@ -157,7 +157,7 @@ export default vue.extend({
       formdata: <any>{ lang: "en" },
       formvalidate: <any>{},
       validation: new validation(rules),
-      windowReady: false,
+      windowReady: false
     }
   },
 
@@ -202,7 +202,7 @@ export default vue.extend({
           content: this.formdata.content,
           tags: this.formdata.tags,
           lang: this.formdata.lang,
-          draft,
+          draft
         }
         if (this.id) params.id = this.id
         if (this.formdata.image) params.image = this.formdata.image
@@ -214,7 +214,7 @@ export default vue.extend({
 
     toggleEditorTab(tab) {
       this.editorTab = tab
-    },
+    }
   },
 
   props: ["id"],
@@ -228,7 +228,7 @@ export default vue.extend({
       // if (window.document) vue.component("input-tags", inputTags)
 
       // add event handle before unload to prevent data gone on closing tab
-      window.onbeforeunload = function (e) {
+      window.onbeforeunload = function(e) {
         e = e || window.event
 
         // For IE and Firefox prior to version 4
@@ -251,7 +251,7 @@ export default vue.extend({
 
   // unmount event
   beforeDestroy() {
-    window.onbeforeunload = function () {}
+    window.onbeforeunload = function() {}
     this.resetForm()
   },
 
@@ -272,7 +272,7 @@ export default vue.extend({
           if (response.status === 201) {
             // success to create / update post
             toast("Post submited", "success")
-            window.onbeforeunload = function () {}
+            window.onbeforeunload = function() {}
             setTimeout(() => {
               location.href = "/super/posts"
             }, 1500)
@@ -293,18 +293,18 @@ export default vue.extend({
             tags: post.tags,
             content: post.content,
             video: post.video,
-            lang: post.lang || "en",
+            lang: post.lang || "en"
           }
           this.loading = false
         }
       }
-    },
+    }
   },
 
   // map state to global variable
   computed: {
-    ...mapState(["post"]),
-  },
+    ...mapState(["post"])
+  }
 })
 </script>
 
