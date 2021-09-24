@@ -3,10 +3,10 @@
     .m-t-30 
     div(slot="main-content")
 
-      slider(v-if="post.featured && post.featured.result && post.featured.result.length > 0" :total="post.featured && post.featured.result ? post.featured.result.length : 0")
-        post-card-large.glide__slide(slot="slider-item" v-for="post, key in post.featured.result" :data="post" :key="key")
+      //- slider(v-if="post.featured && post.featured.result && post.featured.result.length > 0" :total="post.featured && post.featured.result ? post.featured.result.length : 0")
+      //-   post-card-large.glide__slide(slot="slider-item" v-for="post, key in post.featured.result" :data="post" :key="key")
       
-      .m-t-30(v-if="post.featured && post.featured.result && post.featured.result.length > 0")
+      //- .m-t-30(v-if="post.featured && post.featured.result && post.featured.result.length > 0")
 
       box-title(text="Latest Post")
       
@@ -26,7 +26,7 @@ import DefaultMeta from "../../../../config/metainfo"
 import * as TYPES from "../../../vuex/types"
 
 // components
-import Slider from "../../../components/v2/blocks/Slider"
+// import Slider from "../../../components/v2/blocks/Slider"
 import Layout from "../../../layouts/v2/public-layout"
 import PostBlock from "../../../components/v2/blocks/PostBlock"
 import PostCardLarge from "../../../components/v2/cards/PostLargeCard"
@@ -40,7 +40,7 @@ vue.component("box-title", BoxTitle)
 vue.component("layout", Layout)
 vue.component("full-button", FullWidthButton)
 vue.component("ga", GA)
-vue.component("slider", Slider)
+// vue.component("slider", Slider)
 
 export default {
   metaInfo() {

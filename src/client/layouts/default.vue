@@ -1,4 +1,4 @@
-<template lang='pug'>
+<template lang="pug">
   div 
     navbarV2(:keyword='$route.query.q || \'\'')
     div(v-bind:class="isFullscreen ? '' : 'container'")
@@ -8,7 +8,7 @@
     toast
 </template>
 
-<script lang='ts'>
+<script lang="ts">
 import vue from "vue"
 import navbarV2 from "../components/v2/navigations/navbar.vue"
 import footer from "../components/footer.vue"
@@ -35,7 +35,7 @@ export default vue.extend({
 
   data() {
     return {
-      isFullscreen: IS_FULLSCREEN.includes(this.$route.path.split("/")[2]),
+      isFullscreen: IS_FULLSCREEN.includes(this.$route.path.split("/")[2])
     }
   },
 
@@ -58,23 +58,26 @@ export default vue.extend({
         // ref : https://developers.google.com/analytics/devguides/collection/gajs/
         win.ga("send", "pageview", to.fullPath)
       }
-    },
-  },
+    }
+  }
 })
 </script>
 
-<style lang='sass'>
+<style lang="sass">
 @import '../../design/sass/base'
 @import '../../design/sass/color'
 
 body
   color: $color-gray-dark
+  font-size: 1.1em
 a
   color: $color-gray-medium
 pre
   background: $color-gray-verydark
   color: $color-gray-verysoft
   padding: 20px
+  code
+    font-size: 1.1em !important
 .align-center
   text-align: center
 .text-muted

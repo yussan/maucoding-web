@@ -68,6 +68,7 @@ import BoxTitle from "../headings/box-title"
 
 const DUMMY_POPULAR_TAGS = [
   "javascript",
+  "cryptocurrency",
   "python",
   "reactjs",
   "vuejs",
@@ -85,7 +86,7 @@ const DUMMY_POPULAR_TAGS = [
   "svelte",
   "brew",
   "mongodb",
-  "redis",
+  "redis"
 ]
 
 vue.component("box-title", BoxTitle)
@@ -95,7 +96,7 @@ export default {
   name: "sidebar-right",
   data() {
     return {
-      popularTags: DUMMY_POPULAR_TAGS,
+      popularTags: DUMMY_POPULAR_TAGS
     }
   },
   created() {
@@ -104,14 +105,14 @@ export default {
       query: {
         featured: true,
         draft: false,
-        limit: 8,
-      },
+        limit: 8
+      }
     })
   },
   computed: {
     post() {
       return this.$store.state.post.list || {}
-    },
-  },
+    }
+  }
 }
 </script>
