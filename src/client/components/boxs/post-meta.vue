@@ -3,7 +3,7 @@
   router-link(:to="'/author/' + data.author.username")
     img.avatar(:src="data.author.avatar.small", alt="avatar user")
     .avatar-text
-      | {{ toCamelCase(data.author.fullname) }}
+      | {{ toCamelCase(data.author.username) }}
       | &nbsp;•&nbsp;
       time {{ epochToRelative(data.created_on) }}
   .stats 

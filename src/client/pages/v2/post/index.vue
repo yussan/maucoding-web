@@ -13,7 +13,7 @@
 
 <script>
 import vue from "vue"
-import { router } from "../../../index"
+// import { router } from "../../../index"
 import * as TYPES from "../../../vuex/types"
 
 // components
@@ -29,7 +29,7 @@ export default {
     return {
       title,
       description,
-      filter: "posts",
+      filter: "posts"
     }
   },
 
@@ -48,7 +48,7 @@ export default {
       // request new data
       const reqParams = this.generateParams(params.tag_name)
       return this.fetchData(reqParams)
-    },
+    }
   },
 
   metaInfo() {
@@ -61,9 +61,9 @@ export default {
         {
           vmid: "description",
           name: "description",
-          content: description,
-        },
-      ],
+          content: description
+        }
+      ]
     }
   },
 
@@ -71,13 +71,13 @@ export default {
     generateMeta(tag_name, q) {
       let meta = {
         title: "Available Posts - Mau Coding",
-        description: "Available Mau Coding posts",
+        description: "Available Mau Coding posts"
       }
 
       if (tag_name) {
         meta = {
           title: `Available Posts With Tag "${tag_name}" - Mau Coding`,
-          description: `Available Mau Coding posts with tag "${tag_name}"`,
+          description: `Available Mau Coding posts with tag "${tag_name}"`
         }
       }
 
@@ -104,14 +104,14 @@ export default {
       params.query.lastupdatedon = post[post.length - 1].updated_on
 
       this.$store.dispatch(TYPES.GET_POSTS, params)
-    },
+    }
   },
 
   computed: {
     post() {
       return this.$store.state.post || {}
-    },
-  },
+    }
+  }
 }
 </script>
 
