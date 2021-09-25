@@ -207,7 +207,7 @@ export default vue.extend({
         if (this.id) params.id = this.id
         if (this.formdata.image) params.image = this.formdata.image
         if (this.formdata.video) params.video = this.formdata.video
-        console.log("params to submit", params)
+
         this.$store.dispatch(TYPES.SUBMIT_POST, params)
       }
     },
@@ -221,8 +221,6 @@ export default vue.extend({
 
   // why mounted?, ref: https://alligator.io/vuejs/component-lifecycle/
   mounted() {
-    console.log("window", window)
-
     if (typeof window !== "undefined") {
       this.windowReady = true
       // if (window.document) vue.component("input-tags", inputTags)
