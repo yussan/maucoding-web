@@ -1,18 +1,17 @@
 <template lang="pug">
 .post-author
   .grid-center.post-author-header
-    .col-6_sm-12
+    .col-10_sm-12
       .grid
         .col-8.post-author-header_author
           h1 {{ $route.params.username }}
           p Yogyakarta, Indonesia
         .col-4.post-author-header_avatar
           img(src="/v2/images/dummy-avatar.png", alt="this is avatar")
-  .bg-soft-gray
-    small-post-block(
-      :postData="post.list[filter]",
-      :loadMoreHandler="fetchMoreData"
-    )
+  small-post-block(
+    :postData="post.list[filter]",
+    :loadMoreHandler="fetchMoreData"
+  )
 </template>
 
 <style lang="sass" scoped>
@@ -48,7 +47,7 @@ vue.component("small-post-block", SmallPostBock)
 export default {
   data() {
     return {
-      filter: "posts-by-author",
+      filter: "posts-by-author"
     }
   },
 
@@ -59,9 +58,9 @@ export default {
         {
           vmid: "description",
           name: "description",
-          content: `Post created by "${this.$route.params.username}" - Mau Coding`,
-        },
-      ],
+          content: `Post created by "${this.$route.params.username}" - Mau Coding`
+        }
+      ]
     }
   },
 
@@ -87,16 +86,16 @@ export default {
         filter: this.filter,
         query: {
           draft: false,
-          username: this.$route.params.username,
-        },
+          username: this.$route.params.username
+        }
       }
-    },
+    }
   },
 
   computed: {
     post() {
       return this.$store.state.post || {}
-    },
-  },
+    }
+  }
 }
 </script>
