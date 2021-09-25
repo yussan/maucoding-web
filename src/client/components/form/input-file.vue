@@ -17,7 +17,7 @@
 
 <script lang="ts">
 // default props
-const defaultProps = {
+const props = {
   name: {
     type: String
   },
@@ -41,10 +41,7 @@ const defaultProps = {
   },
   // handle change value
   onchange: {
-    type: Function,
-    default() {
-      console.log("changed")
-    }
+    type: Function
   }
 }
 
@@ -52,7 +49,7 @@ const defaultProps = {
 import vue from "vue"
 export default vue.extend({
   name: "input-file",
-  props: defaultProps,
+  props,
   data() {
     return {
       image_preview:
@@ -66,12 +63,12 @@ export default vue.extend({
     }
   },
   methods: {
-    changeHandler(e) {
+    changeHandler(e: any) {
       const file = e.target.files[0]
       if (file) {
         // generate url
         this.image_preview = window.URL.createObjectURL(file)
-        // this.onchange(e)
+        this.onchange(e)
       }
     }
   }
