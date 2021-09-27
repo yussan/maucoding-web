@@ -41,55 +41,55 @@ export default vue.extend({
 </script>
 
 <style lang="sass" scoped>
-  @import '../../../design/sass/color'
+@import '../../../design/sass/color'
 
-  .card-post 
-    border-top: 1px solid $color-gray-soft
-    padding: 0 0 1em 0
-    display: inline-flex
-    padding-bottom: 0
-    margin-bottom: 1em
-    a.link-thumb 
-      display:  block 
-      position: relative
-    .thumb
-      img 
-        width: 300px
-    .title 
-      line-height: 1.5
-      padding: 1em
-      text-transform: capitalize
-      text-decoration: none
+.card-post
+  border-top: 1px solid $color-gray-soft
+  padding: 0 0 1em 0
+  display: inline-flex
+  padding-bottom: 0
+  margin-bottom: 1em
+  a.link-thumb
+    display:  block
+    position: relative
+  .thumb
+    img
+      width: 300px
+  .title
+    line-height: 1.5
+    padding: 1em
+    text-transform: capitalize
+    text-decoration: none
+    a
+      font-size: 1.5em
+      font-weight: bold
+      color: $color-black-medium
+    .meta
+      font-size: 1em
       a
-        font-size: 1.5em
-        font-weight: bold
-        color: $color-black-medium
-      .meta 
         font-size: 1em
-        a 
-          font-size: 1em
-          color: $color-gray-medium
         color: $color-gray-medium
-      .avatar
-        margin-top: 20px
-        img
-          width: 20px
-          height: 20px
-          border-radius: 100%
-          float: left
-        span.text
-          font-size: 14px
-          font-weight: initial
-          color: gray
-          margin-left: 8px
-          margin-top: 0
-          float: left
+      color: $color-gray-medium
+    .avatar
+      margin-top: 20px
+      img
+        width: 20px
+        height: 20px
+        border-radius: 100%
+        float: left
+      span.text
+        font-size: 14px
+        font-weight: initial
+        color: gray
+        margin-left: 8px
+        margin-top: 0
+        float: left
 
-  // responsiveness
-  @media screen and (max-width: 600px)
-    .card-post 
-      display: block
-      .thumb
-        img 
-          width: 100%
+// responsiveness
+@media screen and (max-width: 600px)
+  .card-post
+    display: block
+    .thumb
+      img
+        width: 100%
 </style>

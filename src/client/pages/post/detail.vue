@@ -1,5 +1,5 @@
 <template lang="pug">
-  div(v-if="typeof post.detail[id] !== 'undefined'")
+  div(v-if="typeof post.detail[id] !== 'undefined'" )
 
     .m-t-30
 
@@ -57,7 +57,6 @@
 
 <script>
 import vue from "vue"
-import host from "../../../config/host"
 import * as TYPES from "../../vuex/types"
 import { injectCss, injectScript } from "../../modules/dom"
 import { mapState } from "vuex"
@@ -93,9 +92,9 @@ export default vue.extend({
       meta: {
         title: "Tech from Engineer Perspective",
         description:
-          "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn.",
+          "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },
-      id: 0,
+      id: 0
     }
   },
 
@@ -113,9 +112,9 @@ export default vue.extend({
             {
               vmid: "description",
               name: "description",
-              content: description,
-            },
-          ],
+              content: description
+            }
+          ]
         }
       } else {
         return {
@@ -124,9 +123,9 @@ export default vue.extend({
             {
               vmid: "description",
               name: "description",
-              content: "Are you lost, click link bellow to acccess other page",
-            },
-          ],
+              content: "Are you lost, click link bellow to acccess other page"
+            }
+          ]
         }
       }
     } else {
@@ -140,9 +139,9 @@ export default vue.extend({
           {
             vmid: "description",
             name: "description",
-            content: `Post detail on Mau Coding with title ${title}`,
-          },
-        ],
+            content: `Post detail on Mau Coding with title ${title}`
+          }
+        ]
       }
     }
   },
@@ -172,9 +171,9 @@ export default vue.extend({
         filter: "latest_detail",
         limit: 4,
         draft: false,
-        notid: id,
+        notid: id
       })
-    },
+    }
   },
 
   watch: {
@@ -190,10 +189,10 @@ export default vue.extend({
         this.fetchPostDetail(id)
         this.fetchPostRelated(id)
       }
-    },
+    }
   },
 
-  computed: mapState(["post"]),
+  computed: mapState(["post"])
 })
 </script>
 
@@ -249,4 +248,10 @@ export default vue.extend({
     br
       display: block
       margin: 1em 0
+
+// responsiveness
+@media screen and (max-width: 600px)
+  .post-detail
+    h1
+      font-size: $size-text-large--mobile
 </style>

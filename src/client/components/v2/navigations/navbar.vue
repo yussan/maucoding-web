@@ -4,7 +4,7 @@ nav#main-nav.main-nav
     .grid-middle
       .col-1
         .main-nav_logo(style="")
-          router-link(to="/", title="Back to home", style="height:45px")
+          a(href="/", title="Back to home", style="height:45px")
             img(
               src="/images/icons-2/icon-2-96x96.png",
               alt="square logo of Mau Coding"
@@ -93,6 +93,17 @@ nav#main-nav.main-nav
         width: 0
         &.show
           width: calc(100% - 40px)
+
+// responsiveness
+@media screen and (max-width: 600px)
+  .main-nav
+    .main-nav_logo
+      a
+        img
+          margin-left: 10px
+    .main-nav_menu
+      .nav_menu_right_search
+        padding: 15px 0
 </style>
 
 <script>
@@ -102,14 +113,14 @@ const menus = [
   {
     name: "posts",
     matchPath: ["post", "posts", "tag", "a", "author", "search"],
-    link: "/posts",
+    link: "/posts"
   },
   {
     name: "Youtube Videos",
     target: "blank",
     matchPath: [],
-    link: "https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA",
-  },
+    link: "https://www.youtube.com/channel/UCKLQUv8n3OadK5mkYpmZiyA"
+  }
 ]
 
 export default {
@@ -118,7 +129,7 @@ export default {
       hideSearch: true,
       keywordSearch: "",
       activePath: this.$route.path.split("/")[2],
-      menus,
+      menus
     }
   },
   methods: {
@@ -134,14 +145,14 @@ export default {
         this.hideSearch = true
         this.keywordSearch = ""
       }
-    },
+    }
   },
 
   watch: {
-    $route: function (to) {
+    $route: function(to) {
       const { path } = to
       this.activePath = path.split("/")[2]
-    },
-  },
+    }
+  }
 }
 </script>
