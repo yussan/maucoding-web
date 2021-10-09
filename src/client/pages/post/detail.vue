@@ -222,6 +222,7 @@ export default vue.extend({
       width: -moz-available
   article.post-detail-content
     line-height: 1.8
+    word-break: break-word
     a
       color: $color-gray-soft
       text-decoration: underline
