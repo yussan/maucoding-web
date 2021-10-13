@@ -8,6 +8,7 @@
         .container
           .grid
             .col-8_md-12(data-push-left="off-2_md-0")
+              Breadcrumb.m-t-30(:breadcrumbData="breadcrumbData")
               h1 {{ toCamelCase(post.detail[id].title) }}
               box-meta(:data="post.detail[id]" :link='link')
           
@@ -71,6 +72,7 @@ import meta from "../../components/boxs/post-meta.vue"
 import ErrorBox from "../error/index.vue"
 import Loader from "../../components/loaders/index.vue"
 import AppCard from "../../components/cards/post-app.vue"
+import Breadcrumb from "../../components/v2/breadcrumb/index.vue"
 
 vue.component("app-card", AppCard)
 vue.component("comment", comment)
@@ -79,6 +81,7 @@ vue.component("error-box", ErrorBox)
 vue.component("Loader", Loader)
 vue.component("box-title", BoxTitle)
 vue.component("recommended-post", RecommendedPost)
+vue.component("Breadcrumb", Breadcrumb)
 
 export default vue.extend({
   name: "post-detail",
@@ -86,15 +89,34 @@ export default vue.extend({
   // metaInfo: this.meta,
 
   data() {
-    // const title_arr = this.$route.params.title.split("-")
+    let { title } = this.$route.params
+    const title_arr = title.split("-")
+    const postId = title_arr[title_arr.length - 1]
+    let postTitle = title.replace(/-/g, " ")
+    postTitle = postTitle.replace(postId, " ")
+
     return {
-      link: `/post/${this.$route.params.title}`,
+      link: `/post/${title}`,
       meta: {
         title: "Tech from Engineer Perspective",
         description:
           "Here we are not only focused on making tech products. But it also makes technology accessible, affordable and easy for everyone to learn."
       },
-      id: 0
+      id: 0,
+      breadcrumbData: [
+        {
+          text: "Home",
+          link: "/"
+        },
+        {
+          text: "Posts",
+          link: "/posts"
+        },
+        {
+          text: postTitle,
+          link: `/post/${title}`
+        }
+      ]
     }
   },
 
