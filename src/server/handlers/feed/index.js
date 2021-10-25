@@ -44,7 +44,7 @@ export function getFeed(req, res) {
         } else {
           client.close()
 
-          result.map(n => {
+          result.map(n =>  {
             // ref: remove &nbsp; from string https://stackoverflow.com/a/6452789/2780875
             n.content = n.content.replace(/&nbsp;/gi, "")
             items += `
@@ -65,6 +65,7 @@ export function getFeed(req, res) {
                 .split(",")
                 .join("/")}</category>
               <pubDate>${new Date(n.created_on * 1000).toUTCString()}</pubDate>
+              <media:content url="${n.image}" type="image/*" medium="image/jpeg" duration="10"> </media:content>
             </item>
             `
           })
@@ -78,7 +79,7 @@ export function getFeed(req, res) {
 function xmlFeedWrapper(items = "", update_date = 0) {
   // ref: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/toUTCString
   return `
-  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
     <channel>
       <title>Mau Coding Feed</title>
       <description>Tech from Engineer Perspective by Yussan Media Group</description>
